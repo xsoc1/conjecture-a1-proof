@@ -76,5 +76,6 @@
     ]
   },
   "unresolved_execution_blockers": [],
-  "audited_source_commit": "to be bound in submission addendum after first commit"
+  "audited_source_commit": "e6be224ab4928b5be317f4b367451600b8de3f54",
+  "audited_source_worktree_state": "clean immediately after commit"
 }

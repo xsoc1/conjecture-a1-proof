@@ -2,7 +2,12 @@
 
 Baseline: upstream commit f8f7235dca197933cd97ac74b6d35d64f67e693d, clean clone,
 branch audit/lean-a1-2026-11-05. No existing user changes were overwritten.
-The final audited artifact commit is recorded in the submission addendum and PR.
+Audited source/artifact commit: `e6be224ab4928b5be317f4b367451600b8de3f54`.
+The worktree was clean immediately after that commit. The following provenance
+commit changes only this manifest and the source-commit field in run-manifest.json;
+all tested mathematical, Lean and Python sources are restored by the audited commit.
+The final PR head and post-submission clean state are recorded in the task-local
+submission receipt and final delivery, avoiding a self-referential commit hash.
 
 Inputs: original arXiv:1811.10137v2 Appendix A; repository report/source,
 verification scripts, existing Lean layer; no omitted attachments were accessible.
