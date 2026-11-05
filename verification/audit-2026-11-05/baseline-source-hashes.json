@@ -1,0 +1,13 @@
+{
+  "commit": "f8f7235dca197933cd97ac74b6d35d64f67e693d",
+  "sha256": {
+    "conj.py": "bf1bdd9e2382351dba3294d225e4cc6b504a67a753a5318151b74b13ab25f51b",
+    "conj2.py": "759f2b2dacc9a7df5bfbf7583eeefe379f8e913d4380ce89361e03f3b6f07c2c",
+    "probe2.py": "0f688d5673896dbf87c466d97f295ffcf85f8f58d142ee35b8c97b4b603cce80",
+    "pureZ_check.py": "cc66ebf2c9f518719a4c8dc913438222ad9354c0842c9a474ceacb202d953884",
+    "sharpness.py": "5277a7f6268418e5a3fa59ea1baabb3c16201093bbbf29a7ca8a74f1f0e94b16",
+    "structure.py": "d1bfb114d31dc7388e23f0d5a0bc221025bf40bc19fcbe03120e2c60a61d5b4d",
+    "verify.py": "13d2d753e15fcfef1302e93b94c16c68ae744d3ff089f59ed39ad78840167207",
+    "verify2.py": "b75f76882039e12885cc54e2f6cbe7f8fcfe393c2d0a506ea53eac6c79a38270"
+  }
+}

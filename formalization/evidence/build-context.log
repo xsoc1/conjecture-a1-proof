@@ -1,0 +1,6 @@
+Lean=C:\Users\HuangZY\.elan\toolchains\leanprover--lean4---v4.31.0\bin\lean.exe
+Mathlib=F:\LaTeX\BVE research\lean-proof\.lake\packages\mathlib
+HEAD=fabf563a7c95a166b8d7b6efca11c8b4dc9d911f
+LEAN_PATH=F:\LaTeX\BVE research\lean-proof\.lake\packages\mathlib\.lake\build\lib\lean;F:\LaTeX\BVE research\lean-proof\.lake\packages\aesop\.lake\build\lib\lean;F:\LaTeX\BVE research\lean-proof\.lake\packages\batteries\.lake\build\lib\lean;F:\LaTeX\BVE research\lean-proof\.lake\packages\importGraph\.lake\build\lib\lean;F:\LaTeX\BVE research\lean-proof\.lake\packages\LeanSearchClient\.lake\build\lib\lean;F:\LaTeX\BVE research\lean-proof\.lake\packages\plausible\.lake\build\lib\lean;F:\LaTeX\BVE research\lean-proof\.lake\packages\proofwidgets\.lake\build\lib\lean;F:\LaTeX\BVE research\lean-proof\.lake\packages\Qq\.lake\build\lib\lean
+COMMAND=lake.exe -f lakefile.offline.lean build
+External cache paths are read-only imports; generated artifacts stay in this package.

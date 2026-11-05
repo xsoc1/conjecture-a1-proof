@@ -1,26 +1,26 @@
 /-
   ConjectureA1.lean
   ============================================================================
-  Lean 4 + Mathlib formalisation, **layer 1** of
+  Lean 4 + Mathlib formalisation, elementary and commutator-power layers of
   《报告_ConjectureA1的证明》 (Conjecture A.1 of Liu–Wu–Zhang–Zhou,
   Comm. Math. Phys. 375 (2020) 785–832, Appendix A).
 
   ⚠️  STATUS  ⚠️
   ----------------------------------------------------------------------------
-  Produced in an environment with **no Lean toolchain and no network**, hence
-  **NOT compiled**.  The file contains
+  The original layer-1 file was uncompiled. The 2026-11-05 revision is compiled
+  with Lean 4.31.0; see PROGRESS.md and evidence/. The file contains
       * no `sorry`,
       * no user-declared `axiom`,
       * no `unsafe` / `native_decide` shortcuts.
-  Only declarations whose proofs are short and whose Mathlib dependencies are
-  minimal are *stated and proved* here.  The mathematically substantial steps
+  General commutator-power and one-generator normal-order formulas are proved
+  here. SpecialCases.lean and VectorCases.lean prove all vector cases p,q ≤ 1.
+  The remaining general steps
   (Taylor expansion, the `z`-power lemma, the trinomial formula, the two-sided
   theorem, and a fortiori Conjecture A.1 itself) are recorded as **comments**
   with their exact Lean statements and proof plans — a comment is not a proof
   obligation, so nothing here is faked, and nothing is assumed.
 
-  What *is* machine-provable in this file: `ad` is a derivation of a
-  (non-commutative) ring, together with the elementary identities used later.
+  Neither proposition definition below is an assertion of the general conjecture.
   ============================================================================
 -/
 
@@ -28,7 +28,9 @@ import Mathlib.Algebra.Algebra.Basic
 import Mathlib.Algebra.BigOperators.Group.Finset.Basic
 import Mathlib.Data.Nat.Choose.Sum
 import Mathlib.Data.Nat.Factorial.Basic
-import Mathlib.Tactic
+import Mathlib.Algebra.Module.LinearMap.End
+import Mathlib.Tactic.NoncommRing
+import Mathlib.Tactic.NormNum
 
 open Finset
 open scoped BigOperators
@@ -72,23 +74,74 @@ lemma ad_mul (x y z : R) : ad x (y * z) = ad x y * z + y * ad x z := by
 lemma ad_pow_succ (x : R) (w : R) (r : ℕ) :
     x * (w * x ^ r) = w * x ^ (r + 1) + ad x w * x ^ r := by
   unfold ad
-  rw [pow_succ]
+  rw [pow_succ']
   noncomm_ring
 
 end Derivation
 
+section CommutatorPowers
+
+variable {R : Type*} [Ring R]
+
+lemma ad_swap (x y : R) : ad y x = -ad x y := by
+  unfold ad
+  noncomm_ring
+
+/-- Commutator with a positive power. Only Y-Z commutation is required. -/
+lemma ad_pow_of_commute (x y : R) (hy : Commute y (ad x y)) (n : ℕ) :
+    ad x (y ^ (n + 1)) = (n + 1) • (y ^ n * ad x y) := by
+  induction n with
+  | zero => simp
+  | succ n ih =>
+    rw [pow_succ, ad_mul, ih]
+    calc
+      (n + 1) • (y ^ n * ad x y) * y + y ^ (n + 1) * ad x y =
+          (n + 1) • (y ^ (n + 1) * ad x y) + y ^ (n + 1) * ad x y := by
+        rw [smul_mul_assoc, mul_assoc, ← hy.eq, ← mul_assoc, ← pow_succ]
+      _ = (n + 1 + 1) • (y ^ (n + 1) * ad x y) := by
+        simp only [add_nsmul, one_nsmul]
+
+/-- One-X normal ordering, with the sign fixed by XY-YX=Z. -/
+lemma mul_pow_normal_order (x y : R) (hy : Commute y (ad x y)) (n : ℕ) :
+    x * y ^ (n + 1) = y ^ (n + 1) * x + (n + 1) • (y ^ n * ad x y) := by
+  have h := ad_pow_of_commute x y hy n
+  unfold ad at h
+  have h' := sub_eq_iff_eq_add.mp h
+  simpa only [ad, add_comm] using h'
+
+/-- Power-commutator formula including n=0 (truncated subtraction is harmless). -/
+lemma ad_pow_eq (x y : R) (hy : Commute y (ad x y)) (n : ℕ) :
+    ad x (y ^ n) = n • (y ^ (n - 1) * ad x y) := by
+  cases n with
+  | zero => simp
+  | succ n => simpa only [Nat.add_sub_cancel] using ad_pow_of_commute x y hy n
+
+/-- Normal ordering with the power on the left. Only X-Z commutation is needed. -/
+lemma pow_mul_normal_order (x y : R) (hx : Commute x (ad x y)) (n : ℕ) :
+    x ^ (n + 1) * y = y * x ^ (n + 1) + (n + 1) • (x ^ n * ad x y) := by
+  have hx' : Commute x (ad y x) := by rw [ad_swap]; exact hx.neg_right
+  have h := mul_pow_normal_order y x hx' n
+  rw [ad_swap, mul_neg, smul_neg] at h
+  have h' : y * x ^ (n + 1) =
+      x ^ (n + 1) * y - (n + 1) • (x ^ n * ad x y) := by
+    simpa only [sub_eq_add_neg] using h
+  exact (eq_sub_iff_add_eq.mp h').symm
+
+end CommutatorPowers
+
 /-! ## 2. Statement of the target (a `def`, hence no proof is claimed)
 
-We record the conjecture exactly as in the report, over a `ℚ`-algebra `R` and a
-`R`-module `V`.  `ConjectureA1` is a *definition of a proposition*; asserting it
-would require the proofs of §2 of `形式化说明与差异.md`.
+Legacy statement, retained under its original name for compatibility. Lean drops
+the unused `Algebra ℚ R` section instance: its actual signature has only `Ring R`.
+It also requires ambient centrality, stronger than commuting with X and Y.
+The faithful characteristic-zero endomorphism target is `VectorConjecture` below.
 -/
 
 section Statement
 
 variable (R V : Type*) [Ring R] [Algebra ℚ R] [AddCommGroup V] [Module R V]
 
-/-- Conjecture A.1 (Liu–Wu–Zhang–Zhou), vector-level form. -/
+/-- Legacy ring/module proposition; NOT the frozen characteristic-zero target. -/
 def ConjectureA1 : Prop :=
   ∀ (x y : R) (z : R), z = ad x y → (∀ w : R, z * w = w * z) →
   ∀ (p q : ℕ) (v : V),
@@ -96,6 +149,21 @@ def ConjectureA1 : Prop :=
     ((x + y) ^ (2 * p + 2 * q + 1)) • v = 0
 
 end Statement
+
+section FaithfulStatement
+
+/-- The frozen vector-level target. This declaration defines a proposition only.
+No finite-dimensionality or ambient-centrality assumption is imposed. Explicit
+binders retain CharZero, which an unused section instance would silently drop. -/
+def VectorConjecture (K V : Type*) [Field K] [CharZero K]
+    [AddCommGroup V] [Module K V] : Prop :=
+  ∀ (X Y : Module.End K V),
+    Commute X (ad X Y) → Commute Y (ad X Y) →
+    ∀ (p q : ℕ) (v : V),
+      (X ^ (p + 1)) v = 0 → (Y ^ (q + 1)) v = 0 →
+      ((X + Y) ^ (2 * p + 2 * q + 1)) v = 0
+
+end FaithfulStatement
 
 /-! ## 3. NOT FORMALISED HERE — exact statements and proof plans
 
@@ -142,7 +210,7 @@ lemma z_pow_mul_x_pow (x y z : R) (hxy : z = ad x y) (hz : ∀ w : R, z * w = w 
 /-- Report Theorem 3.1 (generalised binomial theorem / trinomial formula). -/
 lemma trinomial (x y z : R) (hxy : z = ad x y) (hz : ∀ w : R, z * w = w * z) (n : ℕ) :
     (x + y) ^ n
-      = ∑ k in range (n / 2 + 1), (((-1 : ℚ) ^ k / (2 ^ k * k.factorial) : ℚ) : R)
+      = ∑ k in range (n / 2 + 1), (((-1 : ℚ) ^ k * n.factorial / (2 ^ k * k.factorial) : ℚ) : R)
           * (z ^ k * ∑ ab in Finset.antidiagonal (n - 2 * k),
               ((1 : ℚ) / ((ab.1.factorial * ab.2.factorial : ℕ) : ℚ) : ℚ) * (x ^ ab.1 * y ^ ab.2)) := by
   -- induction on n via the divided-power recursion
@@ -162,7 +230,7 @@ end Layer2
 ## 4. The missing layer (why the conjecture itself is not proved here)
 
 Conjecture A.1 is the **one-sided** statement: the hypothesis is `x^(p+1) • v = 0`
-(vector level), not `x^(p+1) = 0` (element level).  Its proof needs, beyond layer 2,
+(vector level), not `x^(p+1) = 0` (element level). The report's general route uses
 
   (a) the Heisenberg algebra as a ring with a **PBW normal form and its grading**
       (`A = U(h₁)`, basis `X^a Y^b Z^k`, `I = A X^{p+1} + A Y^{q+1}`),
@@ -170,7 +238,8 @@ Conjecture A.1 is the **one-sided** statement: the hypothesis is `x^(p+1) • v 
   (c) the **fewnomial multiplicity bound for module-valued polynomials**
       (`Module.Dual` separation on a finitely spanned submodule).
 
-None of these is formalised; `形式化说明与差异.md` §3 quantifies the gap.
+These general constructions remain open here. The independently checked finite
+ring certificates in SpecialCases.lean instead bypass PBW for p,q ≤ 1.
 -/
 
 end ConjectureA1

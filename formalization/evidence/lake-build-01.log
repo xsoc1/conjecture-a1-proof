@@ -1,0 +1,6 @@
+error: F:\Codex_Cache\2026-11-05\task\conjecture-a1-proof\formalization\lakefile.offline.lean:24:8: failed to synthesize instance of type class
+  MonadExcept IO.Error JobM
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+error: F:\Codex_Cache\2026-11-05\task\conjecture-a1-proof\formalization\lakefile.offline.lean: package configuration has errors
+EXIT=1

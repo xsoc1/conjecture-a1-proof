@@ -1,0 +1,15 @@
+{
+  "subgoal_id": "LEAN-INDEPENDENT-AUDIT",
+  "verdict": "FORMALLY_VERIFIED",
+  "scope": "Only the 20 listed theorem/lemma declarations, including commutator-power formulas and the frozen vector conclusion for p,q in {0,1}.",
+  "full_conjecture_formally_proved": false,
+  "report": "F:\\Codex_Cache\\2026-11-05\\task\\conjecture-a1-proof\\docs\\audit-2026-11-05\\lean-audit-report.md",
+  "report_sha256": "6aa28cbcf2f31027a234992319928770288fe03d841690a6b18749a1f4d5ebd5",
+  "verification_sha256": "ecc89b5cab1874ee138b0c4afb2ca4a6c8cce74cb0119cdca396040ef4537378",
+  "manifest_sha256": "6216ef04ee3a8387557ba3bcf78dde4cba295c3c8b147d8a53affc44874a2877",
+  "changed_inputs": []
+}
+
+STDERR:
+
+EXIT=0

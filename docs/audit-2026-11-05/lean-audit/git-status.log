@@ -1,0 +1,40 @@
+ M .gitattributes
+ M .gitignore
+ M README.md
+ M docs/formalization-notes.md
+ M docs/general-vs-sharp.md
+ M docs/lean-setup.md
+ M docs/sharpness.md
+ M formalization/ConjectureA1.lean
+ M formalization/build.ps1
+ M formalization/lakefile.lean
+ M formalization/lean-toolchain
+ M formalization/setup.ps1
+ M report/src/report.tex
+ M report/src/techdoc.tex
+ M verification/README.md
+ M verification/conj.py
+ M verification/conj2.py
+ M verification/pureZ_check.py
+ M verification/sharpness.py
+ M verification/verify.py
+ M verification/verify2.py
+?? AGENTS.md
+?? docs/audit-2026-11-05/
+?? formalization/.gitignore
+?? formalization/AxiomAudit.lean
+?? formalization/PROGRESS.md
+?? formalization/SpecialCases.lean
+?? formalization/VectorCases.lean
+?? formalization/certificate.py
+?? formalization/evidence/
+?? formalization/lake-manifest.json
+?? formalization/lakefile.offline.lean
+?? formalization/validate.py
+?? verification/audit-2026-11-05/
+?? verification/audit_checks.py
+?? verification/run_all.py
+
+--- STDERR ---
+
+EXIT=0

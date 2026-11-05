@@ -1,0 +1,80 @@
+{
+  "overall_status": "RIGOROUS_PARTIAL_RESULT",
+  "baseline_commit": "f8f7235dca197933cd97ac74b6d35d64f67e693d",
+  "written_mathematics_verdict": "PASS",
+  "lean_restricted_verdict": "FORMALLY_VERIFIED",
+  "lean_full_target_verdict": "VERIFICATION_INCOMPLETE",
+  "lean_scope": "20 declarations; original vector conclusion for all p,q<=1, plus general commutator/one-generator normal-order formulas",
+  "source_hashes": {
+    "formalization/AxiomAudit.lean": "321e9b36275f21406f46f78461d4f13d52c83dba698facdd37063727be332bc0",
+    "formalization/build.ps1": "194ab3dec57f92beb8ce376aa52fdd04bdf8a8476a68600e17cb3a6f20660a7c",
+    "formalization/certificate.py": "079ce5b3809774d79bb40c5cb241ed93c944cce62c86e8a7bf6c9f856303fc0b",
+    "formalization/ConjectureA1.lean": "aa9bb362b88e68404948c25021f9d57c986ba0a4924f50b610f37df0836312fa",
+    "formalization/lake-manifest.json": "69f77dcb05e2376cd7c6270457a35a1a2e08eb92d014dce7c3e73094bfa57308",
+    "formalization/lakefile.lean": "38769ffae46a823b69d6bbe43281fe7ba74f960ee29f2ef045eaea634e891114",
+    "formalization/lakefile.offline.lean": "9d1efcf76d7e4e6ae9df49015a2e1215396102e41d095e62718681fa381fccd1",
+    "formalization/lean-toolchain": "efac0b94923b2d8b6840cd35be9177ad0fc5ab2332f4f4311c98712cee92fdee",
+    "formalization/setup.ps1": "3bb84e6345c5e276cce1fedb507c1fc25f9661f9aa26a147c7a2956061d042a3",
+    "formalization/SpecialCases.lean": "35dea501e6e456ccfbf4ff08143cc8978ebb7afd8393d716ea28290413ad52ca",
+    "formalization/validate.py": "ecf2d9933e925bfa7037f695272aa173419044937fbb2e78ddf6a02ae636f1d7",
+    "formalization/VectorCases.lean": "cd0525eeb9ba9f8c12b411b9cb9a9ccf798dbed4ab8e3acea66a82623ed49807",
+    "report/src/report.tex": "51072a56fb99886bc19dc7f35889876b4b50e9c4ab2fe0f786b11fea9daa8d84",
+    "report/src/techdoc.tex": "907fa82ee4fb735b6350d0bc102b9c4ac2a115ad62e54f5271b72d08d2b02c4c",
+    "verification/audit_checks.py": "63d524712207fd2d0e1868fa081633b581d1bf1e0c072b76549ec95db5430761",
+    "verification/conj.py": "091c9d69f09cccff1a6ac2b8b1f4c88d6b1a51ef05a9b3dab3b517d08d7d8421",
+    "verification/conj2.py": "256c6bde29849226fe508d4d7302087b5f0fdb043acd30ecfa7a83dec163cae3",
+    "verification/probe2.py": "0f688d5673896dbf87c466d97f295ffcf85f8f58d142ee35b8c97b4b603cce80",
+    "verification/pureZ_check.py": "3c8370dc9188d82fad011cecb770ddd7d6657d8d7591703541391dc08f515ca1",
+    "verification/run_all.py": "e02b0abd4f7b4c8db61dcb72c44b94996c8c957393b2d824de357a51bd0fb0b7",
+    "verification/sharpness.py": "7ff6e180968bfa80ac91613e2aac28590d3a7b548d707833c212fbfc0708f8a6",
+    "verification/structure.py": "d1bfb114d31dc7388e23f0d5a0bc221025bf40bc19fcbe03120e2c60a61d5b4d",
+    "verification/verify.py": "bd90231e8a80a6fd0b204443918a87b383eb378251cf304f9187af8a37b8060f",
+    "verification/verify2.py": "b0d13de145e1ddc58ed9c587bd092ea8b7db022d221bcf9b7f3aa11db025f078"
+  },
+  "review_artifact_hashes": {
+    "docs/audit-2026-11-05/independent-main-proof-audit.md": "8ce9592ec2c3e118021571809f67c991fc7b86c5413293517f31825cab783653",
+    "docs/audit-2026-11-05/revised-paper-audit.md": "7d9a07e4f271fc1e73719d032ac8862d85980090e898b1bc3d78cdb086790f88",
+    "docs/audit-2026-11-05/exact-checks.initial.md": "4117c19490204d72c556f9ac85dabd2342a01b056a46ed0740399e04c67e0858",
+    "docs/audit-2026-11-05/lean-audit-report.md": "f0216acfcd769824d2138e8e2a079719f29bc73f60185813fefff1c5b263ff4e",
+    "docs/audit-2026-11-05/lean-audit/verification.json": "d93d2c56eb6f1f1de65e60d527657abce6d6f030410d1281c88c6e3632354da3",
+    "docs/audit-2026-11-05/lean-audit/run-manifest.json": "85d263b5f234d286ff4a17b3aa9dc799ea559f63508b967412865b5d13b13459",
+    "docs/audit-2026-11-05/lean-audit/independent-source-checks.json": "636e6d07c3ae13dd0bbf1903660f8cf94eedae8c003316692b4694f05bda3ac3",
+    "docs/audit-2026-11-05/lean-audit/context-convergence.json": "94ec719fc2f0687747d5eb65ce6e1b16dfba22d3a2f1dce203c272273a8e9a66",
+    "report/src/report.tex": "51072a56fb99886bc19dc7f35889876b4b50e9c4ab2fe0f786b11fea9daa8d84",
+    "report/src/techdoc.tex": "907fa82ee4fb735b6350d0bc102b9c4ac2a115ad62e54f5271b72d08d2b02c4c",
+    "formalization/SpecialCases.lean": "35dea501e6e456ccfbf4ff08143cc8978ebb7afd8393d716ea28290413ad52ca",
+    "verification/audit-2026-11-05/results.json": "7ed28e668b257a0792e2d3d6940d4cb8ce05a727e0f3b5ad3973f9dc080ccde4"
+  },
+  "raw_evidence_line_endings": "preserved with scoped .gitattributes -text",
+  "source_line_endings": "Git eol=lf, except PowerShell scripts eol=crlf",
+  "online_stock_lake_build": "NOT_RUN",
+  "historical_pdfs": "NOT_REGENERATED",
+  "human_final_semantic_approval": "NOT_CLAIMED",
+  "canonical_integration": "NOT_PERFORMED",
+  "novelty": "UNKNOWN",
+  "runtime": {
+    "actual_model_from_turn_context": "gpt-6.1-sol",
+    "session_id": "01a1ac05-20d8-7ed2-9686-94b4fe1d7a66",
+    "cli_version": "0.166.0-alpha.6",
+    "observed_launch_service_tier": "priority",
+    "model_catalog_entry": {
+      "slug": "gpt-6.1-sol",
+      "service_tiers": [
+        {
+          "id": "priority",
+          "name": "Fast",
+          "description": "2x speed, increased usage"
+        }
+      ]
+    },
+    "catalog_fast_mapping_confirmed": true,
+    "backend_service_tier_echo": null,
+    "global_settings_changed": false,
+    "selected_runtime_evidence": [
+      "formalization/evidence/runtime-session.log",
+      "formalization/evidence/runtime-process-selected.json"
+    ]
+  },
+  "unresolved_execution_blockers": [],
+  "audited_source_commit": "to be bound in submission addendum after first commit"
+}

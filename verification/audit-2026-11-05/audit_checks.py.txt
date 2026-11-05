@@ -1,0 +1,13 @@
+
+STDERR:
+test_false_claims_and_explicit_B4_membership_certificate (__main__.ExactRegressions) ... ok
+test_homogeneous_input_is_not_silently_dropped (__main__.ExactRegressions) ... ok
+test_independent_tensor_model (__main__.ExactRegressions) ... ok
+test_old_two_sided_truncation_counterexample (__main__.ExactRegressions) ... ok
+test_reduced_action_agrees_with_direct_PBW_power (__main__.ExactRegressions) ... ok
+test_runner_propagates_failure_and_timeout (__main__.ExactRegressions) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.233s
+
+OK

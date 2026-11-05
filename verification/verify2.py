@@ -42,6 +42,7 @@ for p in range(0, 6):
         if add(lhs, rhs, -1) != {}:
             ok = False
             print("   FAIL p=%d B=%d" % (p, B))
+assert ok, "normal-ordering identity failed"
 print("   all (p,B) with p,B<=5 :", ok)
 
 # the full "key relation" inside A, including the left factor X^{A-p-1} Z^K
@@ -59,6 +60,7 @@ for p in range(0, 4):
                 if add(lhs, rhs, -1) != {}:
                     ok = False
                     print("   FAIL", p, A, B, K)
+assert ok, "key relation failed"
 print("   key relation holds :", ok)
 
 # ---------- 2. triangular / rank checks ----------
@@ -131,6 +133,7 @@ for p in range(0, 5):
             if rank != ncol:
                 allok = False
                 print("   RANK DEFICIENT: p=%d q=%d delta=%d  rank=%d < %d" % (p, q, delta, rank, ncol))
+assert allok, "line matrix has deficient column rank"
 print("   full column rank for all p,q<=4 and all delta :", allok)
 
 # explicit triangular determinants in the two triangular cases
@@ -150,11 +153,14 @@ for (p, q, delta) in [(1, 1, 3), (2, 2, 3), (2, 3, 4), (3, 3, 4), (2, 2, -1), (2
         K = min(M, q)
         sub = [[(-1) ** (b - cc) * c(b, b - cc, p) if 0 <= b - cc <= p + 1 else F(0)
                 for cc in range(0, K + 1)] for b in range(0, K + 1)]
+        assert det(sub) == 1, (p, q, delta, sub)
         print("   delta=%d>=p+1 : lower-triangular K=%d, det=%s, diag=1" % (delta, K, det(sub)))
     elif delta <= -1:
         K = q - bmin
         sub = [[(-1) ** (b - cc) * c(b, b - cc, p) if 0 <= b - cc <= p + 1 else F(0)
                 for cc in range(bmin, bmin + K + 1)] for b in range(b0, b0 + K + 1)]
+        assert b0 + K <= M, (p, q, delta)
+        assert det(sub) != 0, (p, q, delta, sub)
         print("   delta=%d<=-1 : upper-triangular size %d, det=%s" % (delta, K + 1, det(sub)))
 
 # ---------- 3. the support count in the case 1 <= delta <= p ----------
@@ -170,6 +176,9 @@ for p in range(1, 6):
             b0 = max(p + 1 - delta, 0)
             degU = min(q, M)
             k = b0 + max(0, degU + p + 1 - M)
+            assert k <= p + 1, (p, q, delta, k)
             if k > p + 1:
                 print("   BOUND TOO WEAK p=%d q=%d delta=%d : k=%d > p+1=%d" % (p, q, delta, k, p + 1))
 print("   (no output = the count k <= p+1 always holds)")
+
+print("PASS: finite exact line-matrix, relation and support-count checks only")

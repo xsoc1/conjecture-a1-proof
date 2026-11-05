@@ -1,0 +1,13 @@
+=== exact normal-ordering identity, 0 <= n <= 8 ===
+PASS: 9 PBW identities
+PASS: false one-sided lemma and false B_m iff threshold regressions
+  p=q=1: B4=0, Z^2!=0, T^4!=0 modulo I; N=5
+=== exact nilpotence indices, 0 <= p,q <= 4 ===
+(0,0) Z^1 T^1   (0,1) Z^2 T^3   (0,2) Z^3 T^5   (0,3) Z^4 T^7   (0,4) Z^5 T^9
+(1,0) Z^2 T^3   (1,1) Z^3 T^5   (1,2) Z^4 T^7   (1,3) Z^5 T^9   (1,4) Z^6 T^11
+(2,0) Z^3 T^5   (2,1) Z^4 T^7   (2,2) Z^5 T^9   (2,3) Z^6 T^11   (2,4) Z^7 T^13
+(3,0) Z^4 T^7   (3,1) Z^5 T^9   (3,2) Z^6 T^11   (3,3) Z^7 T^13   (3,4) Z^8 T^15
+(4,0) Z^5 T^9   (4,1) Z^6 T^11   (4,2) Z^7 T^13   (4,3) Z^8 T^15   (4,4) Z^9 T^17
+PASS: 25 exact index pairs; finite evidence only
+
+STDERR:

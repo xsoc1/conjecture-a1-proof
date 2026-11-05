@@ -1,0 +1,27 @@
+formalization/ConjectureA1.lean:100:12: error(lean.unknownIdentifier): Unknown identifier `nsmul_mul`
+formalization/ConjectureA1.lean:99:69: error: unsolved goals
+R : Type u_1
+inst✝ : Ring R
+x y : R
+hy : Commute y (ad x y)
+n : ℕ
+ih : ad x (y ^ (n + 1)) = (n + 1) • (y ^ n * ad x y)
+⊢ (n + 1) • (y ^ n * ad x y) * y + y ^ (n + 1) * ad x y = (n + 1) • (y ^ (n + 1) * ad x y) + y ^ (n + 1) * ad x y
+formalization/ConjectureA1.lean:101:50: error: unsolved goals
+R : Type u_1
+inst✝ : Ring R
+x y : R
+hy : Commute y (ad x y)
+n : ℕ
+ih : ad x (y ^ (n + 1)) = (n + 1) • (y ^ n * ad x y)
+⊢ n • (y ^ (n + 1) * ad x y) + y ^ (n + 1) * ad x y + y ^ (n + 1) * ad x y = (n + 1 + 1) • (y ^ (n + 1) * ad x y)
+formalization/ConjectureA1.lean:109:2: error: Type mismatch: After simplification, term
+  h'
+ has type
+  @Eq R (x * y ^ (n + 1)) (y ^ (n + 1) * x + (n + 1) • (y ^ n * (x * y - y * x)))
+but is expected to have type
+  @Eq R (x * y ^ (n + 1)) (y ^ (n + 1) * x + (n + 1) • (y ^ n * ad x y))
+formalization/ConjectureA1.lean:126:4: warning: The namespace 'ConjectureA1' is duplicated in the declaration 'ConjectureA1.ConjectureA1'
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+EXIT=1

@@ -1,0 +1,19 @@
+{
+  "AGENTS.md": "0c6447bdac10799c68f3e177ada3de89962bd36f6ba19dab938bf36f89e43eba",
+  "docs\\audit-2026-11-05\\problem_contract.md": "d34ecbe852ec694f78cd9b21ed48ca7978da569571a6b720d7384a3eaa772d22",
+  "formalization\\AxiomAudit.lean": "321e9b36275f21406f46f78461d4f13d52c83dba698facdd37063727be332bc0",
+  "formalization\\ConjectureA1.lean": "aa9bb362b88e68404948c25021f9d57c986ba0a4924f50b610f37df0836312fa",
+  "formalization\\lakefile.lean": "38769ffae46a823b69d6bbe43281fe7ba74f960ee29f2ef045eaea634e891114",
+  "formalization\\lakefile.offline.lean": "9d1efcf76d7e4e6ae9df49015a2e1215396102e41d095e62718681fa381fccd1",
+  "formalization\\SpecialCases.lean": "35dea501e6e456ccfbf4ff08143cc8978ebb7afd8393d716ea28290413ad52ca",
+  "formalization\\VectorCases.lean": "cd0525eeb9ba9f8c12b411b9cb9a9ccf798dbed4ab8e3acea66a82623ed49807",
+  "formalization\\lean-toolchain": "efac0b94923b2d8b6840cd35be9177ad0fc5ab2332f4f4311c98712cee92fdee",
+  "formalization\\lake-manifest.json": "69f77dcb05e2376cd7c6270457a35a1a2e08eb92d014dce7c3e73094bfa57308",
+  "formalization\\build.ps1": "194ab3dec57f92beb8ce376aa52fdd04bdf8a8476a68600e17cb3a6f20660a7c",
+  "formalization\\setup.ps1": "3bb84e6345c5e276cce1fedb507c1fc25f9661f9aa26a147c7a2956061d042a3",
+  "formalization\\validate.py": "ecf2d9933e925bfa7037f695272aa173419044937fbb2e78ddf6a02ae636f1d7",
+  "formalization\\certificate.py": "079ce5b3809774d79bb40c5cb241ed93c944cce62c86e8a7bf6c9f856303fc0b",
+  "formalization\\evidence\\source-and-axioms.json": "c5ab4c873db984f3e518783133bc7dd62a6991cae461662c49a2e2051d5a0b8b",
+  "formalization\\evidence\\lake-build.log": "c63e5391f3d342598e71b42f7fb75802b0229b330309101308ae2f431388fb2d",
+  "formalization\\evidence\\build-context.log": "f2d70c31c28b14e9fbd1f8688a3c760e7dcdcf1f7628a0ca37f999c71099af3e"
+}

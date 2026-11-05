@@ -1,4 +1,4 @@
-﻿# setup.ps1  download a Lean 4 toolchain (and optionally Mathlib sources) using Node.js.
+# setup.ps1  download a Lean 4 toolchain (and optionally Mathlib sources) using Node.js.
 #
 # Why Node?  In this environment Windows schannel is blocked for PowerShell/curl:
 #   Invoke-WebRequest -> ""
@@ -6,8 +6,8 @@
 # while Node's own TLS stack works (verified: https://github.com -> 200).
 #
 # Usage:
-#   .\setup.ps1 -LeanVersion 4.35.0
-#   .\setup.ps1 -LeanVersion 4.35.0 -WithMathlib -MathlibTag v4.35.0
+#   .\setup.ps1 -LeanVersion 4.31.0
+#   .\setup.ps1 -LeanVersion 4.31.0 -WithMathlib -MathlibTag v4.31.0
 #
 # Everything is installed *inside this directory* (sandbox-friendly).
 
@@ -75,7 +75,7 @@ Write-Host "  lean --version"
 
 # ---- 2. (optional) Mathlib sources + deps ----
 if ($WithMathlib) {
-  if (-not $MathlibTag) { throw "-WithMathlib requires -MathlibTag (a mathlib4 tag, e.g. v4.35.0)" }
+  if (-not $MathlibTag) { throw "-WithMathlib requires -MathlibTag (a mathlib4 tag, e.g. v4.31.0)" }
   $tb = Join-Path $root "mathlib4-$MathlibTag.tar.gz"
   Fetch "https://github.com/leanprover-community/mathlib4/archive/refs/tags/$MathlibTag.tar.gz" $tb
   $pkgDir = Join-Path $here ".lake\packages"

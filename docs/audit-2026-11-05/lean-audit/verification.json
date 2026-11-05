@@ -1,0 +1,215 @@
+{
+  "verdict": "FORMALLY_VERIFIED",
+  "scope": "Only the 20 listed theorem/lemma declarations, including commutator-power formulas and the frozen vector conclusion for p,q in {0,1}.",
+  "full_target_verdict": "VERIFICATION_INCOMPLETE",
+  "full_conjecture_formally_proved": false,
+  "machine": {
+    "lean_version": "Lean (version 4.31.0, x86_64-w64-windows-gnu, commit 68218e876d2a38b1985b8590fff244a83c321783, Release)",
+    "lake_version": "Lake version 5.0.0-src+68218e8 (Lean version 4.31.0)",
+    "build_passed": true,
+    "build_mode": "Independent direct sequential lean -o compilation of four frozen copies; author offline Lake log separately inspected; ordinary online lake build not run.",
+    "sorry_axiom_hits": [],
+    "axiom_allowlist": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "axiom_probe_count": 20,
+    "signature_guard_exit_code": 0,
+    "certificate_integer_expansions": [
+      {
+        "theorem": "two_mul_add_pow_five",
+        "free_word_identity": true,
+        "degree": 5,
+        "nonzero_target_words": 32,
+        "residual": {}
+      },
+      {
+        "theorem": "two_mul_add_pow_three",
+        "free_word_identity": true,
+        "degree": 3,
+        "nonzero_target_words": 8,
+        "residual": {}
+      }
+    ],
+    "dependency_pins_match": true,
+    "tracked_dependency_sources_clean": true
+  },
+  "statement_fidelity": [
+    {
+      "obligation": "O01",
+      "declaration": "ConjectureA1.ad_def",
+      "result": "FAITHFUL",
+      "independent_audit": "PASS",
+      "notes": "Definitional unfolding gives xy-yx; the sign agrees with XY-YX=Z."
+    },
+    {
+      "obligation": "O02",
+      "declaration": "ConjectureA1.ad_add",
+      "result": "FAITHFUL",
+      "independent_audit": "PASS",
+      "notes": "Distribute x(y+z) and (y+z)x, then regroup in the additive abelian group."
+    },
+    {
+      "obligation": "O03",
+      "declaration": "ConjectureA1.ad_zero",
+      "result": "FAITHFUL",
+      "independent_audit": "PASS",
+      "notes": "Both x0 and 0x vanish."
+    },
+    {
+      "obligation": "O04",
+      "declaration": "ConjectureA1.ad_neg",
+      "result": "FAITHFUL",
+      "independent_audit": "PASS",
+      "notes": "Distribute negation; x(-y)-(-y)x=-(xy-yx)."
+    },
+    {
+      "obligation": "O05",
+      "declaration": "ConjectureA1.ad_one",
+      "result": "FAITHFUL",
+      "independent_audit": "PASS",
+      "notes": "The two unit products are equal."
+    },
+    {
+      "obligation": "O06",
+      "declaration": "ConjectureA1.ad_mul",
+      "result": "FAITHFUL",
+      "independent_audit": "PASS",
+      "notes": "Expand [x,y]z+y[x,z]; the middle yxz terms cancel without exchanging factors."
+    },
+    {
+      "obligation": "O07",
+      "declaration": "ConjectureA1.ad_pow_succ",
+      "result": "FAITHFUL",
+      "independent_audit": "PASS",
+      "notes": "Expand wx^(r+1)+(xw-wx)x^r, using x^(r+1)=x*x^r; associativity cancels wx*x^r."
+    },
+    {
+      "obligation": "O08",
+      "declaration": "ConjectureA1.ad_swap",
+      "result": "FAITHFUL",
+      "independent_audit": "PASS",
+      "notes": "yx-xy=-(xy-yx), by additive group identities."
+    },
+    {
+      "obligation": "O09",
+      "declaration": "ConjectureA1.ad_pow_of_commute",
+      "result": "FAITHFUL",
+      "independent_audit": "PASS",
+      "notes": "Induct on n. Leibniz gives [x,y^(n+2)]=[x,y^(n+1)]y+y^(n+1)[x,y]. Move [x,y] past y using only the stated Y-Z commute hypothesis and combine the two natural-number multiples."
+    },
+    {
+      "obligation": "O10",
+      "declaration": "ConjectureA1.mul_pow_normal_order",
+      "result": "FAITHFUL",
+      "independent_audit": "PASS",
+      "notes": "Rearrange the previous commutator formula to xy^(n+1)=y^(n+1)x+(n+1)y^n[x,y]; the correction has positive sign."
+    },
+    {
+      "obligation": "O11",
+      "declaration": "ConjectureA1.ad_pow_eq",
+      "result": "FAITHFUL",
+      "independent_audit": "PASS",
+      "notes": "Split n=0 from n=m+1. At zero the natural scalar is zero and [x,1]=0; truncated n-1 causes no boundary defect."
+    },
+    {
+      "obligation": "O12",
+      "declaration": "ConjectureA1.pow_mul_normal_order",
+      "result": "FAITHFUL",
+      "independent_audit": "PASS",
+      "notes": "Swap x and y, use [y,x]=-[x,y], and transport X-Z commutation across negation. Rearrangement yields the positive correction (n+1)x^n[x,y]."
+    },
+    {
+      "obligation": "O13",
+      "declaration": "ConjectureA1.two_mul_add_pow_five",
+      "result": "FAITHFUL",
+      "independent_audit": "PASS",
+      "notes": "Independently expand the literal full certificate in the free associative integer algebra: both sides have coefficient 2 on all 32 words of length five, residual zero. The correction terms are left/right multiples of RX=x[x,y]-[x,y]x and RY=y[x,y]-[x,y]y, so vanish by the local commuting hypotheses. The remaining summands end on the RIGHT in x^2 and y^2."
+    },
+    {
+      "obligation": "O14",
+      "declaration": "ConjectureA1.two_mul_add_pow_three",
+      "result": "FAITHFUL",
+      "independent_audit": "PASS",
+      "notes": "Independently expand the literal full certificate: both sides have coefficient 2 on all eight words of length three, residual zero. Corrections are -RX-2RY. The surviving right factors are x^2 and y, giving the asymmetric (1,0) case."
+    },
+    {
+      "obligation": "O15",
+      "declaration": "ConjectureA1.vector_two_cancel",
+      "result": "FAITHFUL",
+      "independent_audit": "PASS",
+      "notes": "Rewrite v+v as (2:K) scalar-multiplying v; multiply by inverse 2. Field and characteristic zero imply 2 is nonzero. K is explicitly retained by include K, avoiding loss of the scalar field binder."
+    },
+    {
+      "obligation": "O16",
+      "declaration": "ConjectureA1.vector_p_one_q_one",
+      "result": "FAITHFUL",
+      "independent_audit": "PASS",
+      "notes": "Evaluate the degree-five ring identity in End_K(V) at v. Endomorphism multiplication is composition with right factor acting first; Ax^2(v) and By^2(v) vanish from the vector hypotheses. Apply vector_two_cancel to the remaining twice-output vector. No operator annihilation or finite dimension is used."
+    },
+    {
+      "obligation": "O17",
+      "declaration": "ConjectureA1.vector_p_one_q_zero",
+      "result": "FAITHFUL",
+      "independent_audit": "PASS",
+      "notes": "Evaluate the degree-three certificate at v; its right factors X^2 and Y vanish at v. Cancel the factor 2 in the characteristic-zero vector space."
+    },
+    {
+      "obligation": "O18",
+      "declaration": "ConjectureA1.vector_p_zero_q_one",
+      "result": "FAITHFUL",
+      "independent_audit": "PASS",
+      "notes": "Apply the preceding case after swapping X,Y. The commutator changes sign, and both commuting hypotheses are transported by neg_right. Y+X=X+Y for endomorphism addition; exponents remain three."
+    },
+    {
+      "obligation": "O19",
+      "declaration": "ConjectureA1.vector_p_zero_q_zero",
+      "result": "FAITHFUL",
+      "independent_audit": "PASS",
+      "notes": "At exponent one, (X+Y)v=Xv+Yv=0. The actual signature needs neither characteristic zero nor commutator assumptions; this stronger auxiliary statement applies to the target boundary case."
+    },
+    {
+      "obligation": "O20",
+      "declaration": "ConjectureA1.vector_parameters_le_one",
+      "result": "FAITHFUL",
+      "independent_audit": "PASS",
+      "notes": "For natural numbers p,q with each at most one, exhaust p=0/1 and q=0/1. Exponent 2p+2q+1 becomes respectively 1,3,3,5, and annihilator powers become 1 or 2. These are exactly the four proved vector cases."
+    }
+  ],
+  "definitions": [
+    {
+      "declaration": "ConjectureA1.VectorConjecture",
+      "result": "FAITHFUL",
+      "proof_status": "DEFINITION_ONLY",
+      "notes": "Explicit Field and CharZero; arbitrary dimension; all natural p,q; vector annihilation; local X-Z and Y-Z commutation. Definitional equality to independently restated contract checked by rfl."
+    },
+    {
+      "declaration": "ConjectureA1.ConjectureA1",
+      "result": "UNFAITHFUL_AS_FULL_TARGET",
+      "proof_status": "LEGACY_DEFINITION_ONLY",
+      "notes": "Elaborated signature drops unused Algebra Q R; it has only Ring R, AddCommGroup V, Module R V and requires centrality in every ambient ring element. Not used to assert the frozen target."
+    }
+  ],
+  "critical_errors": [],
+  "gaps": [],
+  "remaining_obligations": [
+    "Prove VectorConjecture for arbitrary natural p,q. It is only a def; no theorem asserts it.",
+    "The arbitrary p=0 or q=0 families are not proved here; only p,q simultaneously at most one are covered.",
+    "A general one-sided proof must formalize its own valid dependencies (for example PBW/grading, left-ideal membership and the line/fewnomial argument), or provide another complete route. Commented Taylor, iterated commutator, z-power, trinomial and two-sided proof plans are not accepted theorems.",
+    "General sharpness is a separate target and has not been formally proved by these modules."
+  ],
+  "reproducibility_notes": [
+    "Initial sandbox Git dependency reads exited 128; read-only escalated retries all exited zero. Initial failure logs are preserved.",
+    "Default-trust Lean imports existing prebuilt Mathlib/dependency oleans; dependencies were not rebuilt independently. Their source HEAD pins and tracked-clean status were checked.",
+    "validate.py is a diagnostic that reads an existing log; it does not itself rebuild or bind that log to current source hashes. This independent run supplies fresh compilation and before/after source-hash binding.",
+    "The attempted py -3 launcher invocation exited 1 because no launcher installations were registered. Scripts actually ran with the explicit CPython310 executable.",
+    "The skill asset schema/template paths were unavailable in the installed skill; output follows the schema fields embedded in SKILL.md, with additional scope/provenance fields."
+  ],
+  "repair_hints": "No repairs required for the certified restricted scope. Complete and independently audit the arbitrary-parameter vector theorem before claiming the full conjecture.",
+  "coordination_readback": {
+    "artifact": "context-convergence.json",
+    "sha256": "94ec719fc2f0687747d5eb65ce6e1b16dfba22d3a2f1dce203c272273a8e9a66",
+    "verdict": "CONSISTENT_LAYERED_STATUS"
+  }
+}

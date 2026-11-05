@@ -1,0 +1,23 @@
+=== 1. Y^B X^{p+1} = sum_j (-1)^j c_{B,j} X^{p+1-j} Y^{B-j} Z^j ? ===
+   all (p,B) with p,B<=5 : True
+   checking the key relation (X^{A-p-1}Y^B Z^K)X^{p+1} in A ...
+   key relation holds : True
+
+=== 2. the triangular submatrices  (N = 2p+2q+1) ===
+   full column rank for all p,q<=4 and all delta : True
+
+   explicit triangular submatrices:
+   delta=3>=p+1 : lower-triangular K=1, det=1, diag=1
+   delta=3>=p+1 : lower-triangular K=2, det=1, diag=1
+   (skip parity) p=2 q=3 delta=4
+   (skip parity) p=3 q=3 delta=4
+   delta=-1<=-1 : upper-triangular size 2, det=1440
+   delta=-1<=-1 : upper-triangular size 3, det=-172800
+   delta=-3<=-1 : upper-triangular size 1, det=840
+   delta=-3<=-1 : upper-triangular size 1, det=-120
+
+=== 3. support count  k <= p+1  for  1 <= delta <= p  (N = 2p+2q+1) ===
+   (no output = the count k <= p+1 always holds)
+PASS: finite exact line-matrix, relation and support-count checks only
+
+STDERR:

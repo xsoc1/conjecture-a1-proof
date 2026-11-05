@@ -1,0 +1,67 @@
+=== CHECK 1: (X+Y)^n = sum_{a+b+2k=n} n!/(a!b!k!) (-1/2)^k X^a Y^b Z^k ===
+  n=0 : identity holds = True
+  n=1 : identity holds = True
+  n=2 : identity holds = True
+  n=3 : identity holds = True
+  n=4 : identity holds = True
+  n=5 : identity holds = True
+  n=6 : identity holds = True
+  n=7 : identity holds = True
+  n=8 : identity holds = True
+  ALL: True
+
+=== CHECK 2: Z^J X^{p+1-J} = 0 mod I and Z^J Y^{q+1-J} = 0 mod I ===
+  p=0 q=1  FAILED: [('X', 1)]
+  p=0 q=2  FAILED: [('X', 1)]
+  p=0 q=3  FAILED: [('X', 1)]
+  p=0 q=4  FAILED: [('X', 1)]
+  p=1 q=0  FAILED: [('Y', 1)]
+  p=1 q=1  FAILED: [('X', 1), ('X', 2), ('Y', 1), ('Y', 2)]
+  p=1 q=2  FAILED: [('X', 1), ('X', 2), ('Y', 1), ('Y', 2), ('Y', 3)]
+  p=1 q=3  FAILED: [('X', 1), ('X', 2), ('Y', 1), ('Y', 2), ('Y', 3), ('Y', 4)]
+  p=1 q=4  FAILED: [('X', 1), ('X', 2), ('Y', 1), ('Y', 2), ('Y', 3), ('Y', 4), ('Y', 5)]
+  p=2 q=0  FAILED: [('Y', 1)]
+  p=2 q=1  FAILED: [('X', 1), ('X', 2), ('X', 3), ('Y', 1), ('Y', 2)]
+  p=2 q=2  FAILED: [('X', 1), ('X', 2), ('X', 3), ('Y', 1), ('Y', 2), ('Y', 3)]
+  p=2 q=3  FAILED: [('X', 1), ('X', 2), ('X', 3), ('Y', 1), ('Y', 2), ('Y', 3), ('Y', 4)]
+  p=2 q=4  FAILED: [('X', 1), ('X', 2), ('X', 3), ('Y', 1), ('Y', 2), ('Y', 3), ('Y', 4), ('Y', 5)]
+  p=3 q=0  FAILED: [('Y', 1)]
+  p=3 q=1  FAILED: [('X', 1), ('X', 2), ('X', 3), ('X', 4), ('Y', 1), ('Y', 2)]
+  p=3 q=2  FAILED: [('X', 1), ('X', 2), ('X', 3), ('X', 4), ('Y', 1), ('Y', 2), ('Y', 3)]
+  p=3 q=3  FAILED: [('X', 1), ('X', 2), ('X', 3), ('X', 4), ('Y', 1), ('Y', 2), ('Y', 3), ('Y', 4)]
+  p=3 q=4  FAILED: [('X', 1), ('X', 2), ('X', 3), ('X', 4), ('Y', 1), ('Y', 2), ('Y', 3), ('Y', 4), ('Y', 5)]
+  p=4 q=0  FAILED: [('Y', 1)]
+  p=4 q=1  FAILED: [('X', 1), ('X', 2), ('X', 3), ('X', 4), ('X', 5), ('Y', 1), ('Y', 2)]
+  p=4 q=2  FAILED: [('X', 1), ('X', 2), ('X', 3), ('X', 4), ('X', 5), ('Y', 1), ('Y', 2), ('Y', 3)]
+  p=4 q=3  FAILED: [('X', 1), ('X', 2), ('X', 3), ('X', 4), ('X', 5), ('Y', 1), ('Y', 2), ('Y', 3), ('Y', 4)]
+  p=4 q=4  FAILED: [('X', 1), ('X', 2), ('X', 3), ('X', 4), ('X', 5), ('Y', 1), ('Y', 2), ('Y', 3), ('Y', 4), ('Y', 5)]
+  (no output above means: all these elements reduce to 0 in M_{p,q}, p,q<=4)
+
+=== CHECK 3: minimal n with Z^n = 0, and minimal n with (X+Y)^n = 0, in M_{p,q} ===
+(0,0) Z^1 (X+Y)^1   (0,1) Z^2 (X+Y)^3   (0,2) Z^3 (X+Y)^5   (0,3) Z^4 (X+Y)^7   (0,4) Z^5 (X+Y)^9
+(1,0) Z^2 (X+Y)^3   (1,1) Z^3 (X+Y)^5   (1,2) Z^4 (X+Y)^7   (1,3) Z^5 (X+Y)^9   (1,4) Z^6 (X+Y)^11
+(2,0) Z^3 (X+Y)^5   (2,1) Z^4 (X+Y)^7   (2,2) Z^5 (X+Y)^9   (2,3) Z^6 (X+Y)^11   (2,4) Z^7 (X+Y)^13
+(3,0) Z^4 (X+Y)^7   (3,1) Z^5 (X+Y)^9   (3,2) Z^6 (X+Y)^11   (3,3) Z^7 (X+Y)^13   (3,4) Z^8 (X+Y)^15
+(4,0) Z^5 (X+Y)^9   (4,1) Z^6 (X+Y)^11   (4,2) Z^7 (X+Y)^13   (4,3) Z^8 (X+Y)^15   (4,4) Z^9 (X+Y)^17
+=== 1. Y^B X^{p+1} = sum_j (-1)^j c_{B,j} X^{p+1-j} Y^{B-j} Z^j ? ===
+   all (p,B) with p,B<=5 : True
+   checking the key relation (X^{A-p-1}Y^B Z^K)X^{p+1} in A ...
+   key relation holds : True
+
+=== 2. the triangular submatrices  (N = 2p+2q+1) ===
+   full column rank for all p,q<=4 and all delta : True
+
+   explicit triangular submatrices:
+   delta=3>=p+1 : lower-triangular K=1, det=1, diag=1
+   delta=3>=p+1 : lower-triangular K=2, det=1, diag=1
+   (skip parity) p=2 q=3 delta=4
+   (skip parity) p=3 q=3 delta=4
+   delta=-1<=-1 : upper-triangular size 2, det=1440
+   delta=-1<=-1 : upper-triangular size 3, det=-172800
+   delta=-3<=-1 : upper-triangular size 1, det=840
+   delta=-3<=-1 : upper-triangular size 1, det=-120
+
+=== 3. support count  k <= p+1  for  1 <= delta <= p  (N = 2p+2q+1) ===
+   (no output = the count k <= p+1 always holds)
+
+STDERR:

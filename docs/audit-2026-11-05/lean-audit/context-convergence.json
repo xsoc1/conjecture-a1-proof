@@ -1,0 +1,13 @@
+{
+  "verdict": "CONSISTENT_LAYERED_STATUS",
+  "input_hashes": {
+    "problem_contract.md": "d34ecbe852ec694f78cd9b21ed48ca7978da569571a6b720d7384a3eaa772d22",
+    "obligation_graph.md": "096944f8fb532ccbbc740eb7eec623769001d7049fdea36ab4eedb9e5010fab6",
+    "research_ledger.md": "8f3008935c8c544083687bede593cf98e5f3598557739d7d7d217c5466a7a202",
+    "approach_registry.md": "c1a5bad9b5b01c4f3613b7ffa214fd32a6b6297df0a26f26ea6f543507c71470",
+    "candidate_proof.md": "1cc555e040de0fa9578a6d567e9e062ed57097481f007e5f2a1a9f93c79b1469"
+  },
+  "scope": "Fresh file-only readback of the contract, obligation graph, ledger, approach registry and candidate reference; not a new independent audit of the written proof.",
+  "conclusion": "The updated files distinguish complete corrected written proof and all-parameter tensor sharpness from formally verified partial Lean results. F4/general Lean assembly is open; finite computations are evidence only; no canonical integration or merge is claimed. The earlier stale pending-ledger note is resolved.",
+  "lean_status": "FORMALLY_VERIFIED restricted to20 declarations; complete conjecture NOT formally proved."
+}

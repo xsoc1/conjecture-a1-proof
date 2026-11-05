@@ -1,0 +1,23 @@
+{
+  "actual_model_from_turn_context": "gpt-6.1-sol",
+  "session_id": "01a1ac05-20d8-7ed2-9686-94b4fe1d7a66",
+  "cli_version": "0.166.0-alpha.6",
+  "observed_launch_service_tier": "priority",
+  "model_catalog_entry": {
+    "slug": "gpt-6.1-sol",
+    "service_tiers": [
+      {
+        "id": "priority",
+        "name": "Fast",
+        "description": "2x speed, increased usage"
+      }
+    ]
+  },
+  "catalog_fast_mapping_confirmed": true,
+  "backend_service_tier_echo": null,
+  "global_settings_changed": false,
+  "selected_runtime_evidence": [
+    "formalization/evidence/runtime-session.log",
+    "formalization/evidence/runtime-process-selected.json"
+  ]
+}

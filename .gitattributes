@@ -9,3 +9,10 @@
 # Windows scripts keep CRLF so PowerShell/policy engines are happy
 *.ps1 text eol=crlf
 *.bat text eol=crlf
+
+# Audit transcripts and manifests are byte-bound evidence; preserve recorded bytes.
+formalization/evidence/** -text -whitespace
+verification/audit-2026-11-05/** -text -whitespace
+docs/audit-2026-11-05/** -text whitespace=cr-at-eol
+docs/audit-2026-11-05/lean-audit/*.log -whitespace
+docs/audit-2026-11-05/lean-audit/**/*.log -whitespace

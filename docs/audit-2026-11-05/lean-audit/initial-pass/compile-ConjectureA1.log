@@ -1,0 +1,7 @@
+F:\Codex_Cache\2026-11-05\task\a1-independent-lean\ConjectureA1.lean:145:4: warning: The namespace 'ConjectureA1' is duplicated in the declaration 'ConjectureA1.ConjectureA1'
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+
+--- STDERR ---
+
+EXIT=0

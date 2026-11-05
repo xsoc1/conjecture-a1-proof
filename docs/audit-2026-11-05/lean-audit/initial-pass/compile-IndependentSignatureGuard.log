@@ -1,0 +1,1359 @@
+@[defeq] theorem ConjectureA1.ad_def.{u_1} : ∀ {R : Type u_1} [inst : Ring R] (x y : R),
+  ConjectureA1.ad x y = x * y - y * x :=
+fun {R} [Ring R] x y => rfl
+theorem ConjectureA1.ad_add.{u_1} : ∀ {R : Type u_1} [inst : Ring R] (x y z : R),
+  ConjectureA1.ad x (y + z) = ConjectureA1.ad x y + ConjectureA1.ad x z :=
+fun {R} [Ring R] x y z =>
+  id
+    (Eq.mpr (id (congrArg (fun _a => _a - (y + z) * x = x * y - y * x + (x * z - z * x)) (mul_add x y z)))
+      (Eq.mpr (id (congrArg (fun _a => x * y + x * z - _a = x * y - y * x + (x * z - z * x)) (add_mul y z x)))
+        (ConjectureA1.ad_add._abel_1_1 x y z)))
+theorem ConjectureA1.ad_zero.{u_1} : ∀ {R : Type u_1} [inst : Ring R] (x : R), ConjectureA1.ad x 0 = 0 :=
+fun {R} [Ring R] x =>
+  id
+    (of_eq_true
+      (Eq.trans
+        (congrFun' (congrArg Eq (Eq.trans (congr (congrArg HSub.hSub (mul_zero x)) (zero_mul x)) (sub_self 0))) 0)
+        (eq_self 0)))
+theorem ConjectureA1.ad_neg.{u_1} : ∀ {R : Type u_1} [inst : Ring R] (x y : R),
+  ConjectureA1.ad x (-y) = -ConjectureA1.ad x y :=
+fun {R} [Ring R] x y =>
+  id
+    (Eq.mpr
+      (id
+        (congr
+          (congrArg Eq
+            (Eq.trans (congr (congrArg HSub.hSub (mul_neg x y)) (neg_mul y x)) (sub_eq_add_neg (-(x * y)) (-(y * x)))))
+          (congrArg Neg.neg (sub_eq_add_neg (x * y) (y * x)))))
+      (ConjectureA1.ad_neg._abel_1_1 x y))
+theorem ConjectureA1.ad_one.{u_1} : ∀ {R : Type u_1} [inst : Ring R] (x : R), ConjectureA1.ad x 1 = 0 :=
+fun {R} [Ring R] x =>
+  id
+    (of_eq_true
+      (Eq.trans (congrFun' (congrArg Eq (Eq.trans (congr (congrArg HSub.hSub (mul_one x)) (one_mul x)) (sub_self x))) 0)
+        (eq_self 0)))
+theorem ConjectureA1.ad_mul.{u_1} : ∀ {R : Type u_1} [inst : Ring R] (x y z : R),
+  ConjectureA1.ad x (y * z) = ConjectureA1.ad x y * z + y * ConjectureA1.ad x z :=
+fun {R} [Ring R] x y z =>
+  id
+    (Eq.mpr
+      (id
+        (congr
+          (congrArg Eq
+            (Eq.trans (congrArg (HSub.hSub (x * (y * z))) (mul_assoc y z x))
+              (sub_eq_add_neg (x * (y * z)) (y * (z * x)))))
+          (congr
+            (congrArg HAdd.hAdd
+              (Eq.trans
+                (Eq.trans (congrFun' (congrArg HMul.hMul (sub_eq_add_neg (x * y) (y * x))) z)
+                  (add_mul (x * y) (-(y * x)) z))
+                (congr (congrArg HAdd.hAdd (mul_assoc x y z))
+                  (Eq.trans (neg_mul (y * x) z) (congrArg Neg.neg (mul_assoc y x z))))))
+            (Eq.trans
+              (Eq.trans (congrArg (HMul.hMul y) (sub_eq_add_neg (x * z) (z * x))) (mul_add y (x * z) (-(z * x))))
+              (congrArg (HAdd.hAdd (y * (x * z))) (mul_neg y (z * x)))))))
+      (ConjectureA1.ad_mul._abel_1_1 x y z))
+theorem ConjectureA1.ad_pow_succ.{u_1} : ∀ {R : Type u_1} [inst : Ring R] (x w : R) (r : ℕ),
+  x * (w * x ^ r) = w * x ^ (r + 1) + ConjectureA1.ad x w * x ^ r :=
+fun {R} [Ring R] x w r =>
+  id
+    (Eq.mpr (id (congrArg (fun _a => x * (w * x ^ r) = w * _a + (x * w - w * x) * x ^ r) (pow_succ' x r)))
+      (Eq.mpr
+        (id
+          (congrArg (Eq (x * (w * x ^ r)))
+            (congrArg (HAdd.hAdd (w * (x * x ^ r)))
+              (Eq.trans
+                (Eq.trans (congrFun' (congrArg HMul.hMul (sub_eq_add_neg (x * w) (w * x))) (x ^ r))
+                  (add_mul (x * w) (-(w * x)) (x ^ r)))
+                (congr (congrArg HAdd.hAdd (mul_assoc x w (x ^ r)))
+                  (Eq.trans (neg_mul (w * x) (x ^ r)) (congrArg Neg.neg (mul_assoc w x (x ^ r)))))))))
+        (ConjectureA1.ad_pow_succ._abel_1_1 x w r)))
+theorem ConjectureA1.ad_swap.{u_1} : ∀ {R : Type u_1} [inst : Ring R] (x y : R),
+  ConjectureA1.ad y x = -ConjectureA1.ad x y :=
+fun {R} [Ring R] x y =>
+  id
+    (Eq.mpr
+      (id (congr (congrArg Eq (sub_eq_add_neg (y * x) (x * y))) (congrArg Neg.neg (sub_eq_add_neg (x * y) (y * x)))))
+      (ConjectureA1.ad_swap._abel_1_1 x y))
+theorem ConjectureA1.ad_pow_of_commute.{u_1} : ∀ {R : Type u_1} [inst : Ring R] (x y : R),
+  Commute y (ConjectureA1.ad x y) →
+    ∀ (n : ℕ), ConjectureA1.ad x (y ^ (n + 1)) = (n + 1) • (y ^ n * ConjectureA1.ad x y) :=
+fun {R} [Ring R] x y hy n =>
+  Nat.recAux
+    (of_eq_true
+      (Eq.trans
+        (congr (congrArg Eq (congrArg (ConjectureA1.ad x) (Eq.trans (congrArg (HPow.hPow y) (zero_add 1)) (pow_one y))))
+          (Eq.trans
+            (congr (congrArg HSMul.hSMul (zero_add 1))
+              (Eq.trans (congrFun' (congrArg HMul.hMul (pow_zero y)) (x * y - y * x)) (one_mul (x * y - y * x))))
+            (one_smul ℕ (x * y - y * x))))
+        (eq_self (x * y - y * x))))
+    (fun n ih =>
+      Eq.mpr
+        (id
+          (congrArg (fun _a => ConjectureA1.ad x _a = (n + 1 + 1) • (y ^ (n + 1) * ConjectureA1.ad x y))
+            (pow_succ y (n + 1))))
+        (Eq.mpr
+          (id
+            (congrArg (fun _a => _a = (n + 1 + 1) • (y ^ (n + 1) * ConjectureA1.ad x y))
+              (ConjectureA1.ad_mul x (y ^ (n + 1)) y)))
+          (Eq.mpr
+            (id
+              (congrArg
+                (fun _a =>
+                  _a * y + y ^ (n + 1) * ConjectureA1.ad x y = (n + 1 + 1) • (y ^ (n + 1) * ConjectureA1.ad x y))
+                ih))
+            (Trans.trans
+              (Eq.mpr
+                (id
+                  (congrArg
+                    (fun _a =>
+                      _a + y ^ (n + 1) * ConjectureA1.ad x y =
+                        (n + 1) • (y ^ (n + 1) * ConjectureA1.ad x y) + y ^ (n + 1) * ConjectureA1.ad x y)
+                    (smul_mul_assoc (n + 1) (y ^ n * ConjectureA1.ad x y) y)))
+                (Eq.mpr
+                  (id
+                    (congrArg
+                      (fun _a =>
+                        (n + 1) • _a + y ^ (n + 1) * ConjectureA1.ad x y =
+                          (n + 1) • (y ^ (n + 1) * ConjectureA1.ad x y) + y ^ (n + 1) * ConjectureA1.ad x y)
+                      (mul_assoc (y ^ n) (ConjectureA1.ad x y) y)))
+                  (Eq.mpr
+                    (id
+                      (congrArg
+                        (fun _a =>
+                          (n + 1) • (y ^ n * _a) + y ^ (n + 1) * ConjectureA1.ad x y =
+                            (n + 1) • (y ^ (n + 1) * ConjectureA1.ad x y) + y ^ (n + 1) * ConjectureA1.ad x y)
+                        (Eq.symm (Commute.eq hy))))
+                    (Eq.mpr
+                      (id
+                        (congrArg
+                          (fun _a =>
+                            (n + 1) • _a + y ^ (n + 1) * ConjectureA1.ad x y =
+                              (n + 1) • (y ^ (n + 1) * ConjectureA1.ad x y) + y ^ (n + 1) * ConjectureA1.ad x y)
+                          (Eq.symm (mul_assoc (y ^ n) y (ConjectureA1.ad x y)))))
+                      (Eq.mpr
+                        (id
+                          (congrArg
+                            (fun _a =>
+                              (n + 1) • (_a * ConjectureA1.ad x y) + y ^ (n + 1) * ConjectureA1.ad x y =
+                                (n + 1) • (y ^ (n + 1) * ConjectureA1.ad x y) + y ^ (n + 1) * ConjectureA1.ad x y)
+                            (Eq.symm (pow_succ y n))))
+                        (Eq.refl
+                          ((n + 1) • (y ^ (n + 1) * ConjectureA1.ad x y) + y ^ (n + 1) * ConjectureA1.ad x y)))))))
+              (of_eq_true
+                (Eq.trans
+                  (congr
+                    (congrArg Eq
+                      (congrFun'
+                        (congrArg HAdd.hAdd
+                          (Eq.trans (add_nsmul (y ^ (n + 1) * ConjectureA1.ad x y) n 1)
+                            (congrArg (HAdd.hAdd (n • (y ^ (n + 1) * ConjectureA1.ad x y)))
+                              (one_nsmul (y ^ (n + 1) * ConjectureA1.ad x y)))))
+                        (y ^ (n + 1) * ConjectureA1.ad x y)))
+                    (Eq.trans (add_nsmul (y ^ (n + 1) * ConjectureA1.ad x y) (n + 1) 1)
+                      (congr
+                        (congrArg HAdd.hAdd
+                          (Eq.trans (add_nsmul (y ^ (n + 1) * ConjectureA1.ad x y) n 1)
+                            (congrArg (HAdd.hAdd (n • (y ^ (n + 1) * ConjectureA1.ad x y)))
+                              (one_nsmul (y ^ (n + 1) * ConjectureA1.ad x y)))))
+                        (one_nsmul (y ^ (n + 1) * ConjectureA1.ad x y)))))
+                  (eq_self
+                    (n • (y ^ (n + 1) * ConjectureA1.ad x y) + y ^ (n + 1) * ConjectureA1.ad x y +
+                      y ^ (n + 1) * ConjectureA1.ad x y))))))))
+    n
+theorem ConjectureA1.mul_pow_normal_order.{u_1} : ∀ {R : Type u_1} [inst : Ring R] (x y : R),
+  Commute y (ConjectureA1.ad x y) →
+    ∀ (n : ℕ), x * y ^ (n + 1) = y ^ (n + 1) * x + (n + 1) • (y ^ n * ConjectureA1.ad x y) :=
+fun {R} [Ring R] x y hy n =>
+  have h := ConjectureA1.ad_pow_of_commute x y hy n;
+  have h' := sub_eq_iff_eq_add.mp h;
+  id (Eq.mp (congrArg (Eq (x * y ^ (n + 1))) (add_comm ((n + 1) • (y ^ n * (x * y - y * x))) (y ^ (n + 1) * x))) h')
+theorem ConjectureA1.ad_pow_eq.{u_1} : ∀ {R : Type u_1} [inst : Ring R] (x y : R),
+  Commute y (ConjectureA1.ad x y) → ∀ (n : ℕ), ConjectureA1.ad x (y ^ n) = n • (y ^ (n - 1) * ConjectureA1.ad x y) :=
+fun {R} [Ring R] x y hy n =>
+  Nat.casesAuxOn (motive := fun a => n = a → ConjectureA1.ad x (y ^ n) = n • (y ^ (n - 1) * ConjectureA1.ad x y)) n
+    (fun h =>
+      Eq.symm h ▸
+        of_eq_true
+          (Eq.trans
+            (congr
+              (congrArg Eq
+                (Eq.trans (congrArg (ConjectureA1.ad x) (pow_zero y))
+                  (Eq.trans (congr (congrArg HSub.hSub (mul_one x)) (one_mul x)) (sub_self x))))
+              (Eq.trans
+                (congrArg (HSMul.hSMul 0)
+                  (Eq.trans
+                    (congrFun' (congrArg HMul.hMul (Eq.trans (congrArg (HPow.hPow y) (zero_tsub 1)) (pow_zero y)))
+                      (x * y - y * x))
+                    (one_mul (x * y - y * x))))
+                (zero_nsmul (x * y - y * x))))
+            (eq_self 0)))
+    (fun n_1 h =>
+      Eq.symm h ▸
+        Eq.mpr
+          (id
+            (congrArg (Eq (ConjectureA1.ad x (y ^ (n_1 + 1))))
+              (congrArg (HSMul.hSMul (n_1 + 1))
+                (congrFun' (congrArg HMul.hMul (congrArg (HPow.hPow y) (Nat.add_sub_cancel n_1 1)))
+                  (ConjectureA1.ad x y)))))
+          (ConjectureA1.ad_pow_of_commute x y hy n_1))
+    (Eq.refl n)
+theorem ConjectureA1.pow_mul_normal_order.{u_1} : ∀ {R : Type u_1} [inst : Ring R] (x y : R),
+  Commute x (ConjectureA1.ad x y) →
+    ∀ (n : ℕ), x ^ (n + 1) * y = y * x ^ (n + 1) + (n + 1) • (x ^ n * ConjectureA1.ad x y) :=
+fun {R} [Ring R] x y hx n =>
+  have hx' := Eq.mpr (id (congrArg (fun _a => Commute x _a) (ConjectureA1.ad_swap x y))) (Commute.neg_right hx);
+  have h := ConjectureA1.mul_pow_normal_order y x hx' n;
+  have h' :=
+    Eq.mpr
+      (id
+        (congrArg (Eq (y * x ^ (n + 1))) (sub_eq_add_neg (x ^ (n + 1) * y) ((n + 1) • (x ^ n * ConjectureA1.ad x y)))))
+      (Eq.mp
+        (congrArg (fun _a => y * x ^ (n + 1) = x ^ (n + 1) * y + _a) (smul_neg (n + 1) (x ^ n * ConjectureA1.ad x y)))
+        (Eq.mp
+          (congrArg (fun _a => y * x ^ (n + 1) = x ^ (n + 1) * y + (n + 1) • _a)
+            (mul_neg (x ^ n) (ConjectureA1.ad x y)))
+          (Eq.mp
+            (congrArg (fun _a => y * x ^ (n + 1) = x ^ (n + 1) * y + (n + 1) • (x ^ n * _a)) (ConjectureA1.ad_swap x y))
+            h)));
+  Eq.symm (eq_sub_iff_add_eq.mp h')
+theorem ConjectureA1.two_mul_add_pow_five.{u_1} : ∀ {R : Type u_1} [inst : Ring R] (x y : R),
+  Commute x (ConjectureA1.ad x y) →
+    Commute y (ConjectureA1.ad x y) →
+      2 * (x + y) ^ 5 =
+        (2 * (x * x * x) + 12 * (x * x * y) + -4 * (x * y * x) + 5 * (x * y * y) + 2 * (y * x * x) + 20 * (y * x * y) +
+                -10 * (y * y * x) +
+              5 * (y * y * y)) *
+            x ^ 2 +
+          (5 * (x * x * x) + 2 * (x * x * y) + -4 * (x * y * x) + 2 * (x * y * y) + 17 * (y * x * x) +
+                  -4 * (y * x * y) +
+                12 * (y * y * x) +
+              2 * (y * y * y)) *
+            y ^ 2 :=
+fun {R} [⋯] x y hX hY =>
+  have hRX := sub_eq_zero.mpr (Commute.eq hX);
+  have hRY := sub_eq_zero.mpr (Commute.eq hY);
+  have cert :=
+    id
+      (Eq.mpr
+        (id
+          (congr
+            (congrArg Eq
+              (Eq.trans
+                (congrArg (HMul.hMul 2)
+                  (Eq.trans (pow_succ (x + y) 4)
+                    (Eq.trans
+                      (Eq.trans
+                        (congrFun'
+                          (congrArg HMul.hMul
+                            (Eq.trans (pow_succ (x + y) 3)
+                              (Eq.trans
+                                (Eq.trans
+                                  (congrFun'
+                                    (congrArg HMul.hMul
+                                      (Eq.trans (pow_succ (x + y) 2)
+                                        (Eq.trans
+                                          (Eq.trans
+                                            (congrFun'
+                                              (congrArg HMul.hMul
+                                                (Eq.trans (pow_succ (x + y) 1)
+                                                  (Eq.trans
+                                                    (Eq.trans
+                                                      (congrFun'
+                                                        (congrArg HMul.hMul
+                                                          (Eq.trans (pow_succ (x + y) 0)
+                                                            (Eq.trans
+                                                              (Eq.trans
+                                                                (congrFun' (congrArg HMul.hMul (pow_zero (x + y)))
+                                                                  (x + y))
+                                                                (mul_add 1 x y))
+                                                              (congr (congrArg HAdd.hAdd (one_mul x)) (one_mul y)))))
+                                                        (x + y))
+                                                      (mul_add (x + y) x y))
+                                                    (congr (congrArg HAdd.hAdd (add_mul x y x)) (add_mul x y y)))))
+                                              (x + y))
+                                            (mul_add (x * x + y * x + (x * y + y * y)) x y))
+                                          (congr
+                                            (congrArg HAdd.hAdd
+                                              (Eq.trans (add_mul (x * x + y * x) (x * y + y * y) x)
+                                                (congr
+                                                  (congrArg HAdd.hAdd
+                                                    (Eq.trans (add_mul (x * x) (y * x) x)
+                                                      (congr (congrArg HAdd.hAdd (mul_assoc x x x)) (mul_assoc y x x))))
+                                                  (Eq.trans (add_mul (x * y) (y * y) x)
+                                                    (congr (congrArg HAdd.hAdd (mul_assoc x y x)) (mul_assoc y y x))))))
+                                            (Eq.trans (add_mul (x * x + y * x) (x * y + y * y) y)
+                                              (congr
+                                                (congrArg HAdd.hAdd
+                                                  (Eq.trans (add_mul (x * x) (y * x) y)
+                                                    (congr (congrArg HAdd.hAdd (mul_assoc x x y)) (mul_assoc y x y))))
+                                                (Eq.trans (add_mul (x * y) (y * y) y)
+                                                  (congr (congrArg HAdd.hAdd (mul_assoc x y y))
+                                                    (mul_assoc y y y)))))))))
+                                    (x + y))
+                                  (mul_add
+                                    (x * (x * x) + y * (x * x) + (x * (y * x) + y * (y * x)) +
+                                      (x * (x * y) + y * (x * y) + (x * (y * y) + y * (y * y))))
+                                    x y))
+                                (congr
+                                  (congrArg HAdd.hAdd
+                                    (Eq.trans
+                                      (add_mul (x * (x * x) + y * (x * x) + (x * (y * x) + y * (y * x)))
+                                        (x * (x * y) + y * (x * y) + (x * (y * y) + y * (y * y))) x)
+                                      (congr
+                                        (congrArg HAdd.hAdd
+                                          (Eq.trans (add_mul (x * (x * x) + y * (x * x)) (x * (y * x) + y * (y * x)) x)
+                                            (congr
+                                              (congrArg HAdd.hAdd
+                                                (Eq.trans (add_mul (x * (x * x)) (y * (x * x)) x)
+                                                  (congr
+                                                    (congrArg HAdd.hAdd
+                                                      (Eq.trans (mul_assoc x (x * x) x)
+                                                        (congrArg (HMul.hMul x) (mul_assoc x x x))))
+                                                    (Eq.trans (mul_assoc y (x * x) x)
+                                                      (congrArg (HMul.hMul y) (mul_assoc x x x))))))
+                                              (Eq.trans (add_mul (x * (y * x)) (y * (y * x)) x)
+                                                (congr
+                                                  (congrArg HAdd.hAdd
+                                                    (Eq.trans (mul_assoc x (y * x) x)
+                                                      (congrArg (HMul.hMul x) (mul_assoc y x x))))
+                                                  (Eq.trans (mul_assoc y (y * x) x)
+                                                    (congrArg (HMul.hMul y) (mul_assoc y x x))))))))
+                                        (Eq.trans (add_mul (x * (x * y) + y * (x * y)) (x * (y * y) + y * (y * y)) x)
+                                          (congr
+                                            (congrArg HAdd.hAdd
+                                              (Eq.trans (add_mul (x * (x * y)) (y * (x * y)) x)
+                                                (congr
+                                                  (congrArg HAdd.hAdd
+                                                    (Eq.trans (mul_assoc x (x * y) x)
+                                                      (congrArg (HMul.hMul x) (mul_assoc x y x))))
+                                                  (Eq.trans (mul_assoc y (x * y) x)
+                                                    (congrArg (HMul.hMul y) (mul_assoc x y x))))))
+                                            (Eq.trans (add_mul (x * (y * y)) (y * (y * y)) x)
+                                              (congr
+                                                (congrArg HAdd.hAdd
+                                                  (Eq.trans (mul_assoc x (y * y) x)
+                                                    (congrArg (HMul.hMul x) (mul_assoc y y x))))
+                                                (Eq.trans (mul_assoc y (y * y) x)
+                                                  (congrArg (HMul.hMul y) (mul_assoc y y x))))))))))
+                                  (Eq.trans
+                                    (add_mul (x * (x * x) + y * (x * x) + (x * (y * x) + y * (y * x)))
+                                      (x * (x * y) + y * (x * y) + (x * (y * y) + y * (y * y))) y)
+                                    (congr
+                                      (congrArg HAdd.hAdd
+                                        (Eq.trans (add_mul (x * (x * x) + y * (x * x)) (x * (y * x) + y * (y * x)) y)
+                                          (congr
+                                            (congrArg HAdd.hAdd
+                                              (Eq.trans (add_mul (x * (x * x)) (y * (x * x)) y)
+                                                (congr
+                                                  (congrArg HAdd.hAdd
+                                                    (Eq.trans (mul_assoc x (x * x) y)
+                                                      (congrArg (HMul.hMul x) (mul_assoc x x y))))
+                                                  (Eq.trans (mul_assoc y (x * x) y)
+                                                    (congrArg (HMul.hMul y) (mul_assoc x x y))))))
+                                            (Eq.trans (add_mul (x * (y * x)) (y * (y * x)) y)
+                                              (congr
+                                                (congrArg HAdd.hAdd
+                                                  (Eq.trans (mul_assoc x (y * x) y)
+                                                    (congrArg (HMul.hMul x) (mul_assoc y x y))))
+                                                (Eq.trans (mul_assoc y (y * x) y)
+                                                  (congrArg (HMul.hMul y) (mul_assoc y x y))))))))
+                                      (Eq.trans (add_mul (x * (x * y) + y * (x * y)) (x * (y * y) + y * (y * y)) y)
+                                        (congr
+                                          (congrArg HAdd.hAdd
+                                            (Eq.trans (add_mul (x * (x * y)) (y * (x * y)) y)
+                                              (congr
+                                                (congrArg HAdd.hAdd
+                                                  (Eq.trans (mul_assoc x (x * y) y)
+                                                    (congrArg (HMul.hMul x) (mul_assoc x y y))))
+                                                (Eq.trans (mul_assoc y (x * y) y)
+                                                  (congrArg (HMul.hMul y) (mul_assoc x y y))))))
+                                          (Eq.trans (add_mul (x * (y * y)) (y * (y * y)) y)
+                                            (congr
+                                              (congrArg HAdd.hAdd
+                                                (Eq.trans (mul_assoc x (y * y) y)
+                                                  (congrArg (HMul.hMul x) (mul_assoc y y y))))
+                                              (Eq.trans (mul_assoc y (y * y) y)
+                                                (congrArg (HMul.hMul y) (mul_assoc y y y)))))))))))))
+                          (x + y))
+                        (mul_add
+                          (x * (x * (x * x)) + y * (x * (x * x)) + (x * (y * (x * x)) + y * (y * (x * x))) +
+                              (x * (x * (y * x)) + y * (x * (y * x)) + (x * (y * (y * x)) + y * (y * (y * x)))) +
+                            (x * (x * (x * y)) + y * (x * (x * y)) + (x * (y * (x * y)) + y * (y * (x * y))) +
+                              (x * (x * (y * y)) + y * (x * (y * y)) + (x * (y * (y * y)) + y * (y * (y * y))))))
+                          x y))
+                      (congr
+                        (congrArg HAdd.hAdd
+                          (Eq.trans
+                            (add_mul
+                              (x * (x * (x * x)) + y * (x * (x * x)) + (x * (y * (x * x)) + y * (y * (x * x))) +
+                                (x * (x * (y * x)) + y * (x * (y * x)) + (x * (y * (y * x)) + y * (y * (y * x)))))
+                              (x * (x * (x * y)) + y * (x * (x * y)) + (x * (y * (x * y)) + y * (y * (x * y))) +
+                                (x * (x * (y * y)) + y * (x * (y * y)) + (x * (y * (y * y)) + y * (y * (y * y)))))
+                              x)
+                            (congr
+                              (congrArg HAdd.hAdd
+                                (Eq.trans
+                                  (add_mul
+                                    (x * (x * (x * x)) + y * (x * (x * x)) + (x * (y * (x * x)) + y * (y * (x * x))))
+                                    (x * (x * (y * x)) + y * (x * (y * x)) + (x * (y * (y * x)) + y * (y * (y * x)))) x)
+                                  (congr
+                                    (congrArg HAdd.hAdd
+                                      (Eq.trans
+                                        (add_mul (x * (x * (x * x)) + y * (x * (x * x)))
+                                          (x * (y * (x * x)) + y * (y * (x * x))) x)
+                                        (congr
+                                          (congrArg HAdd.hAdd
+                                            (Eq.trans (add_mul (x * (x * (x * x))) (y * (x * (x * x))) x)
+                                              (congr
+                                                (congrArg HAdd.hAdd
+                                                  (Eq.trans (mul_assoc x (x * (x * x)) x)
+                                                    (congrArg (HMul.hMul x)
+                                                      (Eq.trans (mul_assoc x (x * x) x)
+                                                        (congrArg (HMul.hMul x) (mul_assoc x x x))))))
+                                                (Eq.trans (mul_assoc y (x * (x * x)) x)
+                                                  (congrArg (HMul.hMul y)
+                                                    (Eq.trans (mul_assoc x (x * x) x)
+                                                      (congrArg (HMul.hMul x) (mul_assoc x x x))))))))
+                                          (Eq.trans (add_mul (x * (y * (x * x))) (y * (y * (x * x))) x)
+                                            (congr
+                                              (congrArg HAdd.hAdd
+                                                (Eq.trans (mul_assoc x (y * (x * x)) x)
+                                                  (congrArg (HMul.hMul x)
+                                                    (Eq.trans (mul_assoc y (x * x) x)
+                                                      (congrArg (HMul.hMul y) (mul_assoc x x x))))))
+                                              (Eq.trans (mul_assoc y (y * (x * x)) x)
+                                                (congrArg (HMul.hMul y)
+                                                  (Eq.trans (mul_assoc y (x * x) x)
+                                                    (congrArg (HMul.hMul y) (mul_assoc x x x))))))))))
+                                    (Eq.trans
+                                      (add_mul (x * (x * (y * x)) + y * (x * (y * x)))
+                                        (x * (y * (y * x)) + y * (y * (y * x))) x)
+                                      (congr
+                                        (congrArg HAdd.hAdd
+                                          (Eq.trans (add_mul (x * (x * (y * x))) (y * (x * (y * x))) x)
+                                            (congr
+                                              (congrArg HAdd.hAdd
+                                                (Eq.trans (mul_assoc x (x * (y * x)) x)
+                                                  (congrArg (HMul.hMul x)
+                                                    (Eq.trans (mul_assoc x (y * x) x)
+                                                      (congrArg (HMul.hMul x) (mul_assoc y x x))))))
+                                              (Eq.trans (mul_assoc y (x * (y * x)) x)
+                                                (congrArg (HMul.hMul y)
+                                                  (Eq.trans (mul_assoc x (y * x) x)
+                                                    (congrArg (HMul.hMul x) (mul_assoc y x x))))))))
+                                        (Eq.trans (add_mul (x * (y * (y * x))) (y * (y * (y * x))) x)
+                                          (congr
+                                            (congrArg HAdd.hAdd
+                                              (Eq.trans (mul_assoc x (y * (y * x)) x)
+                                                (congrArg (HMul.hMul x)
+                                                  (Eq.trans (mul_assoc y (y * x) x)
+                                                    (congrArg (HMul.hMul y) (mul_assoc y x x))))))
+                                            (Eq.trans (mul_assoc y (y * (y * x)) x)
+                                              (congrArg (HMul.hMul y)
+                                                (Eq.trans (mul_assoc y (y * x) x)
+                                                  (congrArg (HMul.hMul y) (mul_assoc y x x))))))))))))
+                              (Eq.trans
+                                (add_mul
+                                  (x * (x * (x * y)) + y * (x * (x * y)) + (x * (y * (x * y)) + y * (y * (x * y))))
+                                  (x * (x * (y * y)) + y * (x * (y * y)) + (x * (y * (y * y)) + y * (y * (y * y)))) x)
+                                (congr
+                                  (congrArg HAdd.hAdd
+                                    (Eq.trans
+                                      (add_mul (x * (x * (x * y)) + y * (x * (x * y)))
+                                        (x * (y * (x * y)) + y * (y * (x * y))) x)
+                                      (congr
+                                        (congrArg HAdd.hAdd
+                                          (Eq.trans (add_mul (x * (x * (x * y))) (y * (x * (x * y))) x)
+                                            (congr
+                                              (congrArg HAdd.hAdd
+                                                (Eq.trans (mul_assoc x (x * (x * y)) x)
+                                                  (congrArg (HMul.hMul x)
+                                                    (Eq.trans (mul_assoc x (x * y) x)
+                                                      (congrArg (HMul.hMul x) (mul_assoc x y x))))))
+                                              (Eq.trans (mul_assoc y (x * (x * y)) x)
+                                                (congrArg (HMul.hMul y)
+                                                  (Eq.trans (mul_assoc x (x * y) x)
+                                                    (congrArg (HMul.hMul x) (mul_assoc x y x))))))))
+                                        (Eq.trans (add_mul (x * (y * (x * y))) (y * (y * (x * y))) x)
+                                          (congr
+                                            (congrArg HAdd.hAdd
+                                              (Eq.trans (mul_assoc x (y * (x * y)) x)
+                                                (congrArg (HMul.hMul x)
+                                                  (Eq.trans (mul_assoc y (x * y) x)
+                                                    (congrArg (HMul.hMul y) (mul_assoc x y x))))))
+                                            (Eq.trans (mul_assoc y (y * (x * y)) x)
+                                              (congrArg (HMul.hMul y)
+                                                (Eq.trans (mul_assoc y (x * y) x)
+                                                  (congrArg (HMul.hMul y) (mul_assoc x y x))))))))))
+                                  (Eq.trans
+                                    (add_mul (x * (x * (y * y)) + y * (x * (y * y)))
+                                      (x * (y * (y * y)) + y * (y * (y * y))) x)
+                                    (congr
+                                      (congrArg HAdd.hAdd
+                                        (Eq.trans (add_mul (x * (x * (y * y))) (y * (x * (y * y))) x)
+                                          (congr
+                                            (congrArg HAdd.hAdd
+                                              (Eq.trans (mul_assoc x (x * (y * y)) x)
+                                                (congrArg (HMul.hMul x)
+                                                  (Eq.trans (mul_assoc x (y * y) x)
+                                                    (congrArg (HMul.hMul x) (mul_assoc y y x))))))
+                                            (Eq.trans (mul_assoc y (x * (y * y)) x)
+                                              (congrArg (HMul.hMul y)
+                                                (Eq.trans (mul_assoc x (y * y) x)
+                                                  (congrArg (HMul.hMul x) (mul_assoc y y x))))))))
+                                      (Eq.trans (add_mul (x * (y * (y * y))) (y * (y * (y * y))) x)
+                                        (congr
+                                          (congrArg HAdd.hAdd
+                                            (Eq.trans (mul_assoc x (y * (y * y)) x)
+                                              (congrArg (HMul.hMul x)
+                                                (Eq.trans (mul_assoc y (y * y) x)
+                                                  (congrArg (HMul.hMul y) (mul_assoc y y x))))))
+                                          (Eq.trans (mul_assoc y (y * (y * y)) x)
+                                            (congrArg (HMul.hMul y)
+                                              (Eq.trans (mul_assoc y (y * y) x)
+                                                (congrArg (HMul.hMul y) (mul_assoc y y x))))))))))))))
+                        (Eq.trans
+                          (add_mul
+                            (x * (x * (x * x)) + y * (x * (x * x)) + (x * (y * (x * x)) + y * (y * (x * x))) +
+                              (x * (x * (y * x)) + y * (x * (y * x)) + (x * (y * (y * x)) + y * (y * (y * x)))))
+                            (x * (x * (x * y)) + y * (x * (x * y)) + (x * (y * (x * y)) + y * (y * (x * y))) +
+                              (x * (x * (y * y)) + y * (x * (y * y)) + (x * (y * (y * y)) + y * (y * (y * y)))))
+                            y)
+                          (congr
+                            (congrArg HAdd.hAdd
+                              (Eq.trans
+                                (add_mul
+                                  (x * (x * (x * x)) + y * (x * (x * x)) + (x * (y * (x * x)) + y * (y * (x * x))))
+                                  (x * (x * (y * x)) + y * (x * (y * x)) + (x * (y * (y * x)) + y * (y * (y * x)))) y)
+                                (congr
+                                  (congrArg HAdd.hAdd
+                                    (Eq.trans
+                                      (add_mul (x * (x * (x * x)) + y * (x * (x * x)))
+                                        (x * (y * (x * x)) + y * (y * (x * x))) y)
+                                      (congr
+                                        (congrArg HAdd.hAdd
+                                          (Eq.trans (add_mul (x * (x * (x * x))) (y * (x * (x * x))) y)
+                                            (congr
+                                              (congrArg HAdd.hAdd
+                                                (Eq.trans (mul_assoc x (x * (x * x)) y)
+                                                  (congrArg (HMul.hMul x)
+                                                    (Eq.trans (mul_assoc x (x * x) y)
+                                                      (congrArg (HMul.hMul x) (mul_assoc x x y))))))
+                                              (Eq.trans (mul_assoc y (x * (x * x)) y)
+                                                (congrArg (HMul.hMul y)
+                                                  (Eq.trans (mul_assoc x (x * x) y)
+                                                    (congrArg (HMul.hMul x) (mul_assoc x x y))))))))
+                                        (Eq.trans (add_mul (x * (y * (x * x))) (y * (y * (x * x))) y)
+                                          (congr
+                                            (congrArg HAdd.hAdd
+                                              (Eq.trans (mul_assoc x (y * (x * x)) y)
+                                                (congrArg (HMul.hMul x)
+                                                  (Eq.trans (mul_assoc y (x * x) y)
+                                                    (congrArg (HMul.hMul y) (mul_assoc x x y))))))
+                                            (Eq.trans (mul_assoc y (y * (x * x)) y)
+                                              (congrArg (HMul.hMul y)
+                                                (Eq.trans (mul_assoc y (x * x) y)
+                                                  (congrArg (HMul.hMul y) (mul_assoc x x y))))))))))
+                                  (Eq.trans
+                                    (add_mul (x * (x * (y * x)) + y * (x * (y * x)))
+                                      (x * (y * (y * x)) + y * (y * (y * x))) y)
+                                    (congr
+                                      (congrArg HAdd.hAdd
+                                        (Eq.trans (add_mul (x * (x * (y * x))) (y * (x * (y * x))) y)
+                                          (congr
+                                            (congrArg HAdd.hAdd
+                                              (Eq.trans (mul_assoc x (x * (y * x)) y)
+                                                (congrArg (HMul.hMul x)
+                                                  (Eq.trans (mul_assoc x (y * x) y)
+                                                    (congrArg (HMul.hMul x) (mul_assoc y x y))))))
+                                            (Eq.trans (mul_assoc y (x * (y * x)) y)
+                                              (congrArg (HMul.hMul y)
+                                                (Eq.trans (mul_assoc x (y * x) y)
+                                                  (congrArg (HMul.hMul x) (mul_assoc y x y))))))))
+                                      (Eq.trans (add_mul (x * (y * (y * x))) (y * (y * (y * x))) y)
+                                        (congr
+                                          (congrArg HAdd.hAdd
+                                            (Eq.trans (mul_assoc x (y * (y * x)) y)
+                                              (congrArg (HMul.hMul x)
+                                                (Eq.trans (mul_assoc y (y * x) y)
+                                                  (congrArg (HMul.hMul y) (mul_assoc y x y))))))
+                                          (Eq.trans (mul_assoc y (y * (y * x)) y)
+                                            (congrArg (HMul.hMul y)
+                                              (Eq.trans (mul_assoc y (y * x) y)
+                                                (congrArg (HMul.hMul y) (mul_assoc y x y))))))))))))
+                            (Eq.trans
+                              (add_mul (x * (x * (x * y)) + y * (x * (x * y)) + (x * (y * (x * y)) + y * (y * (x * y))))
+                                (x * (x * (y * y)) + y * (x * (y * y)) + (x * (y * (y * y)) + y * (y * (y * y)))) y)
+                              (congr
+                                (congrArg HAdd.hAdd
+                                  (Eq.trans
+                                    (add_mul (x * (x * (x * y)) + y * (x * (x * y)))
+                                      (x * (y * (x * y)) + y * (y * (x * y))) y)
+                                    (congr
+                                      (congrArg HAdd.hAdd
+                                        (Eq.trans (add_mul (x * (x * (x * y))) (y * (x * (x * y))) y)
+                                          (congr
+                                            (congrArg HAdd.hAdd
+                                              (Eq.trans (mul_assoc x (x * (x * y)) y)
+                                                (congrArg (HMul.hMul x)
+                                                  (Eq.trans (mul_assoc x (x * y) y)
+                                                    (congrArg (HMul.hMul x) (mul_assoc x y y))))))
+                                            (Eq.trans (mul_assoc y (x * (x * y)) y)
+                                              (congrArg (HMul.hMul y)
+                                                (Eq.trans (mul_assoc x (x * y) y)
+                                                  (congrArg (HMul.hMul x) (mul_assoc x y y))))))))
+                                      (Eq.trans (add_mul (x * (y * (x * y))) (y * (y * (x * y))) y)
+                                        (congr
+                                          (congrArg HAdd.hAdd
+                                            (Eq.trans (mul_assoc x (y * (x * y)) y)
+                                              (congrArg (HMul.hMul x)
+                                                (Eq.trans (mul_assoc y (x * y) y)
+                                                  (congrArg (HMul.hMul y) (mul_assoc x y y))))))
+                                          (Eq.trans (mul_assoc y (y * (x * y)) y)
+                                            (congrArg (HMul.hMul y)
+                                              (Eq.trans (mul_assoc y (x * y) y)
+                                                (congrArg (HMul.hMul y) (mul_assoc x y y))))))))))
+                                (Eq.trans
+                                  (add_mul (x * (x * (y * y)) + y * (x * (y * y)))
+                                    (x * (y * (y * y)) + y * (y * (y * y))) y)
+                                  (congr
+                                    (congrArg HAdd.hAdd
+                                      (Eq.trans (add_mul (x * (x * (y * y))) (y * (x * (y * y))) y)
+                                        (congr
+                                          (congrArg HAdd.hAdd
+                                            (Eq.trans (mul_assoc x (x * (y * y)) y)
+                                              (congrArg (HMul.hMul x)
+                                                (Eq.trans (mul_assoc x (y * y) y)
+                                                  (congrArg (HMul.hMul x) (mul_assoc y y y))))))
+                                          (Eq.trans (mul_assoc y (x * (y * y)) y)
+                                            (congrArg (HMul.hMul y)
+                                              (Eq.trans (mul_assoc x (y * y) y)
+                                                (congrArg (HMul.hMul x) (mul_assoc y y y))))))))
+                                    (Eq.trans (add_mul (x * (y * (y * y))) (y * (y * (y * y))) y)
+                                      (congr
+                                        (congrArg HAdd.hAdd
+                                          (Eq.trans (mul_assoc x (y * (y * y)) y)
+                                            (congrArg (HMul.hMul x)
+                                              (Eq.trans (mul_assoc y (y * y) y)
+                                                (congrArg (HMul.hMul y) (mul_assoc y y y))))))
+                                        (Eq.trans (mul_assoc y (y * (y * y)) y)
+                                          (congrArg (HMul.hMul y)
+                                            (Eq.trans (mul_assoc y (y * y) y)
+                                              (congrArg (HMul.hMul y) (mul_assoc y y y)))))))))))))))))
+                (Mathlib.Tactic.NoncommRing.nat_lit_mul_eq_nsmul
+                  (x * (x * (x * (x * x))) + y * (x * (x * (x * x))) +
+                          (x * (y * (x * (x * x))) + y * (y * (x * (x * x)))) +
+                        (x * (x * (y * (x * x))) + y * (x * (y * (x * x))) +
+                          (x * (y * (y * (x * x))) + y * (y * (y * (x * x))))) +
+                      (x * (x * (x * (y * x))) + y * (x * (x * (y * x))) +
+                          (x * (y * (x * (y * x))) + y * (y * (x * (y * x)))) +
+                        (x * (x * (y * (y * x))) + y * (x * (y * (y * x))) +
+                          (x * (y * (y * (y * x))) + y * (y * (y * (y * x)))))) +
+                    (x * (x * (x * (x * y))) + y * (x * (x * (x * y))) +
+                          (x * (y * (x * (x * y))) + y * (y * (x * (x * y)))) +
+                        (x * (x * (y * (x * y))) + y * (x * (y * (x * y))) +
+                          (x * (y * (y * (x * y))) + y * (y * (y * (x * y))))) +
+                      (x * (x * (x * (y * y))) + y * (x * (x * (y * y))) +
+                          (x * (y * (x * (y * y))) + y * (y * (x * (y * y)))) +
+                        (x * (x * (y * (y * y))) + y * (x * (y * (y * y))) +
+                          (x * (y * (y * (y * y))) + y * (y * (y * (y * y))))))))
+                  2)))
+            (congr
+              (congrArg HAdd.hAdd
+                (congr
+                  (congrArg HAdd.hAdd
+                    (Eq.trans
+                      (Eq.trans
+                        (congr
+                          (congrArg HMul.hMul
+                            (congr
+                              (congrArg HAdd.hAdd
+                                (congr
+                                  (congrArg HAdd.hAdd
+                                    (congr
+                                      (congrArg HAdd.hAdd
+                                        (congr
+                                          (congrArg HAdd.hAdd
+                                            (congr
+                                              (congrArg HAdd.hAdd
+                                                (congr
+                                                  (congrArg HAdd.hAdd
+                                                    (congr
+                                                      (congrArg HAdd.hAdd
+                                                        (Eq.trans (congrArg (HMul.hMul 2) (mul_assoc x x x))
+                                                          (Mathlib.Tactic.NoncommRing.nat_lit_mul_eq_nsmul (x * (x * x))
+                                                            2)))
+                                                      (Eq.trans (congrArg (HMul.hMul 12) (mul_assoc x x y))
+                                                        (Mathlib.Tactic.NoncommRing.nat_lit_mul_eq_nsmul (x * (x * y))
+                                                          12))))
+                                                  (Eq.trans
+                                                    (Eq.trans (congrArg (HMul.hMul (-4)) (mul_assoc x y x))
+                                                      (neg_mul 4 (x * (y * x))))
+                                                    (congrArg Neg.neg
+                                                      (Mathlib.Tactic.NoncommRing.nat_lit_mul_eq_nsmul (x * (y * x))
+                                                        4)))))
+                                              (Eq.trans (congrArg (HMul.hMul 5) (mul_assoc x y y))
+                                                (Mathlib.Tactic.NoncommRing.nat_lit_mul_eq_nsmul (x * (y * y)) 5))))
+                                          (Eq.trans (congrArg (HMul.hMul 2) (mul_assoc y x x))
+                                            (Mathlib.Tactic.NoncommRing.nat_lit_mul_eq_nsmul (y * (x * x)) 2))))
+                                      (Eq.trans (congrArg (HMul.hMul 20) (mul_assoc y x y))
+                                        (Mathlib.Tactic.NoncommRing.nat_lit_mul_eq_nsmul (y * (x * y)) 20))))
+                                  (Eq.trans
+                                    (Eq.trans (congrArg (HMul.hMul (-10)) (mul_assoc y y x)) (neg_mul 10 (y * (y * x))))
+                                    (congrArg Neg.neg
+                                      (Mathlib.Tactic.NoncommRing.nat_lit_mul_eq_nsmul (y * (y * x)) 10)))))
+                              (Eq.trans (congrArg (HMul.hMul 5) (mul_assoc y y y))
+                                (Mathlib.Tactic.NoncommRing.nat_lit_mul_eq_nsmul (y * (y * y)) 5))))
+                          (Eq.trans (pow_succ x 1)
+                            (congrFun'
+                              (congrArg HMul.hMul
+                                (Eq.trans (pow_succ x 0)
+                                  (Eq.trans (congrFun' (congrArg HMul.hMul (pow_zero x)) x) (one_mul x))))
+                              x)))
+                        (add_mul
+                          (2 • (x * (x * x)) + 12 • (x * (x * y)) + -(4 • (x * (y * x))) + 5 • (x * (y * y)) +
+                                2 • (y * (x * x)) +
+                              20 • (y * (x * y)) +
+                            -(10 • (y * (y * x))))
+                          (5 • (y * (y * y))) (x * x)))
+                      (congr
+                        (congrArg HAdd.hAdd
+                          (Eq.trans
+                            (add_mul
+                              (2 • (x * (x * x)) + 12 • (x * (x * y)) + -(4 • (x * (y * x))) + 5 • (x * (y * y)) +
+                                  2 • (y * (x * x)) +
+                                20 • (y * (x * y)))
+                              (-(10 • (y * (y * x)))) (x * x))
+                            (congr
+                              (congrArg HAdd.hAdd
+                                (Eq.trans
+                                  (add_mul
+                                    (2 • (x * (x * x)) + 12 • (x * (x * y)) + -(4 • (x * (y * x))) + 5 • (x * (y * y)) +
+                                      2 • (y * (x * x)))
+                                    (20 • (y * (x * y))) (x * x))
+                                  (congr
+                                    (congrArg HAdd.hAdd
+                                      (Eq.trans
+                                        (add_mul
+                                          (2 • (x * (x * x)) + 12 • (x * (x * y)) + -(4 • (x * (y * x))) +
+                                            5 • (x * (y * y)))
+                                          (2 • (y * (x * x))) (x * x))
+                                        (congr
+                                          (congrArg HAdd.hAdd
+                                            (Eq.trans
+                                              (add_mul (2 • (x * (x * x)) + 12 • (x * (x * y)) + -(4 • (x * (y * x))))
+                                                (5 • (x * (y * y))) (x * x))
+                                              (congr
+                                                (congrArg HAdd.hAdd
+                                                  (Eq.trans
+                                                    (add_mul (2 • (x * (x * x)) + 12 • (x * (x * y)))
+                                                      (-(4 • (x * (y * x)))) (x * x))
+                                                    (congr
+                                                      (congrArg HAdd.hAdd
+                                                        (Eq.trans
+                                                          (add_mul (2 • (x * (x * x))) (12 • (x * (x * y))) (x * x))
+                                                          (congr
+                                                            (congrArg HAdd.hAdd
+                                                              (Eq.trans (smul_mul_assoc 2 (x * (x * x)) (x * x))
+                                                                (congrArg (HSMul.hSMul 2)
+                                                                  (Eq.trans (mul_assoc x (x * x) (x * x))
+                                                                    (congrArg (HMul.hMul x) (mul_assoc x x (x * x)))))))
+                                                            (Eq.trans (smul_mul_assoc 12 (x * (x * y)) (x * x))
+                                                              (congrArg (HSMul.hSMul 12)
+                                                                (Eq.trans (mul_assoc x (x * y) (x * x))
+                                                                  (congrArg (HMul.hMul x) (mul_assoc x y (x * x)))))))))
+                                                      (Eq.trans (neg_mul (4 • (x * (y * x))) (x * x))
+                                                        (congrArg Neg.neg
+                                                          (Eq.trans (smul_mul_assoc 4 (x * (y * x)) (x * x))
+                                                            (congrArg (HSMul.hSMul 4)
+                                                              (Eq.trans (mul_assoc x (y * x) (x * x))
+                                                                (congrArg (HMul.hMul x) (mul_assoc y x (x * x)))))))))))
+                                                (Eq.trans (smul_mul_assoc 5 (x * (y * y)) (x * x))
+                                                  (congrArg (HSMul.hSMul 5)
+                                                    (Eq.trans (mul_assoc x (y * y) (x * x))
+                                                      (congrArg (HMul.hMul x) (mul_assoc y y (x * x)))))))))
+                                          (Eq.trans (smul_mul_assoc 2 (y * (x * x)) (x * x))
+                                            (congrArg (HSMul.hSMul 2)
+                                              (Eq.trans (mul_assoc y (x * x) (x * x))
+                                                (congrArg (HMul.hMul y) (mul_assoc x x (x * x)))))))))
+                                    (Eq.trans (smul_mul_assoc 20 (y * (x * y)) (x * x))
+                                      (congrArg (HSMul.hSMul 20)
+                                        (Eq.trans (mul_assoc y (x * y) (x * x))
+                                          (congrArg (HMul.hMul y) (mul_assoc x y (x * x)))))))))
+                              (Eq.trans (neg_mul (10 • (y * (y * x))) (x * x))
+                                (congrArg Neg.neg
+                                  (Eq.trans (smul_mul_assoc 10 (y * (y * x)) (x * x))
+                                    (congrArg (HSMul.hSMul 10)
+                                      (Eq.trans (mul_assoc y (y * x) (x * x))
+                                        (congrArg (HMul.hMul y) (mul_assoc y x (x * x)))))))))))
+                        (Eq.trans (smul_mul_assoc 5 (y * (y * y)) (x * x))
+                          (congrArg (HSMul.hSMul 5)
+                            (Eq.trans (mul_assoc y (y * y) (x * x))
+                              (congrArg (HMul.hMul y) (mul_assoc y y (x * x)))))))))
+                  (Eq.trans
+                    (Eq.trans
+                      (congr
+                        (congrArg HMul.hMul
+                          (congr
+                            (congrArg HAdd.hAdd
+                              (congr
+                                (congrArg HAdd.hAdd
+                                  (congr
+                                    (congrArg HAdd.hAdd
+                                      (congr
+                                        (congrArg HAdd.hAdd
+                                          (congr
+                                            (congrArg HAdd.hAdd
+                                              (congr
+                                                (congrArg HAdd.hAdd
+                                                  (congr
+                                                    (congrArg HAdd.hAdd
+                                                      (Eq.trans (congrArg (HMul.hMul 5) (mul_assoc x x x))
+                                                        (Mathlib.Tactic.NoncommRing.nat_lit_mul_eq_nsmul (x * (x * x))
+                                                          5)))
+                                                    (Eq.trans (congrArg (HMul.hMul 2) (mul_assoc x x y))
+                                                      (Mathlib.Tactic.NoncommRing.nat_lit_mul_eq_nsmul (x * (x * y))
+                                                        2))))
+                                                (Eq.trans
+                                                  (Eq.trans (congrArg (HMul.hMul (-4)) (mul_assoc x y x))
+                                                    (neg_mul 4 (x * (y * x))))
+                                                  (congrArg Neg.neg
+                                                    (Mathlib.Tactic.NoncommRing.nat_lit_mul_eq_nsmul (x * (y * x))
+                                                      4)))))
+                                            (Eq.trans (congrArg (HMul.hMul 2) (mul_assoc x y y))
+                                              (Mathlib.Tactic.NoncommRing.nat_lit_mul_eq_nsmul (x * (y * y)) 2))))
+                                        (Eq.trans (congrArg (HMul.hMul 17) (mul_assoc y x x))
+                                          (Mathlib.Tactic.NoncommRing.nat_lit_mul_eq_nsmul (y * (x * x)) 17))))
+                                    (Eq.trans
+                                      (Eq.trans (congrArg (HMul.hMul (-4)) (mul_assoc y x y)) (neg_mul 4 (y * (x * y))))
+                                      (congrArg Neg.neg
+                                        (Mathlib.Tactic.NoncommRing.nat_lit_mul_eq_nsmul (y * (x * y)) 4)))))
+                                (Eq.trans (congrArg (HMul.hMul 12) (mul_assoc y y x))
+                                  (Mathlib.Tactic.NoncommRing.nat_lit_mul_eq_nsmul (y * (y * x)) 12))))
+                            (Eq.trans (congrArg (HMul.hMul 2) (mul_assoc y y y))
+                              (Mathlib.Tactic.NoncommRing.nat_lit_mul_eq_nsmul (y * (y * y)) 2))))
+                        (Eq.trans (pow_succ y 1)
+                          (congrFun'
+                            (congrArg HMul.hMul
+                              (Eq.trans (pow_succ y 0)
+                                (Eq.trans (congrFun' (congrArg HMul.hMul (pow_zero y)) y) (one_mul y))))
+                            y)))
+                      (add_mul
+                        (5 • (x * (x * x)) + 2 • (x * (x * y)) + -(4 • (x * (y * x))) + 2 • (x * (y * y)) +
+                              17 • (y * (x * x)) +
+                            -(4 • (y * (x * y))) +
+                          12 • (y * (y * x)))
+                        (2 • (y * (y * y))) (y * y)))
+                    (congr
+                      (congrArg HAdd.hAdd
+                        (Eq.trans
+                          (add_mul
+                            (5 • (x * (x * x)) + 2 • (x * (x * y)) + -(4 • (x * (y * x))) + 2 • (x * (y * y)) +
+                                17 • (y * (x * x)) +
+                              -(4 • (y * (x * y))))
+                            (12 • (y * (y * x))) (y * y))
+                          (congr
+                            (congrArg HAdd.hAdd
+                              (Eq.trans
+                                (add_mul
+                                  (5 • (x * (x * x)) + 2 • (x * (x * y)) + -(4 • (x * (y * x))) + 2 • (x * (y * y)) +
+                                    17 • (y * (x * x)))
+                                  (-(4 • (y * (x * y)))) (y * y))
+                                (congr
+                                  (congrArg HAdd.hAdd
+                                    (Eq.trans
+                                      (add_mul
+                                        (5 • (x * (x * x)) + 2 • (x * (x * y)) + -(4 • (x * (y * x))) +
+                                          2 • (x * (y * y)))
+                                        (17 • (y * (x * x))) (y * y))
+                                      (congr
+                                        (congrArg HAdd.hAdd
+                                          (Eq.trans
+                                            (add_mul (5 • (x * (x * x)) + 2 • (x * (x * y)) + -(4 • (x * (y * x))))
+                                              (2 • (x * (y * y))) (y * y))
+                                            (congr
+                                              (congrArg HAdd.hAdd
+                                                (Eq.trans
+                                                  (add_mul (5 • (x * (x * x)) + 2 • (x * (x * y)))
+                                                    (-(4 • (x * (y * x)))) (y * y))
+                                                  (congr
+                                                    (congrArg HAdd.hAdd
+                                                      (Eq.trans
+                                                        (add_mul (5 • (x * (x * x))) (2 • (x * (x * y))) (y * y))
+                                                        (congr
+                                                          (congrArg HAdd.hAdd
+                                                            (Eq.trans (smul_mul_assoc 5 (x * (x * x)) (y * y))
+                                                              (congrArg (HSMul.hSMul 5)
+                                                                (Eq.trans (mul_assoc x (x * x) (y * y))
+                                                                  (congrArg (HMul.hMul x) (mul_assoc x x (y * y)))))))
+                                                          (Eq.trans (smul_mul_assoc 2 (x * (x * y)) (y * y))
+                                                            (congrArg (HSMul.hSMul 2)
+                                                              (Eq.trans (mul_assoc x (x * y) (y * y))
+                                                                (congrArg (HMul.hMul x) (mul_assoc x y (y * y)))))))))
+                                                    (Eq.trans (neg_mul (4 • (x * (y * x))) (y * y))
+                                                      (congrArg Neg.neg
+                                                        (Eq.trans (smul_mul_assoc 4 (x * (y * x)) (y * y))
+                                                          (congrArg (HSMul.hSMul 4)
+                                                            (Eq.trans (mul_assoc x (y * x) (y * y))
+                                                              (congrArg (HMul.hMul x) (mul_assoc y x (y * y)))))))))))
+                                              (Eq.trans (smul_mul_assoc 2 (x * (y * y)) (y * y))
+                                                (congrArg (HSMul.hSMul 2)
+                                                  (Eq.trans (mul_assoc x (y * y) (y * y))
+                                                    (congrArg (HMul.hMul x) (mul_assoc y y (y * y)))))))))
+                                        (Eq.trans (smul_mul_assoc 17 (y * (x * x)) (y * y))
+                                          (congrArg (HSMul.hSMul 17)
+                                            (Eq.trans (mul_assoc y (x * x) (y * y))
+                                              (congrArg (HMul.hMul y) (mul_assoc x x (y * y)))))))))
+                                  (Eq.trans (neg_mul (4 • (y * (x * y))) (y * y))
+                                    (congrArg Neg.neg
+                                      (Eq.trans (smul_mul_assoc 4 (y * (x * y)) (y * y))
+                                        (congrArg (HSMul.hSMul 4)
+                                          (Eq.trans (mul_assoc y (x * y) (y * y))
+                                            (congrArg (HMul.hMul y) (mul_assoc x y (y * y)))))))))))
+                            (Eq.trans (smul_mul_assoc 12 (y * (y * x)) (y * y))
+                              (congrArg (HSMul.hSMul 12)
+                                (Eq.trans (mul_assoc y (y * x) (y * y))
+                                  (congrArg (HMul.hMul y) (mul_assoc y x (y * y)))))))))
+                      (Eq.trans (smul_mul_assoc 2 (y * (y * y)) (y * y))
+                        (congrArg (HSMul.hSMul 2)
+                          (Eq.trans (mul_assoc y (y * y) (y * y))
+                            (congrArg (HMul.hMul y) (mul_assoc y y (y * y))))))))))
+              (congr
+                (congrArg HAdd.hAdd
+                  (congr
+                    (congrArg HAdd.hAdd
+                      (congr
+                        (congrArg HAdd.hAdd
+                          (congr
+                            (congrArg HAdd.hAdd
+                              (congr
+                                (congrArg HAdd.hAdd
+                                  (congr
+                                    (congrArg HAdd.hAdd
+                                      (congr
+                                        (congrArg HAdd.hAdd
+                                          (congr
+                                            (congrArg HAdd.hAdd
+                                              (congr
+                                                (congrArg HAdd.hAdd
+                                                  (congr
+                                                    (congrArg HAdd.hAdd
+                                                      (congr
+                                                        (congrArg HAdd.hAdd
+                                                          (congr
+                                                            (congrArg HAdd.hAdd
+                                                              (congr
+                                                                (congrArg HAdd.hAdd
+                                                                  (congr
+                                                                    (congrArg HAdd.hAdd
+                                                                      (congr
+                                                                        (congrArg HAdd.hAdd
+                                                                          (Eq.trans
+                                                                            (Eq.trans
+                                                                              (congrArg (HMul.hMul (-4))
+                                                                                (Eq.trans
+                                                                                  (Eq.trans
+                                                                                    (congrFun'
+                                                                                      (congrArg HMul.hMul
+                                                                                        (Eq.trans
+                                                                                          (congr
+                                                                                            (congrArg HSub.hSub
+                                                                                              (Eq.trans (Eq.trans ⋯ ⋯)
+                                                                                                (congrArg
+                                                                                                  (HAdd.hAdd
+                                                                                                    (x * (x * y)))
+                                                                                                  (mul_neg x (y * x)))))
+                                                                                            (Eq.trans (Eq.trans ⋯ ⋯) ⋯))
+                                                                                          ⋯))
+                                                                                      ⋯)
+                                                                                    ⋯)
+                                                                                  ⋯))
+                                                                              ⋯)
+                                                                            ⋯))
+                                                                        ⋯))
+                                                                    ⋯))
+                                                                ⋯))
+                                                            ⋯))
+                                                        ⋯))
+                                                    ⋯))
+                                                ⋯))
+                                            ⋯))
+                                        ⋯))
+                                    ⋯))
+                                ⋯))
+                            ⋯))
+                        ⋯))
+                    ⋯))
+                ⋯))))
+        ⋯);
+  ⋯
+theorem ConjectureA1.two_mul_add_pow_three.{u_1} : ∀ {R : Type u_1} [inst : Ring R] (x y : R),
+  Commute x (ConjectureA1.ad x y) →
+    Commute y (ConjectureA1.ad x y) →
+      2 * (x + y) ^ 3 = (2 * x + 3 * y) * x ^ 2 + (3 * (x * x) + 6 * (y * x) + 2 * (y * y)) * y ^ 1 :=
+fun {R} [Ring R] x y hX hY =>
+  have hRX := sub_eq_zero.mpr (Commute.eq hX);
+  have hRY := sub_eq_zero.mpr (Commute.eq hY);
+  have cert :=
+    id
+      (Eq.mpr
+        (id
+          (congr
+            (congrArg Eq
+              (Eq.trans
+                (congrArg (HMul.hMul 2)
+                  (Eq.trans (pow_succ (x + y) 2)
+                    (Eq.trans
+                      (Eq.trans
+                        (congrFun'
+                          (congrArg HMul.hMul
+                            (Eq.trans (pow_succ (x + y) 1)
+                              (Eq.trans
+                                (Eq.trans
+                                  (congrFun'
+                                    (congrArg HMul.hMul
+                                      (Eq.trans (pow_succ (x + y) 0)
+                                        (Eq.trans
+                                          (Eq.trans (congrFun' (congrArg HMul.hMul (pow_zero (x + y))) (x + y))
+                                            (mul_add 1 x y))
+                                          (congr (congrArg HAdd.hAdd (one_mul x)) (one_mul y)))))
+                                    (x + y))
+                                  (mul_add (x + y) x y))
+                                (congr (congrArg HAdd.hAdd (add_mul x y x)) (add_mul x y y)))))
+                          (x + y))
+                        (mul_add (x * x + y * x + (x * y + y * y)) x y))
+                      (congr
+                        (congrArg HAdd.hAdd
+                          (Eq.trans (add_mul (x * x + y * x) (x * y + y * y) x)
+                            (congr
+                              (congrArg HAdd.hAdd
+                                (Eq.trans (add_mul (x * x) (y * x) x)
+                                  (congr (congrArg HAdd.hAdd (mul_assoc x x x)) (mul_assoc y x x))))
+                              (Eq.trans (add_mul (x * y) (y * y) x)
+                                (congr (congrArg HAdd.hAdd (mul_assoc x y x)) (mul_assoc y y x))))))
+                        (Eq.trans (add_mul (x * x + y * x) (x * y + y * y) y)
+                          (congr
+                            (congrArg HAdd.hAdd
+                              (Eq.trans (add_mul (x * x) (y * x) y)
+                                (congr (congrArg HAdd.hAdd (mul_assoc x x y)) (mul_assoc y x y))))
+                            (Eq.trans (add_mul (x * y) (y * y) y)
+                              (congr (congrArg HAdd.hAdd (mul_assoc x y y)) (mul_assoc y y y)))))))))
+                (Mathlib.Tactic.NoncommRing.nat_lit_mul_eq_nsmul
+                  (x * (x * x) + y * (x * x) + (x * (y * x) + y * (y * x)) +
+                    (x * (x * y) + y * (x * y) + (x * (y * y) + y * (y * y))))
+                  2)))
+            (congr
+              (congrArg HAdd.hAdd
+                (congr
+                  (congrArg HAdd.hAdd
+                    (Eq.trans
+                      (Eq.trans
+                        (congr
+                          (congrArg HMul.hMul
+                            (congr (congrArg HAdd.hAdd (Mathlib.Tactic.NoncommRing.nat_lit_mul_eq_nsmul x 2))
+                              (Mathlib.Tactic.NoncommRing.nat_lit_mul_eq_nsmul y 3)))
+                          (Eq.trans (pow_succ x 1)
+                            (congrFun'
+                              (congrArg HMul.hMul
+                                (Eq.trans (pow_succ x 0)
+                                  (Eq.trans (congrFun' (congrArg HMul.hMul (pow_zero x)) x) (one_mul x))))
+                              x)))
+                        (add_mul (2 • x) (3 • y) (x * x)))
+                      (congr (congrArg HAdd.hAdd (smul_mul_assoc 2 x (x * x))) (smul_mul_assoc 3 y (x * x)))))
+                  (Eq.trans
+                    (Eq.trans
+                      (congr
+                        (congrArg HMul.hMul
+                          (congr
+                            (congrArg HAdd.hAdd
+                              (congr (congrArg HAdd.hAdd (Mathlib.Tactic.NoncommRing.nat_lit_mul_eq_nsmul (x * x) 3))
+                                (Mathlib.Tactic.NoncommRing.nat_lit_mul_eq_nsmul (y * x) 6)))
+                            (Mathlib.Tactic.NoncommRing.nat_lit_mul_eq_nsmul (y * y) 2)))
+                        (Eq.trans (pow_succ y 0)
+                          (Eq.trans (congrFun' (congrArg HMul.hMul (pow_zero y)) y) (one_mul y))))
+                      (add_mul (3 • (x * x) + 6 • (y * x)) (2 • (y * y)) y))
+                    (congr
+                      (congrArg HAdd.hAdd
+                        (Eq.trans (add_mul (3 • (x * x)) (6 • (y * x)) y)
+                          (congr
+                            (congrArg HAdd.hAdd
+                              (Eq.trans (smul_mul_assoc 3 (x * x) y) (congrArg (HSMul.hSMul 3) (mul_assoc x x y))))
+                            (Eq.trans (smul_mul_assoc 6 (y * x) y) (congrArg (HSMul.hSMul 6) (mul_assoc y x y))))))
+                      (Eq.trans (smul_mul_assoc 2 (y * y) y) (congrArg (HSMul.hSMul 2) (mul_assoc y y y)))))))
+              (congr
+                (congrArg HAdd.hAdd
+                  (Eq.trans
+                    (Eq.trans
+                      (congrArg (HMul.hMul (-1))
+                        (Eq.trans
+                          (congr
+                            (congrArg HSub.hSub
+                              (Eq.trans
+                                (Eq.trans (congrArg (HMul.hMul x) (sub_eq_add_neg (x * y) (y * x)))
+                                  (mul_add x (x * y) (-(y * x))))
+                                (congrArg (HAdd.hAdd (x * (x * y))) (mul_neg x (y * x)))))
+                            (Eq.trans
+                              (Eq.trans (congrFun' (congrArg HMul.hMul (sub_eq_add_neg (x * y) (y * x))) x)
+                                (add_mul (x * y) (-(y * x)) x))
+                              (congr (congrArg HAdd.hAdd (mul_assoc x y x))
+                                (Eq.trans (neg_mul (y * x) x) (congrArg Neg.neg (mul_assoc y x x))))))
+                          (sub_eq_add_neg (x * (x * y) + -(x * (y * x))) (x * (y * x) + -(y * (x * x))))))
+                      (mul_add (-1) (x * (x * y) + -(x * (y * x))) (-(x * (y * x) + -(y * (x * x))))))
+                    (congr
+                      (congrArg HAdd.hAdd
+                        (Eq.trans (mul_add (-1) (x * (x * y)) (-(x * (y * x))))
+                          (congr
+                            (congrArg HAdd.hAdd
+                              (Eq.trans (neg_mul 1 (x * (x * y))) (congrArg Neg.neg (one_mul (x * (x * y))))))
+                            (Eq.trans (mul_neg (-1) (x * (y * x)))
+                              (congrArg Neg.neg
+                                (Eq.trans (neg_mul 1 (x * (y * x))) (congrArg Neg.neg (one_mul (x * (y * x))))))))))
+                      (Eq.trans (mul_neg (-1) (x * (y * x) + -(y * (x * x))))
+                        (congrArg Neg.neg
+                          (Eq.trans (mul_add (-1) (x * (y * x)) (-(y * (x * x))))
+                            (congr
+                              (congrArg HAdd.hAdd
+                                (Eq.trans (neg_mul 1 (x * (y * x))) (congrArg Neg.neg (one_mul (x * (y * x))))))
+                              (Eq.trans (mul_neg (-1) (y * (x * x)))
+                                (congrArg Neg.neg
+                                  (Eq.trans (neg_mul 1 (y * (x * x)))
+                                    (congrArg Neg.neg (one_mul (y * (x * x))))))))))))))
+                (Eq.trans
+                  (Eq.trans
+                    (congrArg (HMul.hMul (-2))
+                      (Eq.trans
+                        (congr
+                          (congrArg HSub.hSub
+                            (Eq.trans
+                              (Eq.trans (congrArg (HMul.hMul y) (sub_eq_add_neg (x * y) (y * x)))
+                                (mul_add y (x * y) (-(y * x))))
+                              (congrArg (HAdd.hAdd (y * (x * y))) (mul_neg y (y * x)))))
+                          (Eq.trans
+                            (Eq.trans (congrFun' (congrArg HMul.hMul (sub_eq_add_neg (x * y) (y * x))) y)
+                              (add_mul (x * y) (-(y * x)) y))
+                            (congr (congrArg HAdd.hAdd (mul_assoc x y y))
+                              (Eq.trans (neg_mul (y * x) y) (congrArg Neg.neg (mul_assoc y x y))))))
+                        (sub_eq_add_neg (y * (x * y) + -(y * (y * x))) (x * (y * y) + -(y * (x * y))))))
+                    (mul_add (-2) (y * (x * y) + -(y * (y * x))) (-(x * (y * y) + -(y * (x * y))))))
+                  (congr
+                    (congrArg HAdd.hAdd
+                      (Eq.trans (mul_add (-2) (y * (x * y)) (-(y * (y * x))))
+                        (congr
+                          (congrArg HAdd.hAdd
+                            (Eq.trans (neg_mul 2 (y * (x * y)))
+                              (congrArg Neg.neg (Mathlib.Tactic.NoncommRing.nat_lit_mul_eq_nsmul (y * (x * y)) 2))))
+                          (Eq.trans (mul_neg (-2) (y * (y * x)))
+                            (congrArg Neg.neg
+                              (Eq.trans (neg_mul 2 (y * (y * x)))
+                                (congrArg Neg.neg
+                                  (Mathlib.Tactic.NoncommRing.nat_lit_mul_eq_nsmul (y * (y * x)) 2))))))))
+                    (Eq.trans (mul_neg (-2) (x * (y * y) + -(y * (x * y))))
+                      (congrArg Neg.neg
+                        (Eq.trans (mul_add (-2) (x * (y * y)) (-(y * (x * y))))
+                          (congr
+                            (congrArg HAdd.hAdd
+                              (Eq.trans (neg_mul 2 (x * (y * y)))
+                                (congrArg Neg.neg (Mathlib.Tactic.NoncommRing.nat_lit_mul_eq_nsmul (x * (y * y)) 2))))
+                            (Eq.trans (mul_neg (-2) (y * (x * y)))
+                              (congrArg Neg.neg
+                                (Eq.trans (neg_mul 2 (y * (x * y)))
+                                  (congrArg Neg.neg
+                                    (Mathlib.Tactic.NoncommRing.nat_lit_mul_eq_nsmul (y * (x * y)) 2)))))))))))))))
+        (ConjectureA1.two_mul_add_pow_three._abel_1_1 x y));
+  Eq.mp
+    (congrArg (Eq (2 * (x + y) ^ 3))
+      (Eq.trans
+        (congrArg (HAdd.hAdd ((2 * x + 3 * y) * x ^ 2 + (3 * (x * x) + 6 * (y * x) + 2 * (y * y)) * y ^ 1))
+          (Eq.trans (congr (congrArg HAdd.hAdd (mul_zero (-1))) (mul_zero (-2))) (add_zero 0)))
+        (add_zero ((2 * x + 3 * y) * x ^ 2 + (3 * (x * x) + 6 * (y * x) + 2 * (y * y)) * y ^ 1))))
+    (Eq.mp
+      (congrArg
+        (fun _a =>
+          2 * (x + y) ^ 3 =
+            (2 * x + 3 * y) * x ^ 2 + (3 * (x * x) + 6 * (y * x) + 2 * (y * y)) * y ^ 1 + (-1 * 0 + -2 * _a))
+        hRY)
+      (Eq.mp
+        (congrArg
+          (fun _a =>
+            2 * (x + y) ^ 3 =
+              (2 * x + 3 * y) * x ^ 2 + (3 * (x * x) + 6 * (y * x) + 2 * (y * y)) * y ^ 1 +
+                (-1 * _a + -2 * (y * ConjectureA1.ad x y - ConjectureA1.ad x y * y)))
+          hRX)
+        cert))
+theorem ConjectureA1.vector_two_cancel.{u_1, u_2} : ∀ {K : Type u_1} {V : Type u_2} [inst : Field K] [CharZero K]
+  [inst_2 : AddCommGroup V] [Module K V] (v : V), v + v = 0 → v = 0 :=
+fun {K} {V} [Field K] [CharZero K] [AddCommGroup V] [Module K V] v h =>
+  have h' := Eq.mpr (id (congrFun' (congrArg Eq (two_smul K v)) 0)) h;
+  have h'' := congrArg (fun w => 2⁻¹ • w) h';
+  Eq.mp
+    (congr
+      (congrArg Eq
+        (Eq.trans (smul_smul 2⁻¹ 2 v)
+          (Eq.trans
+            (congrFun'
+              (congrArg HSMul.hSMul
+                (inv_mul_cancel₀
+                  (Mathlib.Meta.NormNum.isNat_eq_false (Mathlib.Meta.NormNum.isNat_ofNat K (Eq.refl 2))
+                    (Mathlib.Meta.NormNum.isNat_ofNat K Nat.cast_zero) (Eq.refl false))))
+              v)
+            (one_smul K v))))
+      (smul_zero 2⁻¹))
+    h''
+theorem ConjectureA1.vector_p_one_q_one.{u_1, u_2} : ∀ {K : Type u_1} {V : Type u_2} [inst : Field K] [CharZero K]
+  [inst_2 : AddCommGroup V] [inst_3 : Module K V] (X Y : Module.End K V),
+  Commute X (ConjectureA1.ad X Y) →
+    Commute Y (ConjectureA1.ad X Y) → ∀ (v : V), (X ^ 2) v = 0 → (Y ^ 2) v = 0 → ((X + Y) ^ 5) v = 0 :=
+fun {K} {V} [Field K] [CharZero K] [AddCommGroup V] [Module K V] X Y hX hY v hx hy =>
+  have h := congrArg (fun T => T v) (ConjectureA1.two_mul_add_pow_five X Y hX hY);
+  have hzero :=
+    id
+      (Eq.mp
+        (congrArg (Eq (2 (((X + Y) ^ 5) v)))
+          (Eq.trans
+            (congr
+              (congrArg HAdd.hAdd
+                (Eq.trans
+                  (congrArg
+                    (⇑(2 * (X * X * X) + 12 * (X * X * Y) + -4 * (X * Y * X) + 5 * (X * Y * Y) + 2 * (Y * X * X) +
+                            20 * (Y * X * Y) +
+                          -10 * (Y * Y * X) +
+                        5 * (Y * Y * Y)))
+                    hx)
+                  (map_zero
+                    (2 * (X * X * X) + 12 * (X * X * Y) + -4 * (X * Y * X) + 5 * (X * Y * Y) + 2 * (Y * X * X) +
+                          20 * (Y * X * Y) +
+                        -10 * (Y * Y * X) +
+                      5 * (Y * Y * Y)))))
+              (Eq.trans
+                (congrArg
+                  (⇑(5 * (X * X * X) + 2 * (X * X * Y) + -4 * (X * Y * X) + 2 * (X * Y * Y) + 17 * (Y * X * X) +
+                          -4 * (Y * X * Y) +
+                        12 * (Y * Y * X) +
+                      2 * (Y * Y * Y)))
+                  hy)
+                (map_zero
+                  (5 * (X * X * X) + 2 * (X * X * Y) + -4 * (X * Y * X) + 2 * (X * Y * Y) + 17 * (Y * X * X) +
+                        -4 * (Y * X * Y) +
+                      12 * (Y * Y * X) +
+                    2 * (Y * Y * Y)))))
+            (add_zero 0)))
+        h);
+  ConjectureA1.vector_two_cancel (((X + Y) ^ 5) v)
+    (Eq.mp (congrFun' (congrArg Eq (congrFun' (congrArg DFunLike.coe (two_mul ((X + Y) ^ 5))) v)) 0) hzero)
+theorem ConjectureA1.vector_p_one_q_zero.{u_1, u_2} : ∀ {K : Type u_1} {V : Type u_2} [inst : Field K] [CharZero K]
+  [inst_2 : AddCommGroup V] [inst_3 : Module K V] (X Y : Module.End K V),
+  Commute X (ConjectureA1.ad X Y) →
+    Commute Y (ConjectureA1.ad X Y) → ∀ (v : V), (X ^ 2) v = 0 → Y v = 0 → ((X + Y) ^ 3) v = 0 :=
+fun {K} {V} [Field K] [CharZero K] [AddCommGroup V] [Module K V] X Y hX hY v hx hy =>
+  have h := congrArg (fun T => T v) (ConjectureA1.two_mul_add_pow_three X Y hX hY);
+  have hzero :=
+    id
+      (Eq.mp
+        (congrArg (Eq (2 (((X + Y) ^ 3) v)))
+          (Eq.trans
+            (congrFun'
+              (congrArg DFunLike.coe
+                (congrArg (HAdd.hAdd ((2 * X + 3 * Y) * X ^ 2))
+                  (congrArg (HMul.hMul (3 * (X * X) + 6 * (Y * X) + 2 * (Y * Y))) (pow_one Y))))
+              v)
+            (Eq.trans
+              (congr (congrArg HAdd.hAdd (Eq.trans (congrArg (⇑(2 * X + 3 * Y)) hx) (map_zero (2 * X + 3 * Y))))
+                (Eq.trans (congrArg (⇑(3 * (X * X) + 6 * (Y * X) + 2 * (Y * Y))) hy)
+                  (map_zero (3 * (X * X) + 6 * (Y * X) + 2 * (Y * Y)))))
+              (add_zero 0))))
+        h);
+  ConjectureA1.vector_two_cancel (((X + Y) ^ 3) v)
+    (Eq.mp (congrFun' (congrArg Eq (congrFun' (congrArg DFunLike.coe (two_mul ((X + Y) ^ 3))) v)) 0) hzero)
+theorem ConjectureA1.vector_p_zero_q_one.{u_1, u_2} : ∀ {K : Type u_1} {V : Type u_2} [inst : Field K] [CharZero K]
+  [inst_2 : AddCommGroup V] [inst_3 : Module K V] (X Y : Module.End K V),
+  Commute X (ConjectureA1.ad X Y) →
+    Commute Y (ConjectureA1.ad X Y) → ∀ (v : V), X v = 0 → (Y ^ 2) v = 0 → ((X + Y) ^ 3) v = 0 :=
+fun {K} {V} [Field K] [CharZero K] [AddCommGroup V] [Module K V] X Y hX hY v hx hy =>
+  have hX' := Eq.mpr (id (congrArg (fun _a => Commute Y _a) (ConjectureA1.ad_swap X Y))) (Commute.neg_right hY);
+  have hY' := Eq.mpr (id (congrArg (fun _a => Commute X _a) (ConjectureA1.ad_swap X Y))) (Commute.neg_right hX);
+  Eq.mp
+    (congrFun' (congrArg Eq (congrFun' (congrArg DFunLike.coe (congrFun' (congrArg HPow.hPow (add_comm Y X)) 3)) v)) 0)
+    (ConjectureA1.vector_p_one_q_zero Y X hX' hY' v hy hx)
+theorem ConjectureA1.vector_p_zero_q_zero.{u_1, u_2} : ∀ {K : Type u_1} {V : Type u_2} [inst : Field K]
+  [inst_1 : AddCommGroup V] [inst_2 : Module K V] (X Y : Module.End K V) (v : V),
+  X v = 0 → Y v = 0 → ((X + Y) ^ 1) v = 0 :=
+fun {K} {V} [Field K] [AddCommGroup V] [Module K V] X Y v hx hy =>
+  of_eq_true
+    (Eq.trans
+      (congrFun'
+        (congrArg Eq
+          (Eq.trans (congrFun' (congrArg DFunLike.coe (pow_one (X + Y))) v)
+            (Eq.trans (congr (congrArg HAdd.hAdd hx) hy) (add_zero 0))))
+        0)
+      (eq_self 0))
+theorem ConjectureA1.vector_parameters_le_one.{u_1, u_2} : ∀ {K : Type u_1} {V : Type u_2} [inst : Field K] [CharZero K]
+  [inst_2 : AddCommGroup V] [inst_3 : Module K V] (X Y : Module.End K V),
+  Commute X (ConjectureA1.ad X Y) →
+    Commute Y (ConjectureA1.ad X Y) →
+      ∀ (p q : ℕ),
+        p ≤ 1 → q ≤ 1 → ∀ (v : V), (X ^ (p + 1)) v = 0 → (Y ^ (q + 1)) v = 0 → ((X + Y) ^ (2 * p + 2 * q + 1)) v = 0 :=
+fun {K} {V} [Field K] [CharZero K] [AddCommGroup V] [Module K V] X Y hX hY p q hp hq v hx hy =>
+  Or.casesOn (Nat.le_one_iff_eq_zero_or_eq_one.mp hp)
+    (fun h =>
+      Eq.ndrec (motive := fun p => p ≤ 1 → (X ^ (p + 1)) v = 0 → ((X + Y) ^ (2 * p + 2 * q + 1)) v = 0)
+        (fun hp hx =>
+          Or.casesOn (Nat.le_one_iff_eq_zero_or_eq_one.mp hq)
+            (fun h =>
+              Eq.ndrec (motive := fun q => q ≤ 1 → (Y ^ (q + 1)) v = 0 → ((X + Y) ^ (2 * 0 + 2 * q + 1)) v = 0)
+                (fun hq hy =>
+                  ConjectureA1.vector_p_zero_q_zero X Y v
+                    (Eq.mp
+                      (congrFun'
+                        (congrArg Eq
+                          (congrFun'
+                            (congrArg DFunLike.coe (Eq.trans (congrArg (HPow.hPow X) (zero_add 1)) (pow_one X))) v))
+                        0)
+                      hx)
+                    (Eq.mp
+                      (congrFun'
+                        (congrArg Eq
+                          (congrFun'
+                            (congrArg DFunLike.coe (Eq.trans (congrArg (HPow.hPow Y) (zero_add 1)) (pow_one Y))) v))
+                        0)
+                      hy))
+                (Eq.symm h) hq hy)
+            fun h =>
+            Eq.ndrec (motive := fun q => q ≤ 1 → (Y ^ (q + 1)) v = 0 → ((X + Y) ^ (2 * 0 + 2 * q + 1)) v = 0)
+              (fun hq hy =>
+                ConjectureA1.vector_p_zero_q_one X Y hX hY v
+                  (Eq.mp
+                    (congrFun'
+                      (congrArg Eq
+                        (congrFun' (congrArg DFunLike.coe (Eq.trans (congrArg (HPow.hPow X) (zero_add 1)) (pow_one X)))
+                          v))
+                      0)
+                    hx)
+                  hy)
+              (Eq.symm h) hq hy)
+        (Eq.symm h) hp hx)
+    fun h =>
+    Eq.ndrec (motive := fun p => p ≤ 1 → (X ^ (p + 1)) v = 0 → ((X + Y) ^ (2 * p + 2 * q + 1)) v = 0)
+      (fun hp hx =>
+        Or.casesOn (Nat.le_one_iff_eq_zero_or_eq_one.mp hq)
+          (fun h =>
+            Eq.ndrec (motive := fun q => q ≤ 1 → (Y ^ (q + 1)) v = 0 → ((X + Y) ^ (2 * 1 + 2 * q + 1)) v = 0)
+              (fun hq hy =>
+                ConjectureA1.vector_p_one_q_zero X Y hX hY v hx
+                  (Eq.mp
+                    (congrFun'
+                      (congrArg Eq
+                        (congrFun' (congrArg DFunLike.coe (Eq.trans (congrArg (HPow.hPow Y) (zero_add 1)) (pow_one Y)))
+                          v))
+                      0)
+                    hy))
+              (Eq.symm h) hq hy)
+          fun h =>
+          Eq.ndrec (motive := fun q => q ≤ 1 → (Y ^ (q + 1)) v = 0 → ((X + Y) ^ (2 * 1 + 2 * q + 1)) v = 0)
+            (fun hq hy => ConjectureA1.vector_p_one_q_one X Y hX hY v hx hy) (Eq.symm h) hq hy)
+      (Eq.symm h) hp hx
+
+--- STDERR ---
+
+EXIT=0

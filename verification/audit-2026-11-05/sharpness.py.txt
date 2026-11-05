@@ -1,0 +1,16 @@
+=== sharpness model: V=Q[x,eps]/(eps^{q+1}), X=d/dx, Y=eps*x, Z=eps, v=1 ===
+  q=0: Xv=0:True  Y^(q+1)v=0:True | T^(2q)v != 0:True  T^(2q+1..)=0:True  eps^q coeff=1 (pred 1) match=True
+  q=1: Xv=0:True  Y^(q+1)v=0:True | T^(2q)v != 0:True  T^(2q+1..)=0:True  eps^q coeff=1 (pred 1) match=True
+  q=2: Xv=0:True  Y^(q+1)v=0:True | T^(2q)v != 0:True  T^(2q+1..)=0:True  eps^q coeff=3 (pred 3) match=True
+  q=3: Xv=0:True  Y^(q+1)v=0:True | T^(2q)v != 0:True  T^(2q+1..)=0:True  eps^q coeff=15 (pred 15) match=True
+  q=4: Xv=0:True  Y^(q+1)v=0:True | T^(2q)v != 0:True  T^(2q+1..)=0:True  eps^q coeff=105 (pred 105) match=True
+  q=5: Xv=0:True  Y^(q+1)v=0:True | T^(2q)v != 0:True  T^(2q+1..)=0:True  eps^q coeff=945 (pred 945) match=True
+  q=6: Xv=0:True  Y^(q+1)v=0:True | T^(2q)v != 0:True  T^(2q+1..)=0:True  eps^q coeff=10395 (pred 10395) match=True
+
+=== check [X,Y] = Z as operators (on basis monomials) ===
+  q=1 : [X,Y]==Z ? True
+  q=2 : [X,Y]==Z ? True
+  q=3 : [X,Y]==Z ? True
+PASS: p=0, q=0..6 sharpness model; commutator on i=0..3, j=0..q, q=1..3
+
+STDERR:

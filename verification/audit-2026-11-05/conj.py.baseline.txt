@@ -1,0 +1,14 @@
+=== minimal N with (X+Y)^N = 0 in M_{p,q} (scan N=0..4p+4q+6) ===
+p=0,q=0 -> N=1 (pred 1) | p=0,q=1 -> N=2 (pred 3) | p=0,q=2 -> N=3 (pred 5) | p=0,q=3 -> N=4 (pred 7) | p=0,q=4 -> N=5 (pred 9)
+p=1,q=0 -> N=None (pred 3) | p=1,q=1 -> N=None (pred 5) | p=1,q=2 -> N=None (pred 7) | p=1,q=3 -> N=None (pred 9) | p=1,q=4 -> N=None (pred 11)
+p=2,q=0 -> N=None (pred 5) | p=2,q=1 -> N=None (pred 7) | p=2,q=2 -> N=None (pred 9) | p=2,q=3 -> N=None (pred 11) | p=2,q=4 -> N=None (pred 13)
+p=3,q=0 -> N=None (pred 7) | p=3,q=1 -> N=None (pred 9) | p=3,q=2 -> N=None (pred 11) | p=3,q=3 -> N=None (pred 13) | p=3,q=4 -> N=None (pred 15)
+p=4,q=0 -> N=None (pred 9) | p=4,q=1 -> N=None (pred 11) | p=4,q=2 -> N=None (pred 13) | p=4,q=3 -> N=None (pred 15) | p=4,q=4 -> N=None (pred 17)
+
+=== the element (X+Y)^{2p+2q+1} for a few (p,q) ===
+p,q = 1 1 : 5*X^0 Y^1 Z^2 + 1*X^1 Y^0 Z^2
+p,q = 1 2 : -7*X^0 Y^1 Z^3 + -1*X^1 Y^0 Z^3 + 21*X^1 Y^2 Z^2
+p,q = 2 2 : 243*X^0 Y^1 Z^4 + 81*X^1 Y^0 Z^4 + -972*X^1 Y^2 Z^3 + -243*X^2 Y^1 Z^3
+p,q = 2 3 : -891*X^0 Y^1 Z^5 + 4455*X^0 Y^3 Z^4 + -243*X^1 Y^0 Z^5 + 4455*X^1 Y^2 Z^4 + 891*X^2 Y^1 Z^4 + -4455*X^2 Y^3 Z^3
+
+STDERR:

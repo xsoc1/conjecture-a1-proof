@@ -1,0 +1,23 @@
+formalization/VectorCases.lean:7:75: error: unexpected token 'include'; expected 'lemma'
+formalization/VectorCases.lean:11:9: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  Module.IsTorsionFree K V
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+formalization/VectorCases.lean:9:59: error: unsolved goals
+K : Type u_1
+V : Type u_2
+inst✝³ : Field K
+inst✝² : CharZero K
+inst✝¹ : AddCommGroup V
+inst✝ : Module K V
+v : V
+h : v + v = 0
+h' : 2 • v = 0
+⊢ v = 0
+formalization/VectorCases.lean:49:0: warning: automatically included section variable(s) unused in theorem `ConjectureA1.vector_p_zero_q_zero`:
+  [CharZero K]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [CharZero K] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+EXIT=1

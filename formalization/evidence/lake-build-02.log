@@ -1,0 +1,86 @@
+info: conjectureA1Offline: no previous manifest, creating one from scratch
+info: toolchain not updated; already up-to-date
+ℹ [1/1] Ran conjectureA1Offline/proofcheck
+info: stdout/stderr:
+F:\Codex_Cache\2026-11-05\task\conjecture-a1-proof\formalization\ConjectureA1.lean:116:18: warning: This simp argument is unused:
+  ad_one
+
+Hint: Omit it from the simp argument list.
+  simp ̵[̵a̵d̵_̵o̵n̵e̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+F:\Codex_Cache\2026-11-05\task\conjecture-a1-proof\formalization\ConjectureA1.lean:145:4: warning: The namespace 'ConjectureA1' is duplicated in the declaration 'ConjectureA1.ConjectureA1'
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+CHECKED ConjectureA1
+CHECKED SpecialCases
+CHECKED VectorCases
+def ConjectureA1.ConjectureA1.{u_1, u_2} : (R : Type u_1) →
+  (V : Type u_2) → [inst : Ring R] → [inst_1 : AddCommGroup V] → [Module R V] → Prop :=
+fun R V [Ring R] [AddCommGroup V] [Module R V] =>
+  ∀ (x y z : R),
+    z = ConjectureA1.ad x y →
+      (∀ (w : R), z * w = w * z) →
+        ∀ (p q : ℕ) (v : V), x ^ (p + 1) • v = 0 → y ^ (q + 1) • v = 0 → (x + y) ^ (2 * p + 2 * q + 1) • v = 0
+def ConjectureA1.VectorConjecture.{u_1, u_2} : (K : Type u_1) →
+  (V : Type u_2) → [inst : Field K] → [inst_1 : AddCommGroup V] → [Module K V] → Prop :=
+fun K V [Field K] [AddCommGroup V] [Module K V] =>
+  ∀ (X Y : Module.End K V),
+    Commute X (ConjectureA1.ad X Y) →
+      Commute Y (ConjectureA1.ad X Y) →
+        ∀ (p q : ℕ) (v : V), (X ^ (p + 1)) v = 0 → (Y ^ (q + 1)) v = 0 → ((X + Y) ^ (2 * p + 2 * q + 1)) v = 0
+@ConjectureA1.vector_two_cancel : ∀ {K : Type u_1} {V : Type u_2} [inst : Field K] [CharZero K]
+  [inst_2 : AddCommGroup V] [Module K V] (v : V), v + v = 0 → v = 0
+@ConjectureA1.vector_p_one_q_one : ∀ {K : Type u_1} {V : Type u_2} [inst : Field K] [CharZero K]
+  [inst_2 : AddCommGroup V] [inst_3 : Module K V] (X Y : Module.End K V),
+  Commute X (ConjectureA1.ad X Y) →
+    Commute Y (ConjectureA1.ad X Y) → ∀ (v : V), (X ^ 2) v = 0 → (Y ^ 2) v = 0 → ((X + Y) ^ 5) v = 0
+@ConjectureA1.vector_p_one_q_zero : ∀ {K : Type u_1} {V : Type u_2} [inst : Field K] [CharZero K]
+  [inst_2 : AddCommGroup V] [inst_3 : Module K V] (X Y : Module.End K V),
+  Commute X (ConjectureA1.ad X Y) →
+    Commute Y (ConjectureA1.ad X Y) → ∀ (v : V), (X ^ 2) v = 0 → Y v = 0 → ((X + Y) ^ 3) v = 0
+@ConjectureA1.vector_p_zero_q_one : ∀ {K : Type u_1} {V : Type u_2} [inst : Field K] [CharZero K]
+  [inst_2 : AddCommGroup V] [inst_3 : Module K V] (X Y : Module.End K V),
+  Commute X (ConjectureA1.ad X Y) →
+    Commute Y (ConjectureA1.ad X Y) → ∀ (v : V), X v = 0 → (Y ^ 2) v = 0 → ((X + Y) ^ 3) v = 0
+@ConjectureA1.vector_p_zero_q_zero : ∀ {K : Type u_1} {V : Type u_2} [inst : Field K] [inst_1 : AddCommGroup V]
+  [inst_2 : Module K V] (X Y : Module.End K V) (v : V), X v = 0 → Y v = 0 → ((X + Y) ^ 1) v = 0
+@ConjectureA1.vector_parameters_le_one : ∀ {K : Type u_1} {V : Type u_2} [inst : Field K] [CharZero K]
+  [inst_2 : AddCommGroup V] [inst_3 : Module K V] (X Y : Module.End K V),
+  Commute X (ConjectureA1.ad X Y) →
+    Commute Y (ConjectureA1.ad X Y) →
+      ∀ (p q : ℕ),
+        p ≤ 1 → q ≤ 1 → ∀ (v : V), (X ^ (p + 1)) v = 0 → (Y ^ (q + 1)) v = 0 → ((X + Y) ^ (2 * p + 2 * q + 1)) v = 0
+@ConjectureA1.ad_pow_of_commute : ∀ {R : Type u_1} [inst : Ring R] (x y : R),
+  Commute y (ConjectureA1.ad x y) → ∀ (n : ℕ), ConjectureA1.ad x (y ^ (n + 1)) = (n + 1) • (y ^ n * ConjectureA1.ad x y)
+@ConjectureA1.ad_pow_eq : ∀ {R : Type u_1} [inst : Ring R] (x y : R),
+  Commute y (ConjectureA1.ad x y) → ∀ (n : ℕ), ConjectureA1.ad x (y ^ n) = n • (y ^ (n - 1) * ConjectureA1.ad x y)
+@ConjectureA1.mul_pow_normal_order : ∀ {R : Type u_1} [inst : Ring R] (x y : R),
+  Commute y (ConjectureA1.ad x y) →
+    ∀ (n : ℕ), x * y ^ (n + 1) = y ^ (n + 1) * x + (n + 1) • (y ^ n * ConjectureA1.ad x y)
+@ConjectureA1.pow_mul_normal_order : ∀ {R : Type u_1} [inst : Ring R] (x y : R),
+  Commute x (ConjectureA1.ad x y) →
+    ∀ (n : ℕ), x ^ (n + 1) * y = y * x ^ (n + 1) + (n + 1) • (x ^ n * ConjectureA1.ad x y)
+'ConjectureA1.ad_def' does not depend on any axioms
+'ConjectureA1.ad_add' depends on axioms: [propext]
+'ConjectureA1.ad_zero' depends on axioms: [propext]
+'ConjectureA1.ad_neg' depends on axioms: [propext]
+'ConjectureA1.ad_one' depends on axioms: [propext]
+'ConjectureA1.ad_mul' depends on axioms: [propext]
+'ConjectureA1.ad_pow_succ' depends on axioms: [propext]
+'ConjectureA1.ad_swap' depends on axioms: [propext]
+'ConjectureA1.ad_pow_of_commute' depends on axioms: [propext]
+'ConjectureA1.mul_pow_normal_order' depends on axioms: [propext]
+'ConjectureA1.ad_pow_eq' depends on axioms: [propext]
+'ConjectureA1.pow_mul_normal_order' depends on axioms: [propext]
+'ConjectureA1.two_mul_add_pow_five' depends on axioms: [propext, Quot.sound]
+'ConjectureA1.two_mul_add_pow_three' depends on axioms: [propext]
+'ConjectureA1.vector_two_cancel' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConjectureA1.vector_p_one_q_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConjectureA1.vector_p_one_q_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConjectureA1.vector_p_zero_q_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ConjectureA1.vector_p_zero_q_zero' depends on axioms: [propext, Quot.sound]
+'ConjectureA1.vector_parameters_le_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+CHECKED AxiomAudit
+Build completed successfully (1 job).
+EXIT=0

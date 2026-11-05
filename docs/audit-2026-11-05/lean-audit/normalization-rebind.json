@@ -1,0 +1,19 @@
+{
+  "detected_changed_inputs": {
+    "formalization\\SpecialCases.lean": {
+      "old": "74fb93d7e8492d7632e98c26023a7d13c339ed74c4bad85e9e97b258b8022120",
+      "new": "35dea501e6e456ccfbf4ff08143cc8978ebb7afd8393d716ea28290413ad52ca"
+    },
+    "formalization\\lake-manifest.json": {
+      "old": "350f7eb12aecbb8d5aca333608cff338edbbeddf706396ae9743d824d7ab6447",
+      "new": "69f77dcb05e2376cd7c6270457a35a1a2e08eb92d014dce7c3e73094bfa57308"
+    },
+    "formalization\\build.ps1": {
+      "old": "eced07c706859b58155e8fd1f4ef78267e449e6963f99c845c082a2148e2e5a6",
+      "new": "194ab3dec57f92beb8ce376aa52fdd04bdf8a8476a68600e17cb3a6f20660a7c"
+    }
+  },
+  "reason": "Root normalized source/config/helper line endings before commit. Initial final hash assertion detected this and prevented certification. New frozen-byte compilation follows.",
+  "prior_evidence": "initial-pass/",
+  "initial_pass_status": "Successful four-module build and signature guard, superseded byte snapshot; not final certificate."
+}

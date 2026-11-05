@@ -1,0 +1,12 @@
+=== a * X^(p+1) with a = Y^(p+1) Z^(q-1) : pure-Z component ===
+  p=1 q=1 : coeff of Z^(p+q) = 2   predicted (-1)^(p+1)(p+1)! = 2   match=True
+  p=2 q=1 : coeff of Z^(p+q) = -6   predicted (-1)^(p+1)(p+1)! = -6   match=True
+  p=2 q=2 : coeff of Z^(p+q) = -6   predicted (-1)^(p+1)(p+1)! = -6   match=True
+  p=3 q=2 : coeff of Z^(p+q) = 24   predicted (-1)^(p+1)(p+1)! = 24   match=True
+  p=3 q=3 : coeff of Z^(p+q) = 24   predicted (-1)^(p+1)(p+1)! = 24   match=True
+  p=4 q=3 : coeff of Z^(p+q) = -120   predicted (-1)^(p+1)(p+1)! = -120   match=True
+  p=4 q=4 : coeff of Z^(p+q) = -120   predicted (-1)^(p+1)(p+1)! = -120   match=True
+  p=5 q=4 : coeff of Z^(p+q) = 720   predicted (-1)^(p+1)(p+1)! = 720   match=True
+PASS: 8 pure-Z coefficient identities in A, not quotient nonmembership
+
+STDERR:

@@ -1,0 +1,5 @@
+
+--- STDERR ---
+fatal: cannot change to 'F:\LaTeX\BVE research\lean-proof\.lake\packages\aesop': Permission denied
+
+EXIT=128

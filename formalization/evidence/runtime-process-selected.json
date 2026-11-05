@@ -1,0 +1,6 @@
+{
+  "ProcessId": 28780,
+  "ParentProcessId": 10440,
+  "Name": "codex.exe",
+  "CommandLine": "\"C:\\Users\\HuangZY\\AppData\\Local\\OpenAI\\Codex\\bin\\a159911ff70742e9\\codex.exe\" exec --model gpt-6.1-sol --config \"service_tier=\\\"priority\\\"\" --approve-for-me --cd F:\\Codex_Cache\\2026-11-05\\task\\conjecture-a1-proof --json --output-last-message F:\\Codex_Cache\\2026-11-05\\task\\local-formalizer-last.txt \""
+}

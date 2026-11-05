@@ -1,0 +1,89 @@
+{
+  "sources": [
+    "AxiomAudit.lean",
+    "ConjectureA1.lean",
+    "lakefile.lean",
+    "lakefile.offline.lean",
+    "SpecialCases.lean",
+    "VectorCases.lean"
+  ],
+  "forbidden_code_tokens": [],
+  "theorem_count": 20,
+  "missing_axiom_probes": [],
+  "unreported_axiom_sets": [],
+  "axioms": {
+    "ConjectureA1.ad_def": [],
+    "ConjectureA1.ad_add": [
+      "propext"
+    ],
+    "ConjectureA1.ad_zero": [
+      "propext"
+    ],
+    "ConjectureA1.ad_neg": [
+      "propext"
+    ],
+    "ConjectureA1.ad_one": [
+      "propext"
+    ],
+    "ConjectureA1.ad_mul": [
+      "propext"
+    ],
+    "ConjectureA1.ad_pow_succ": [
+      "propext"
+    ],
+    "ConjectureA1.ad_swap": [
+      "propext"
+    ],
+    "ConjectureA1.ad_pow_of_commute": [
+      "propext"
+    ],
+    "ConjectureA1.mul_pow_normal_order": [
+      "propext"
+    ],
+    "ConjectureA1.ad_pow_eq": [
+      "propext"
+    ],
+    "ConjectureA1.pow_mul_normal_order": [
+      "propext"
+    ],
+    "ConjectureA1.two_mul_add_pow_five": [
+      "propext",
+      "Quot.sound"
+    ],
+    "ConjectureA1.two_mul_add_pow_three": [
+      "propext"
+    ],
+    "ConjectureA1.vector_two_cancel": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "ConjectureA1.vector_p_one_q_one": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "ConjectureA1.vector_p_one_q_zero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "ConjectureA1.vector_p_zero_q_one": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "ConjectureA1.vector_p_zero_q_zero": [
+      "propext",
+      "Quot.sound"
+    ],
+    "ConjectureA1.vector_parameters_le_one": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "disallowed_axioms": {},
+  "lake_build_exit_zero": true,
+  "passed": true
+}

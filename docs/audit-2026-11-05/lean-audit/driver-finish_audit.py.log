@@ -1,0 +1,27 @@
+{
+  "status": "FORMALLY_VERIFIED_RESTRICTED_SCOPE",
+  "changed_inputs": [],
+  "dependency_matches": true,
+  "certificates": [
+    {
+      "theorem": "two_mul_add_pow_five",
+      "free_word_identity": true,
+      "degree": 5,
+      "nonzero_target_words": 32,
+      "residual": {}
+    },
+    {
+      "theorem": "two_mul_add_pow_three",
+      "free_word_identity": true,
+      "degree": 3,
+      "nonzero_target_words": 8,
+      "residual": {}
+    }
+  ],
+  "axiom_probes": 20,
+  "signature_guard_exit": 0
+}
+
+STDERR:
+
+EXIT=0

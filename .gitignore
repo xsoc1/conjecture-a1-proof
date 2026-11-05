@@ -32,3 +32,8 @@ Thumbs.db
 # scratch
 _tools/
 .lake/
+
+# Reproducible proof-audit logs (including failed historical attempts).
+!formalization/evidence/*.log
+!docs/audit-2026-11-05/lean-audit/*.log
+!docs/audit-2026-11-05/lean-audit/**/*.log

@@ -1,0 +1,34 @@
+{
+  "subgoal_id": "LEAN-INDEPENDENT-AUDIT",
+  "verdict": "FORMALLY_VERIFIED",
+  "scope": "Only the 20 listed theorem/lemma declarations, including commutator-power formulas and the frozen vector conclusion for p,q in {0,1}.",
+  "full_target_verdict": "VERIFICATION_INCOMPLETE",
+  "full_conjecture_formally_proved": false,
+  "artifacts": {
+    "docs\\audit-2026-11-05\\lean-audit-report.md": "f0216acfcd769824d2138e8e2a079719f29bc73f60185813fefff1c5b263ff4e",
+    "docs\\audit-2026-11-05\\lean-audit\\verification.json": "d93d2c56eb6f1f1de65e60d527657abce6d6f030410d1281c88c6e3632354da3",
+    "docs\\audit-2026-11-05\\lean-audit\\run-manifest.json": "85d263b5f234d286ff4a17b3aa9dc799ea559f63508b967412865b5d13b13459",
+    "docs\\audit-2026-11-05\\lean-audit\\independent-source-checks.json": "636e6d07c3ae13dd0bbf1903660f8cf94eedae8c003316692b4694f05bda3ac3",
+    "docs\\audit-2026-11-05\\lean-audit\\context-convergence.json": "94ec719fc2f0687747d5eb65ce6e1b16dfba22d3a2f1dce203c272273a8e9a66"
+  },
+  "final_material_hashes": {
+    "ConjectureA1": "aa9bb362b88e68404948c25021f9d57c986ba0a4924f50b610f37df0836312fa",
+    "SpecialCases": "35dea501e6e456ccfbf4ff08143cc8978ebb7afd8393d716ea28290413ad52ca",
+    "VectorCases": "cd0525eeb9ba9f8c12b411b9cb9a9ccf798dbed4ab8e3acea66a82623ed49807",
+    "AxiomAudit": "321e9b36275f21406f46f78461d4f13d52c83dba698facdd37063727be332bc0"
+  },
+  "build_exits": {
+    "ConjectureA1": 0,
+    "SpecialCases": 0,
+    "VectorCases": 0,
+    "AxiomAudit": 0
+  },
+  "signature_guard_exit": 0,
+  "remaining_obligations": [
+    "Prove VectorConjecture for arbitrary natural p,q. It is only a def; no theorem asserts it.",
+    "The arbitrary p=0 or q=0 families are not proved here; only p,q simultaneously at most one are covered.",
+    "A general one-sided proof must formalize its own valid dependencies (for example PBW/grading, left-ideal membership and the line/fewnomial argument), or provide another complete route. Commented Taylor, iterated commutator, z-power, trinomial and two-sided proof plans are not accepted theorems.",
+    "General sharpness is a separate target and has not been formally proved by these modules."
+  ],
+  "post_audit_context_changes": {}
+}

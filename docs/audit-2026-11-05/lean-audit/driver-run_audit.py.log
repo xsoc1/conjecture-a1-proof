@@ -1,0 +1,38 @@
+{
+  "versions": [
+    "Lean (version 4.31.0, x86_64-w64-windows-gnu, commit 68218e876d2a38b1985b8590fff244a83c321783, Release)",
+    "Lake version 5.0.0-src+68218e8 (Lean version 4.31.0)"
+  ],
+  "build": [
+    {
+      "module": "ConjectureA1",
+      "exit_code": 0,
+      "source_sha256": "aa9bb362b88e68404948c25021f9d57c986ba0a4924f50b610f37df0836312fa",
+      "olean_sha256": "07510e527decbf779e50a02cd39435c3ae370a9d1939f692db7472a50f7fbc4f"
+    },
+    {
+      "module": "SpecialCases",
+      "exit_code": 0,
+      "source_sha256": "35dea501e6e456ccfbf4ff08143cc8978ebb7afd8393d716ea28290413ad52ca",
+      "olean_sha256": "3140e95e36c78b3344f681fdb5d4c8e0c1a741107c8873255f6bc23ce7a42686"
+    },
+    {
+      "module": "VectorCases",
+      "exit_code": 0,
+      "source_sha256": "cd0525eeb9ba9f8c12b411b9cb9a9ccf798dbed4ab8e3acea66a82623ed49807",
+      "olean_sha256": "5de0548eae15d65a60c37011aa32f3c4cc52db22b48bf6205a4e65e306c4b254"
+    },
+    {
+      "module": "AxiomAudit",
+      "exit_code": 0,
+      "source_sha256": "321e9b36275f21406f46f78461d4f13d52c83dba698facdd37063727be332bc0",
+      "olean_sha256": "dc8fdd16f85689d58d49c8751d6c9175beb1b3ae5104767f873f39d24743c326"
+    }
+  ],
+  "dependency_matches": true,
+  "dependency_dirty": {}
+}
+
+STDERR:
+
+EXIT=0

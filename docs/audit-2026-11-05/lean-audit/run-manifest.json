@@ -1,0 +1,813 @@
+{
+  "lean_version": "Lean (version 4.31.0, x86_64-w64-windows-gnu, commit 68218e876d2a38b1985b8590fff244a83c321783, Release)",
+  "lake_version": "Lake version 5.0.0-src+68218e8 (Lean version 4.31.0)",
+  "lean_path": [
+    "F:\\Codex_Cache\\2026-11-05\\task\\a1-independent-lean",
+    "F:\\LaTeX\\BVE research\\lean-proof\\.lake\\packages\\mathlib\\.lake\\build\\lib\\lean",
+    "F:\\LaTeX\\BVE research\\lean-proof\\.lake\\packages\\plausible\\.lake\\build\\lib\\lean",
+    "F:\\LaTeX\\BVE research\\lean-proof\\.lake\\packages\\LeanSearchClient\\.lake\\build\\lib\\lean",
+    "F:\\LaTeX\\BVE research\\lean-proof\\.lake\\packages\\importGraph\\.lake\\build\\lib\\lean",
+    "F:\\LaTeX\\BVE research\\lean-proof\\.lake\\packages\\proofwidgets\\.lake\\build\\lib\\lean",
+    "F:\\LaTeX\\BVE research\\lean-proof\\.lake\\packages\\aesop\\.lake\\build\\lib\\lean",
+    "F:\\LaTeX\\BVE research\\lean-proof\\.lake\\packages\\Qq\\.lake\\build\\lib\\lean",
+    "F:\\LaTeX\\BVE research\\lean-proof\\.lake\\packages\\batteries\\.lake\\build\\lib\\lean"
+  ],
+  "dependencies": [
+    {
+      "name": "mathlib",
+      "expected": "fabf563a7c95a166b8d7b6efca11c8b4dc9d911f",
+      "actual": "fabf563a7c95a166b8d7b6efca11c8b4dc9d911f",
+      "match": true,
+      "tracked_dirty": [],
+      "status_exit": 0
+    },
+    {
+      "name": "plausible",
+      "expected": "63045536fe95024e6c18fc7b48e03f506701c5bc",
+      "actual": "63045536fe95024e6c18fc7b48e03f506701c5bc",
+      "match": true,
+      "tracked_dirty": [],
+      "status_exit": 0
+    },
+    {
+      "name": "LeanSearchClient",
+      "expected": "c5d5b8fe6e5158def25cd28eb94e4141ad97c843",
+      "actual": "c5d5b8fe6e5158def25cd28eb94e4141ad97c843",
+      "match": true,
+      "tracked_dirty": [],
+      "status_exit": 0
+    },
+    {
+      "name": "importGraph",
+      "expected": "5c7542ed018c78194f1e2b903eaf6a792b74c03d",
+      "actual": "5c7542ed018c78194f1e2b903eaf6a792b74c03d",
+      "match": true,
+      "tracked_dirty": [],
+      "status_exit": 0
+    },
+    {
+      "name": "proofwidgets",
+      "expected": "24b0d9dc081c5423f8eec7e866c441e5184f29d9",
+      "actual": "24b0d9dc081c5423f8eec7e866c441e5184f29d9",
+      "match": true,
+      "tracked_dirty": [],
+      "status_exit": 0
+    },
+    {
+      "name": "aesop",
+      "expected": "e3cb2f741431ce31bf73549fb52316a57368b06f",
+      "actual": "e3cb2f741431ce31bf73549fb52316a57368b06f",
+      "match": true,
+      "tracked_dirty": [],
+      "status_exit": 0
+    },
+    {
+      "name": "Qq",
+      "expected": "f46324995fca5f0483b742e4eb4daec7f4ee50d2",
+      "actual": "f46324995fca5f0483b742e4eb4daec7f4ee50d2",
+      "match": true,
+      "tracked_dirty": [],
+      "status_exit": 0
+    },
+    {
+      "name": "batteries",
+      "expected": "fa08db58b30eb033edcdab331bba000827f9f785",
+      "actual": "fa08db58b30eb033edcdab331bba000827f9f785",
+      "match": true,
+      "tracked_dirty": [],
+      "status_exit": 0
+    },
+    {
+      "name": "Cli",
+      "expected": "92564e5770e4d09f2d86dfbf8ada1e9c715b384c",
+      "actual": "92564e5770e4d09f2d86dfbf8ada1e9c715b384c",
+      "match": true,
+      "tracked_dirty": [],
+      "status_exit": 0
+    }
+  ],
+  "commands": [
+    {
+      "argv": [
+        "C:\\Users\\HuangZY\\.elan\\toolchains\\leanprover--lean4---v4.31.0\\bin\\lean.exe",
+        "--version"
+      ],
+      "cwd": "F:\\Codex_Cache\\2026-11-05\\task\\conjecture-a1-proof",
+      "exit_code": 0,
+      "log": "docs\\audit-2026-11-05\\lean-audit\\lean-version.log",
+      "log_sha256": "c6860f229b098bd75173b7601d4c1006d43e2fe956ecd2946f2e6cf385ca7c22"
+    },
+    {
+      "argv": [
+        "C:\\Users\\HuangZY\\.elan\\toolchains\\leanprover--lean4---v4.31.0\\bin\\lake.exe",
+        "--version"
+      ],
+      "cwd": "F:\\Codex_Cache\\2026-11-05\\task\\conjecture-a1-proof",
+      "exit_code": 0,
+      "log": "docs\\audit-2026-11-05\\lean-audit\\lake-version.log",
+      "log_sha256": "77124304b714de1ab1254596dbdce178b953b22096eb1a55ae653468f47ba55f"
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "F:\\Codex_Cache\\2026-11-05\\task\\conjecture-a1-proof",
+      "exit_code": 0,
+      "log": "docs\\audit-2026-11-05\\lean-audit\\git-head.log",
+      "log_sha256": "e5cfc0cfb50e0e8b32f61686ae262bfd4628b92447e9824bf4a3bbb6e5401bfb"
+    },
+    {
+      "argv": [
+        "git",
+        "status",
+        "--short"
+      ],
+      "cwd": "F:\\Codex_Cache\\2026-11-05\\task\\conjecture-a1-proof",
+      "exit_code": 0,
+      "log": "docs\\audit-2026-11-05\\lean-audit\\git-status.log",
+      "log_sha256": "17c85c165b1ad3b76ecb161462efdb03c342e9e4bdf1e0d321dfcbe2ee3c2d7b"
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "F:\\LaTeX\\BVE research\\lean-proof\\.lake\\packages\\mathlib",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "F:\\Codex_Cache\\2026-11-05\\task\\conjecture-a1-proof",
+      "exit_code": 0,
+      "log": "docs\\audit-2026-11-05\\lean-audit\\dependency-mathlib.log",
+      "log_sha256": "12ae3b750e35114f5974cfbc44d92362d60eaf532568a6ccf1aaeb50019b83a3"
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "F:\\LaTeX\\BVE research\\lean-proof\\.lake\\packages\\mathlib",
+        "status",
+        "--porcelain",
+        "--untracked-files=no"
+      ],
+      "cwd": "F:\\Codex_Cache\\2026-11-05\\task\\conjecture-a1-proof",
+      "exit_code": 0,
+      "log": "docs\\audit-2026-11-05\\lean-audit\\dependency-status-mathlib.log",
+      "log_sha256": "926a43f99b76980c6682e3163b7f2de19c8793b0fe05cbce3341243a04aafafe"
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "F:\\LaTeX\\BVE research\\lean-proof\\.lake\\packages\\plausible",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "F:\\Codex_Cache\\2026-11-05\\task\\conjecture-a1-proof",
+      "exit_code": 0,
+      "log": "docs\\audit-2026-11-05\\lean-audit\\dependency-plausible.log",
+      "log_sha256": "94ebc381f40129acb314133afa2991a2a42ccde8c8df739baa7e19f078248281"
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "F:\\LaTeX\\BVE research\\lean-proof\\.lake\\packages\\plausible",
+        "status",
+        "--porcelain",
+        "--untracked-files=no"
+      ],
+      "cwd": "F:\\Codex_Cache\\2026-11-05\\task\\conjecture-a1-proof",
+      "exit_code": 0,
+      "log": "docs\\audit-2026-11-05\\lean-audit\\dependency-status-plausible.log",
+      "log_sha256": "926a43f99b76980c6682e3163b7f2de19c8793b0fe05cbce3341243a04aafafe"
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "F:\\LaTeX\\BVE research\\lean-proof\\.lake\\packages\\LeanSearchClient",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "F:\\Codex_Cache\\2026-11-05\\task\\conjecture-a1-proof",
+      "exit_code": 0,
+      "log": "docs\\audit-2026-11-05\\lean-audit\\dependency-LeanSearchClient.log",
+      "log_sha256": "12adf2eaba4abb4c26532f533d29585e70bf1f690e6fbeb06ea7672b74d51685"
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "F:\\LaTeX\\BVE research\\lean-proof\\.lake\\packages\\LeanSearchClient",
+        "status",
+        "--porcelain",
+        "--untracked-files=no"
+      ],
+      "cwd": "F:\\Codex_Cache\\2026-11-05\\task\\conjecture-a1-proof",
+      "exit_code": 0,
+      "log": "docs\\audit-2026-11-05\\lean-audit\\dependency-status-LeanSearchClient.log",
+      "log_sha256": "926a43f99b76980c6682e3163b7f2de19c8793b0fe05cbce3341243a04aafafe"
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "F:\\LaTeX\\BVE research\\lean-proof\\.lake\\packages\\importGraph",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "F:\\Codex_Cache\\2026-11-05\\task\\conjecture-a1-proof",
+      "exit_code": 0,
+      "log": "docs\\audit-2026-11-05\\lean-audit\\dependency-importGraph.log",
+      "log_sha256": "a8219d8c38bed467b3895dc226259c41517b5e3dcf4c1aa70e1154edeb48c4cb"
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "F:\\LaTeX\\BVE research\\lean-proof\\.lake\\packages\\importGraph",
+        "status",
+        "--porcelain",
+        "--untracked-files=no"
+      ],
+      "cwd": "F:\\Codex_Cache\\2026-11-05\\task\\conjecture-a1-proof",
+      "exit_code": 0,
+      "log": "docs\\audit-2026-11-05\\lean-audit\\dependency-status-importGraph.log",
+      "log_sha256": "926a43f99b76980c6682e3163b7f2de19c8793b0fe05cbce3341243a04aafafe"
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "F:\\LaTeX\\BVE research\\lean-proof\\.lake\\packages\\proofwidgets",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "F:\\Codex_Cache\\2026-11-05\\task\\conjecture-a1-proof",
+      "exit_code": 0,
+      "log": "docs\\audit-2026-11-05\\lean-audit\\dependency-proofwidgets.log",
+      "log_sha256": "0b82470e69ce04581ca180f41bbf4fa51d82780a090c0bcc9293914699a3d2f8"
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "F:\\LaTeX\\BVE research\\lean-proof\\.lake\\packages\\proofwidgets",
+        "status",
+        "--porcelain",
+        "--untracked-files=no"
+      ],
+      "cwd": "F:\\Codex_Cache\\2026-11-05\\task\\conjecture-a1-proof",
+      "exit_code": 0,
+      "log": "docs\\audit-2026-11-05\\lean-audit\\dependency-status-proofwidgets.log",
+      "log_sha256": "926a43f99b76980c6682e3163b7f2de19c8793b0fe05cbce3341243a04aafafe"
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "F:\\LaTeX\\BVE research\\lean-proof\\.lake\\packages\\aesop",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "F:\\Codex_Cache\\2026-11-05\\task\\conjecture-a1-proof",
+      "exit_code": 0,
+      "log": "docs\\audit-2026-11-05\\lean-audit\\dependency-aesop.log",
+      "log_sha256": "172ab01e00ae18135e3b0f6f15bdb2625abda3b512eef0e745bdd89df83611aa"
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "F:\\LaTeX\\BVE research\\lean-proof\\.lake\\packages\\aesop",
+        "status",
+        "--porcelain",
+        "--untracked-files=no"
+      ],
+      "cwd": "F:\\Codex_Cache\\2026-11-05\\task\\conjecture-a1-proof",
+      "exit_code": 0,
+      "log": "docs\\audit-2026-11-05\\lean-audit\\dependency-status-aesop.log",
+      "log_sha256": "926a43f99b76980c6682e3163b7f2de19c8793b0fe05cbce3341243a04aafafe"
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "F:\\LaTeX\\BVE research\\lean-proof\\.lake\\packages\\Qq",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "F:\\Codex_Cache\\2026-11-05\\task\\conjecture-a1-proof",
+      "exit_code": 0,
+      "log": "docs\\audit-2026-11-05\\lean-audit\\dependency-Qq.log",
+      "log_sha256": "8cc35aa4223e6ad7ccfdd91341b83f685be1ffcd91e42c2cd891f0a0220c1676"
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "F:\\LaTeX\\BVE research\\lean-proof\\.lake\\packages\\Qq",
+        "status",
+        "--porcelain",
+        "--untracked-files=no"
+      ],
+      "cwd": "F:\\Codex_Cache\\2026-11-05\\task\\conjecture-a1-proof",
+      "exit_code": 0,
+      "log": "docs\\audit-2026-11-05\\lean-audit\\dependency-status-Qq.log",
+      "log_sha256": "926a43f99b76980c6682e3163b7f2de19c8793b0fe05cbce3341243a04aafafe"
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "F:\\LaTeX\\BVE research\\lean-proof\\.lake\\packages\\batteries",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "F:\\Codex_Cache\\2026-11-05\\task\\conjecture-a1-proof",
+      "exit_code": 0,
+      "log": "docs\\audit-2026-11-05\\lean-audit\\dependency-batteries.log",
+      "log_sha256": "467d40ac8e7adba681f353a6b3cf7b5b9e6c45cd37a9af45670ba78079bd6b60"
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "F:\\LaTeX\\BVE research\\lean-proof\\.lake\\packages\\batteries",
+        "status",
+        "--porcelain",
+        "--untracked-files=no"
+      ],
+      "cwd": "F:\\Codex_Cache\\2026-11-05\\task\\conjecture-a1-proof",
+      "exit_code": 0,
+      "log": "docs\\audit-2026-11-05\\lean-audit\\dependency-status-batteries.log",
+      "log_sha256": "926a43f99b76980c6682e3163b7f2de19c8793b0fe05cbce3341243a04aafafe"
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "F:\\LaTeX\\BVE research\\lean-proof\\.lake\\packages\\Cli",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "F:\\Codex_Cache\\2026-11-05\\task\\conjecture-a1-proof",
+      "exit_code": 0,
+      "log": "docs\\audit-2026-11-05\\lean-audit\\dependency-Cli.log",
+      "log_sha256": "f11e4ff2a0d0730d39490d98a516d6801760d928ca703a9c287b33de4a1c35b9"
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "F:\\LaTeX\\BVE research\\lean-proof\\.lake\\packages\\Cli",
+        "status",
+        "--porcelain",
+        "--untracked-files=no"
+      ],
+      "cwd": "F:\\Codex_Cache\\2026-11-05\\task\\conjecture-a1-proof",
+      "exit_code": 0,
+      "log": "docs\\audit-2026-11-05\\lean-audit\\dependency-status-Cli.log",
+      "log_sha256": "926a43f99b76980c6682e3163b7f2de19c8793b0fe05cbce3341243a04aafafe"
+    },
+    {
+      "argv": [
+        "C:\\Users\\HuangZY\\.elan\\toolchains\\leanprover--lean4---v4.31.0\\bin\\lean.exe",
+        "-o",
+        "F:\\Codex_Cache\\2026-11-05\\task\\a1-independent-lean\\ConjectureA1.olean",
+        "F:\\Codex_Cache\\2026-11-05\\task\\a1-independent-lean\\ConjectureA1.lean"
+      ],
+      "cwd": "F:\\Codex_Cache\\2026-11-05\\task\\a1-independent-lean",
+      "exit_code": 0,
+      "log": "docs\\audit-2026-11-05\\lean-audit\\compile-ConjectureA1.log",
+      "log_sha256": "44855b69ef036968f372f063b6764efd83dce7eca2cc532196f8132ffdef4320"
+    },
+    {
+      "argv": [
+        "C:\\Users\\HuangZY\\.elan\\toolchains\\leanprover--lean4---v4.31.0\\bin\\lean.exe",
+        "-o",
+        "F:\\Codex_Cache\\2026-11-05\\task\\a1-independent-lean\\SpecialCases.olean",
+        "F:\\Codex_Cache\\2026-11-05\\task\\a1-independent-lean\\SpecialCases.lean"
+      ],
+      "cwd": "F:\\Codex_Cache\\2026-11-05\\task\\a1-independent-lean",
+      "exit_code": 0,
+      "log": "docs\\audit-2026-11-05\\lean-audit\\compile-SpecialCases.log",
+      "log_sha256": "926a43f99b76980c6682e3163b7f2de19c8793b0fe05cbce3341243a04aafafe"
+    },
+    {
+      "argv": [
+        "C:\\Users\\HuangZY\\.elan\\toolchains\\leanprover--lean4---v4.31.0\\bin\\lean.exe",
+        "-o",
+        "F:\\Codex_Cache\\2026-11-05\\task\\a1-independent-lean\\VectorCases.olean",
+        "F:\\Codex_Cache\\2026-11-05\\task\\a1-independent-lean\\VectorCases.lean"
+      ],
+      "cwd": "F:\\Codex_Cache\\2026-11-05\\task\\a1-independent-lean",
+      "exit_code": 0,
+      "log": "docs\\audit-2026-11-05\\lean-audit\\compile-VectorCases.log",
+      "log_sha256": "926a43f99b76980c6682e3163b7f2de19c8793b0fe05cbce3341243a04aafafe"
+    },
+    {
+      "argv": [
+        "C:\\Users\\HuangZY\\.elan\\toolchains\\leanprover--lean4---v4.31.0\\bin\\lean.exe",
+        "-o",
+        "F:\\Codex_Cache\\2026-11-05\\task\\a1-independent-lean\\AxiomAudit.olean",
+        "F:\\Codex_Cache\\2026-11-05\\task\\a1-independent-lean\\AxiomAudit.lean"
+      ],
+      "cwd": "F:\\Codex_Cache\\2026-11-05\\task\\a1-independent-lean",
+      "exit_code": 0,
+      "log": "docs\\audit-2026-11-05\\lean-audit\\compile-AxiomAudit.log",
+      "log_sha256": "8c5fa94f449d0c45a0526f436a53524d7c0e74c0c4ac72c8197c7af07e8e10c5"
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "F:\\LaTeX\\BVE research\\lean-proof\\.lake\\packages\\mathlib",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "F:\\Codex_Cache\\2026-11-05\\task\\conjecture-a1-proof",
+      "exit_code": 0,
+      "log": "docs\\audit-2026-11-05\\lean-audit\\resolved-dependency-mathlib.log",
+      "log_sha256": "12ae3b750e35114f5974cfbc44d92362d60eaf532568a6ccf1aaeb50019b83a3"
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "F:\\LaTeX\\BVE research\\lean-proof\\.lake\\packages\\mathlib",
+        "status",
+        "--porcelain",
+        "--untracked-files=no"
+      ],
+      "cwd": "F:\\Codex_Cache\\2026-11-05\\task\\conjecture-a1-proof",
+      "exit_code": 0,
+      "log": "docs\\audit-2026-11-05\\lean-audit\\resolved-dependency-status-mathlib.log",
+      "log_sha256": "926a43f99b76980c6682e3163b7f2de19c8793b0fe05cbce3341243a04aafafe"
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "F:\\LaTeX\\BVE research\\lean-proof\\.lake\\packages\\plausible",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "F:\\Codex_Cache\\2026-11-05\\task\\conjecture-a1-proof",
+      "exit_code": 0,
+      "log": "docs\\audit-2026-11-05\\lean-audit\\resolved-dependency-plausible.log",
+      "log_sha256": "94ebc381f40129acb314133afa2991a2a42ccde8c8df739baa7e19f078248281"
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "F:\\LaTeX\\BVE research\\lean-proof\\.lake\\packages\\plausible",
+        "status",
+        "--porcelain",
+        "--untracked-files=no"
+      ],
+      "cwd": "F:\\Codex_Cache\\2026-11-05\\task\\conjecture-a1-proof",
+      "exit_code": 0,
+      "log": "docs\\audit-2026-11-05\\lean-audit\\resolved-dependency-status-plausible.log",
+      "log_sha256": "926a43f99b76980c6682e3163b7f2de19c8793b0fe05cbce3341243a04aafafe"
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "F:\\LaTeX\\BVE research\\lean-proof\\.lake\\packages\\LeanSearchClient",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "F:\\Codex_Cache\\2026-11-05\\task\\conjecture-a1-proof",
+      "exit_code": 0,
+      "log": "docs\\audit-2026-11-05\\lean-audit\\resolved-dependency-LeanSearchClient.log",
+      "log_sha256": "12adf2eaba4abb4c26532f533d29585e70bf1f690e6fbeb06ea7672b74d51685"
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "F:\\LaTeX\\BVE research\\lean-proof\\.lake\\packages\\LeanSearchClient",
+        "status",
+        "--porcelain",
+        "--untracked-files=no"
+      ],
+      "cwd": "F:\\Codex_Cache\\2026-11-05\\task\\conjecture-a1-proof",
+      "exit_code": 0,
+      "log": "docs\\audit-2026-11-05\\lean-audit\\resolved-dependency-status-LeanSearchClient.log",
+      "log_sha256": "926a43f99b76980c6682e3163b7f2de19c8793b0fe05cbce3341243a04aafafe"
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "F:\\LaTeX\\BVE research\\lean-proof\\.lake\\packages\\importGraph",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "F:\\Codex_Cache\\2026-11-05\\task\\conjecture-a1-proof",
+      "exit_code": 0,
+      "log": "docs\\audit-2026-11-05\\lean-audit\\resolved-dependency-importGraph.log",
+      "log_sha256": "a8219d8c38bed467b3895dc226259c41517b5e3dcf4c1aa70e1154edeb48c4cb"
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "F:\\LaTeX\\BVE research\\lean-proof\\.lake\\packages\\importGraph",
+        "status",
+        "--porcelain",
+        "--untracked-files=no"
+      ],
+      "cwd": "F:\\Codex_Cache\\2026-11-05\\task\\conjecture-a1-proof",
+      "exit_code": 0,
+      "log": "docs\\audit-2026-11-05\\lean-audit\\resolved-dependency-status-importGraph.log",
+      "log_sha256": "926a43f99b76980c6682e3163b7f2de19c8793b0fe05cbce3341243a04aafafe"
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "F:\\LaTeX\\BVE research\\lean-proof\\.lake\\packages\\proofwidgets",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "F:\\Codex_Cache\\2026-11-05\\task\\conjecture-a1-proof",
+      "exit_code": 0,
+      "log": "docs\\audit-2026-11-05\\lean-audit\\resolved-dependency-proofwidgets.log",
+      "log_sha256": "0b82470e69ce04581ca180f41bbf4fa51d82780a090c0bcc9293914699a3d2f8"
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "F:\\LaTeX\\BVE research\\lean-proof\\.lake\\packages\\proofwidgets",
+        "status",
+        "--porcelain",
+        "--untracked-files=no"
+      ],
+      "cwd": "F:\\Codex_Cache\\2026-11-05\\task\\conjecture-a1-proof",
+      "exit_code": 0,
+      "log": "docs\\audit-2026-11-05\\lean-audit\\resolved-dependency-status-proofwidgets.log",
+      "log_sha256": "926a43f99b76980c6682e3163b7f2de19c8793b0fe05cbce3341243a04aafafe"
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "F:\\LaTeX\\BVE research\\lean-proof\\.lake\\packages\\aesop",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "F:\\Codex_Cache\\2026-11-05\\task\\conjecture-a1-proof",
+      "exit_code": 0,
+      "log": "docs\\audit-2026-11-05\\lean-audit\\resolved-dependency-aesop.log",
+      "log_sha256": "172ab01e00ae18135e3b0f6f15bdb2625abda3b512eef0e745bdd89df83611aa"
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "F:\\LaTeX\\BVE research\\lean-proof\\.lake\\packages\\aesop",
+        "status",
+        "--porcelain",
+        "--untracked-files=no"
+      ],
+      "cwd": "F:\\Codex_Cache\\2026-11-05\\task\\conjecture-a1-proof",
+      "exit_code": 0,
+      "log": "docs\\audit-2026-11-05\\lean-audit\\resolved-dependency-status-aesop.log",
+      "log_sha256": "926a43f99b76980c6682e3163b7f2de19c8793b0fe05cbce3341243a04aafafe"
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "F:\\LaTeX\\BVE research\\lean-proof\\.lake\\packages\\Qq",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "F:\\Codex_Cache\\2026-11-05\\task\\conjecture-a1-proof",
+      "exit_code": 0,
+      "log": "docs\\audit-2026-11-05\\lean-audit\\resolved-dependency-Qq.log",
+      "log_sha256": "8cc35aa4223e6ad7ccfdd91341b83f685be1ffcd91e42c2cd891f0a0220c1676"
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "F:\\LaTeX\\BVE research\\lean-proof\\.lake\\packages\\Qq",
+        "status",
+        "--porcelain",
+        "--untracked-files=no"
+      ],
+      "cwd": "F:\\Codex_Cache\\2026-11-05\\task\\conjecture-a1-proof",
+      "exit_code": 0,
+      "log": "docs\\audit-2026-11-05\\lean-audit\\resolved-dependency-status-Qq.log",
+      "log_sha256": "926a43f99b76980c6682e3163b7f2de19c8793b0fe05cbce3341243a04aafafe"
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "F:\\LaTeX\\BVE research\\lean-proof\\.lake\\packages\\batteries",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "F:\\Codex_Cache\\2026-11-05\\task\\conjecture-a1-proof",
+      "exit_code": 0,
+      "log": "docs\\audit-2026-11-05\\lean-audit\\resolved-dependency-batteries.log",
+      "log_sha256": "467d40ac8e7adba681f353a6b3cf7b5b9e6c45cd37a9af45670ba78079bd6b60"
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "F:\\LaTeX\\BVE research\\lean-proof\\.lake\\packages\\batteries",
+        "status",
+        "--porcelain",
+        "--untracked-files=no"
+      ],
+      "cwd": "F:\\Codex_Cache\\2026-11-05\\task\\conjecture-a1-proof",
+      "exit_code": 0,
+      "log": "docs\\audit-2026-11-05\\lean-audit\\resolved-dependency-status-batteries.log",
+      "log_sha256": "926a43f99b76980c6682e3163b7f2de19c8793b0fe05cbce3341243a04aafafe"
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "F:\\LaTeX\\BVE research\\lean-proof\\.lake\\packages\\Cli",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "F:\\Codex_Cache\\2026-11-05\\task\\conjecture-a1-proof",
+      "exit_code": 0,
+      "log": "docs\\audit-2026-11-05\\lean-audit\\resolved-dependency-Cli.log",
+      "log_sha256": "f11e4ff2a0d0730d39490d98a516d6801760d928ca703a9c287b33de4a1c35b9"
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "F:\\LaTeX\\BVE research\\lean-proof\\.lake\\packages\\Cli",
+        "status",
+        "--porcelain",
+        "--untracked-files=no"
+      ],
+      "cwd": "F:\\Codex_Cache\\2026-11-05\\task\\conjecture-a1-proof",
+      "exit_code": 0,
+      "log": "docs\\audit-2026-11-05\\lean-audit\\resolved-dependency-status-Cli.log",
+      "log_sha256": "926a43f99b76980c6682e3163b7f2de19c8793b0fe05cbce3341243a04aafafe"
+    },
+    {
+      "argv": [
+        "C:\\Users\\HuangZY\\.elan\\toolchains\\leanprover--lean4---v4.31.0\\bin\\lean.exe",
+        "-o",
+        "F:\\Codex_Cache\\2026-11-05\\task\\a1-independent-lean\\IndependentSignatureGuard.olean",
+        "F:\\Codex_Cache\\2026-11-05\\task\\a1-independent-lean\\IndependentSignatureGuard.lean"
+      ],
+      "cwd": "F:\\Codex_Cache\\2026-11-05\\task\\a1-independent-lean",
+      "exit_code": 0,
+      "log": "docs\\audit-2026-11-05\\lean-audit\\compile-IndependentSignatureGuard.log",
+      "log_sha256": "63867d23b668b7981d95aa95b0448a5cb32b53328ae0d8de4dc7f24e8c0d5929"
+    }
+  ],
+  "build": [
+    {
+      "module": "ConjectureA1",
+      "exit_code": 0,
+      "source_sha256": "aa9bb362b88e68404948c25021f9d57c986ba0a4924f50b610f37df0836312fa",
+      "olean_sha256": "07510e527decbf779e50a02cd39435c3ae370a9d1939f692db7472a50f7fbc4f"
+    },
+    {
+      "module": "SpecialCases",
+      "exit_code": 0,
+      "source_sha256": "35dea501e6e456ccfbf4ff08143cc8978ebb7afd8393d716ea28290413ad52ca",
+      "olean_sha256": "3140e95e36c78b3344f681fdb5d4c8e0c1a741107c8873255f6bc23ce7a42686"
+    },
+    {
+      "module": "VectorCases",
+      "exit_code": 0,
+      "source_sha256": "cd0525eeb9ba9f8c12b411b9cb9a9ccf798dbed4ab8e3acea66a82623ed49807",
+      "olean_sha256": "5de0548eae15d65a60c37011aa32f3c4cc52db22b48bf6205a4e65e306c4b254"
+    },
+    {
+      "module": "AxiomAudit",
+      "exit_code": 0,
+      "source_sha256": "321e9b36275f21406f46f78461d4f13d52c83dba698facdd37063727be332bc0",
+      "olean_sha256": "dc8fdd16f85689d58d49c8751d6c9175beb1b3ae5104767f873f39d24743c326"
+    }
+  ],
+  "inputs_before": {
+    "AGENTS.md": "0c6447bdac10799c68f3e177ada3de89962bd36f6ba19dab938bf36f89e43eba",
+    "docs\\audit-2026-11-05\\problem_contract.md": "d34ecbe852ec694f78cd9b21ed48ca7978da569571a6b720d7384a3eaa772d22",
+    "formalization\\AxiomAudit.lean": "321e9b36275f21406f46f78461d4f13d52c83dba698facdd37063727be332bc0",
+    "formalization\\ConjectureA1.lean": "aa9bb362b88e68404948c25021f9d57c986ba0a4924f50b610f37df0836312fa",
+    "formalization\\lakefile.lean": "38769ffae46a823b69d6bbe43281fe7ba74f960ee29f2ef045eaea634e891114",
+    "formalization\\lakefile.offline.lean": "9d1efcf76d7e4e6ae9df49015a2e1215396102e41d095e62718681fa381fccd1",
+    "formalization\\SpecialCases.lean": "35dea501e6e456ccfbf4ff08143cc8978ebb7afd8393d716ea28290413ad52ca",
+    "formalization\\VectorCases.lean": "cd0525eeb9ba9f8c12b411b9cb9a9ccf798dbed4ab8e3acea66a82623ed49807",
+    "formalization\\lean-toolchain": "efac0b94923b2d8b6840cd35be9177ad0fc5ab2332f4f4311c98712cee92fdee",
+    "formalization\\lake-manifest.json": "69f77dcb05e2376cd7c6270457a35a1a2e08eb92d014dce7c3e73094bfa57308",
+    "formalization\\build.ps1": "194ab3dec57f92beb8ce376aa52fdd04bdf8a8476a68600e17cb3a6f20660a7c",
+    "formalization\\setup.ps1": "3bb84e6345c5e276cce1fedb507c1fc25f9661f9aa26a147c7a2956061d042a3",
+    "formalization\\validate.py": "ecf2d9933e925bfa7037f695272aa173419044937fbb2e78ddf6a02ae636f1d7",
+    "formalization\\certificate.py": "079ce5b3809774d79bb40c5cb241ed93c944cce62c86e8a7bf6c9f856303fc0b",
+    "formalization\\evidence\\source-and-axioms.json": "c5ab4c873db984f3e518783133bc7dd62a6991cae461662c49a2e2051d5a0b8b",
+    "formalization\\evidence\\lake-build.log": "c63e5391f3d342598e71b42f7fb75802b0229b330309101308ae2f431388fb2d",
+    "formalization\\evidence\\build-context.log": "f2d70c31c28b14e9fbd1f8688a3c760e7dcdcf1f7628a0ca37f999c71099af3e"
+  },
+  "cache_access_note": "Initial-pass sandbox cache Git reads exited 128 and are archived in initial-pass; read-only escalated retries and all final-pass dependency checks passed. No cache writes performed.",
+  "signature_guard": {
+    "exit_code": 0,
+    "source_sha256": "498800ab90eaeac809db8af9d02c516a45adfb10679c0812acdd80462435b310"
+  },
+  "inputs_after": {
+    "AGENTS.md": "0c6447bdac10799c68f3e177ada3de89962bd36f6ba19dab938bf36f89e43eba",
+    "docs\\audit-2026-11-05\\problem_contract.md": "d34ecbe852ec694f78cd9b21ed48ca7978da569571a6b720d7384a3eaa772d22",
+    "formalization\\AxiomAudit.lean": "321e9b36275f21406f46f78461d4f13d52c83dba698facdd37063727be332bc0",
+    "formalization\\ConjectureA1.lean": "aa9bb362b88e68404948c25021f9d57c986ba0a4924f50b610f37df0836312fa",
+    "formalization\\lakefile.lean": "38769ffae46a823b69d6bbe43281fe7ba74f960ee29f2ef045eaea634e891114",
+    "formalization\\lakefile.offline.lean": "9d1efcf76d7e4e6ae9df49015a2e1215396102e41d095e62718681fa381fccd1",
+    "formalization\\SpecialCases.lean": "35dea501e6e456ccfbf4ff08143cc8978ebb7afd8393d716ea28290413ad52ca",
+    "formalization\\VectorCases.lean": "cd0525eeb9ba9f8c12b411b9cb9a9ccf798dbed4ab8e3acea66a82623ed49807",
+    "formalization\\lean-toolchain": "efac0b94923b2d8b6840cd35be9177ad0fc5ab2332f4f4311c98712cee92fdee",
+    "formalization\\lake-manifest.json": "69f77dcb05e2376cd7c6270457a35a1a2e08eb92d014dce7c3e73094bfa57308",
+    "formalization\\build.ps1": "194ab3dec57f92beb8ce376aa52fdd04bdf8a8476a68600e17cb3a6f20660a7c",
+    "formalization\\setup.ps1": "3bb84e6345c5e276cce1fedb507c1fc25f9661f9aa26a147c7a2956061d042a3",
+    "formalization\\validate.py": "ecf2d9933e925bfa7037f695272aa173419044937fbb2e78ddf6a02ae636f1d7",
+    "formalization\\certificate.py": "079ce5b3809774d79bb40c5cb241ed93c944cce62c86e8a7bf6c9f856303fc0b",
+    "formalization\\evidence\\source-and-axioms.json": "c5ab4c873db984f3e518783133bc7dd62a6991cae461662c49a2e2051d5a0b8b",
+    "formalization\\evidence\\lake-build.log": "c63e5391f3d342598e71b42f7fb75802b0229b330309101308ae2f431388fb2d",
+    "formalization\\evidence\\build-context.log": "f2d70c31c28b14e9fbd1f8688a3c760e7dcdcf1f7628a0ca37f999c71099af3e"
+  },
+  "changed_inputs": [],
+  "finished_utc": "2026-11-05T14:23:33.927610+00:00",
+  "status": "FORMALLY_VERIFIED_RESTRICTED_SCOPE",
+  "inventory_recorded_utc": "2026-11-05T14:22:14.287873+00:00",
+  "timestamp_note": "inventory_recorded_utc was recorded after the four compilations; exact initial wall-clock start was not recorded.",
+  "remaining_obligations": [
+    "Prove VectorConjecture for arbitrary natural p,q. It is only a def; no theorem asserts it.",
+    "The arbitrary p=0 or q=0 families are not proved here; only p,q simultaneously at most one are covered.",
+    "A general one-sided proof must formalize its own valid dependencies (for example PBW/grading, left-ideal membership and the line/fewnomial argument), or provide another complete route. Commented Taylor, iterated commutator, z-power, trinomial and two-sided proof plans are not accepted theorems.",
+    "General sharpness is a separate target and has not been formally proved by these modules."
+  ],
+  "verdict": "FORMALLY_VERIFIED",
+  "full_target_verdict": "VERIFICATION_INCOMPLETE",
+  "scope": "Only the 20 listed theorem/lemma declarations, including commutator-power formulas and the frozen vector conclusion for p,q in {0,1}.",
+  "independent_scan_sha256": "636e6d07c3ae13dd0bbf1903660f8cf94eedae8c003316692b4694f05bda3ac3",
+  "verification_sha256": "d93d2c56eb6f1f1de65e60d527657abce6d6f030410d1281c88c6e3632354da3",
+  "report_sha256": "f0216acfcd769824d2138e8e2a079719f29bc73f60185813fefff1c5b263ff4e",
+  "audit_scripts": {
+    "finish_audit.py": "77b5795f463079808ead5c000d64f3a3c545ba46c7e1eec505b640981710e38c",
+    "rebind_final.py": "6f3e8469371597b2172d1e9a93057d83b065fb163a17aa3cf8f2ea70d3c8eac9",
+    "run_audit.py": "2a7cfec5dec284cedda70b91154faf5d2e9bf22caa34d5bea995e0fe78686f6e",
+    "write_report.py": "ceaaeaabea7c30755b7cb39507b7f2da2a111f9649d1226163b09e9f081fc70c",
+    "close_audit.py": "1ac873518d815025d81d4bad1f7a134d4dd9cde0158382f3e2e9a7cba0c4e037"
+  },
+  "normalization_rebind": {
+    "detected_changed_inputs": {
+      "formalization\\SpecialCases.lean": {
+        "old": "74fb93d7e8492d7632e98c26023a7d13c339ed74c4bad85e9e97b258b8022120",
+        "new": "35dea501e6e456ccfbf4ff08143cc8978ebb7afd8393d716ea28290413ad52ca"
+      },
+      "formalization\\lake-manifest.json": {
+        "old": "350f7eb12aecbb8d5aca333608cff338edbbeddf706396ae9743d824d7ab6447",
+        "new": "69f77dcb05e2376cd7c6270457a35a1a2e08eb92d014dce7c3e73094bfa57308"
+      },
+      "formalization\\build.ps1": {
+        "old": "eced07c706859b58155e8fd1f4ef78267e449e6963f99c845c082a2148e2e5a6",
+        "new": "194ab3dec57f92beb8ce376aa52fdd04bdf8a8476a68600e17cb3a6f20660a7c"
+      }
+    },
+    "reason": "Root normalized source/config/helper line endings before commit. Initial final hash assertion detected this and prevented certification. New frozen-byte compilation follows.",
+    "prior_evidence": "initial-pass/",
+    "initial_pass_status": "Successful four-module build and signature guard, superseded byte snapshot; not final certificate."
+  },
+  "post_audit_context_changes": {},
+  "final_material_source_check": {
+    "docs\\audit-2026-11-05\\problem_contract.md": "d34ecbe852ec694f78cd9b21ed48ca7978da569571a6b720d7384a3eaa772d22",
+    "formalization\\AxiomAudit.lean": "321e9b36275f21406f46f78461d4f13d52c83dba698facdd37063727be332bc0",
+    "formalization\\ConjectureA1.lean": "aa9bb362b88e68404948c25021f9d57c986ba0a4924f50b610f37df0836312fa",
+    "formalization\\lakefile.lean": "38769ffae46a823b69d6bbe43281fe7ba74f960ee29f2ef045eaea634e891114",
+    "formalization\\lakefile.offline.lean": "9d1efcf76d7e4e6ae9df49015a2e1215396102e41d095e62718681fa381fccd1",
+    "formalization\\SpecialCases.lean": "35dea501e6e456ccfbf4ff08143cc8978ebb7afd8393d716ea28290413ad52ca",
+    "formalization\\VectorCases.lean": "cd0525eeb9ba9f8c12b411b9cb9a9ccf798dbed4ab8e3acea66a82623ed49807",
+    "formalization\\lean-toolchain": "efac0b94923b2d8b6840cd35be9177ad0fc5ab2332f4f4311c98712cee92fdee",
+    "formalization\\lake-manifest.json": "69f77dcb05e2376cd7c6270457a35a1a2e08eb92d014dce7c3e73094bfa57308",
+    "formalization\\build.ps1": "194ab3dec57f92beb8ce376aa52fdd04bdf8a8476a68600e17cb3a6f20660a7c",
+    "formalization\\setup.ps1": "3bb84e6345c5e276cce1fedb507c1fc25f9661f9aa26a147c7a2956061d042a3",
+    "formalization\\validate.py": "ecf2d9933e925bfa7037f695272aa173419044937fbb2e78ddf6a02ae636f1d7",
+    "formalization\\certificate.py": "079ce5b3809774d79bb40c5cb241ed93c944cce62c86e8a7bf6c9f856303fc0b",
+    "formalization\\evidence\\source-and-axioms.json": "c5ab4c873db984f3e518783133bc7dd62a6991cae461662c49a2e2051d5a0b8b",
+    "formalization\\evidence\\lake-build.log": "c63e5391f3d342598e71b42f7fb75802b0229b330309101308ae2f431388fb2d",
+    "formalization\\evidence\\build-context.log": "f2d70c31c28b14e9fbd1f8688a3c760e7dcdcf1f7628a0ca37f999c71099af3e"
+  },
+  "context_convergence_sha256": "94ec719fc2f0687747d5eb65ce6e1b16dfba22d3a2f1dce203c272273a8e9a66",
+  "compiler_executable_sha256": "9b216deb50d37c32c829d1efaaa5bafd5560417d382df35a815489e31a31593f",
+  "lake_executable_sha256": "a5be0113af1c08ba678c1fad07594e1c5de6b871fe0c4144da2998488eba88a1"
+}

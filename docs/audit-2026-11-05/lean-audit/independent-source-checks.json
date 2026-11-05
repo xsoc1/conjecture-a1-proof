@@ -1,0 +1,115 @@
+{
+  "theorem_count": 20,
+  "theorems": [
+    "ad_def",
+    "ad_add",
+    "ad_zero",
+    "ad_neg",
+    "ad_one",
+    "ad_mul",
+    "ad_pow_succ",
+    "ad_swap",
+    "ad_pow_of_commute",
+    "mul_pow_normal_order",
+    "ad_pow_eq",
+    "pow_mul_normal_order",
+    "two_mul_add_pow_five",
+    "two_mul_add_pow_three",
+    "vector_two_cancel",
+    "vector_p_one_q_one",
+    "vector_p_one_q_zero",
+    "vector_p_zero_q_one",
+    "vector_p_zero_q_zero",
+    "vector_parameters_le_one"
+  ],
+  "forbidden_code_tokens": [],
+  "axioms": {
+    "ConjectureA1.ad_def": [],
+    "ConjectureA1.ad_add": [
+      "propext"
+    ],
+    "ConjectureA1.ad_zero": [
+      "propext"
+    ],
+    "ConjectureA1.ad_neg": [
+      "propext"
+    ],
+    "ConjectureA1.ad_one": [
+      "propext"
+    ],
+    "ConjectureA1.ad_mul": [
+      "propext"
+    ],
+    "ConjectureA1.ad_pow_succ": [
+      "propext"
+    ],
+    "ConjectureA1.ad_swap": [
+      "propext"
+    ],
+    "ConjectureA1.ad_pow_of_commute": [
+      "propext"
+    ],
+    "ConjectureA1.mul_pow_normal_order": [
+      "propext"
+    ],
+    "ConjectureA1.ad_pow_eq": [
+      "propext"
+    ],
+    "ConjectureA1.pow_mul_normal_order": [
+      "propext"
+    ],
+    "ConjectureA1.two_mul_add_pow_five": [
+      "propext",
+      "Quot.sound"
+    ],
+    "ConjectureA1.two_mul_add_pow_three": [
+      "propext"
+    ],
+    "ConjectureA1.vector_two_cancel": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "ConjectureA1.vector_p_one_q_one": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "ConjectureA1.vector_p_one_q_zero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "ConjectureA1.vector_p_zero_q_one": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "ConjectureA1.vector_p_zero_q_zero": [
+      "propext",
+      "Quot.sound"
+    ],
+    "ConjectureA1.vector_parameters_le_one": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "certificate_expansions": [
+    {
+      "theorem": "two_mul_add_pow_five",
+      "free_word_identity": true,
+      "degree": 5,
+      "nonzero_target_words": 32,
+      "residual": {}
+    },
+    {
+      "theorem": "two_mul_add_pow_three",
+      "free_word_identity": true,
+      "degree": 3,
+      "nonzero_target_words": 8,
+      "residual": {}
+    }
+  ],
+  "scan_note": "Nested block and line comments plus strings masked; all material Lean sources scanned. Names checked against explicit expected twenty."
+}
